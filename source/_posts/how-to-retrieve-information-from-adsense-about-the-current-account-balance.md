@@ -105,7 +105,6 @@ function getAuthenticatedClient() {
             } else {
               console.log('missing code');
             }
-            // Make sure to set the credentials on the OAuth2 client.
           }
         } catch (error) {
           reject(error);
