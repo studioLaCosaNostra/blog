@@ -1,6 +1,6 @@
 ---
 title: How to retrieve information from Adsense about the current account balance.
-date:
+date: 2019-01-23 12:58:31
 tags:
 - node.js
 - typescript
