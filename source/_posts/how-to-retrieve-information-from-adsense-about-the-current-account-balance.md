@@ -5,6 +5,7 @@ tags:
 - node.js
 - typescript
 - adsense
+thumbnail: adsense-logo.jpg
 ampSettings:
   titleImage:
     path: adsense-logo.jpg
