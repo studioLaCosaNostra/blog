@@ -45,7 +45,7 @@ highlight:
   tab_replace:
 
 prism_plugin:
-  mode: 'realtime'    # realtime/preprocess 
+  mode: 'preprocess'    # realtime/preprocess 
   theme: 'default'
   line_number: true    # default false 
 
