@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "hexo server",
-    "gh-pages-release": "hexo clean && NODE_ENV=production hexo generate",
+    "gh-pages-release": "NODE_ENV=production hexo generate",
     "gh-pages-publish": "ts-node bin/gh-pages-publish"
   },
   "dependencies": {
