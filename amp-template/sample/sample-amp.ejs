@@ -67,9 +67,6 @@
     <% if (isFormulaContain){ %>
       <script async custom-element="amp-mathml" src="https://cdn.ampproject.org/v0/amp-mathml-0.1.js"></script>
     <% } %>
-    <% if (config.generator_amp.substituteGoogle_adsense || isElseAdContain){ %>
-    <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-    <% } %>
     <% if (config.generator_amp.google_analytics){ %>
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <% } %>
@@ -113,10 +110,11 @@
 	<style amp-custom>
 		<%- cssTxt %>
 	</style>
-	<% } %>
+  <% } %>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
   </head>
   <body>
-  	
+    <amp-auto-ads type="adsense" data-ad-client="ca-pub-7811559275890870"></amp-auto-ads>
   	
   	<!-- google analytics -->
   	<% if (config.generator_amp.google_analytics){ %>
@@ -269,31 +267,10 @@
 			    		
 			    	</div>
 			    	<% } %>
-			    	
-                    <!-- google Adsense Matched content -->
-                    <% if (config.generator_amp.substituteGoogle_adsense && config.generator_amp.substituteGoogle_adsense.data_ad_client && config.generator_amp.substituteGoogle_adsense.data_ad_slot_matched && ( config.generator_amp.substituteGoogle_adsense.width_matched || config.generator_amp.substituteGoogle_adsense.height_matched) ){ %>
-                    <div class="ad-footer">
-                        <amp-ad layout="<%- config.generator_amp.substituteGoogle_adsense.layout_matched || 'responsive' %>"<% if(config.generator_amp.substituteGoogle_adsense.width_matched){ %> width="<%- config.generator_amp.substituteGoogle_adsense.width_matched %>"<% } %><% if(config.generator_amp.substituteGoogle_adsense.height_matched){ %> height="<%- Math.floor(Number(config.generator_amp.substituteGoogle_adsense.height_matched)*0.5) %>"<% } %> type="adsense" data-ad-client="<%- config.generator_amp.substituteGoogle_adsense.data_ad_client %>" data-ad-slot="<%- config.generator_amp.substituteGoogle_adsense.data_ad_slot_matched %>">
-                    </div>
-                    <% } %>
+
                     
 			    	<!-- content -->
 			  		<%- content %>
-			  		
-			  		<!-- google Adsense -->
-			  		<% if (config.generator_amp.substituteGoogle_adsense && config.generator_amp.substituteGoogle_adsense.data_ad_client && config.generator_amp.substituteGoogle_adsense.data_ad_slot && ( config.generator_amp.substituteGoogle_adsense.width || config.generator_amp.substituteGoogle_adsense.height) ){ %>
-			  		<div class="ad-footer">
-                        <% if(config.generator_amp.substituteGoogle_adsense.layout != 'responsive'){ %>
-			  			    <amp-ad layout="<%- config.generator_amp.substituteGoogle_adsense.layout || 'responsive' %>"<% if(config.generator_amp.substituteGoogle_adsense.width){ %> width="<%- config.generator_amp.substituteGoogle_adsense.width %>"<% } %><% if(config.generator_amp.substituteGoogle_adsense.height){ %> height="<%- config.generator_amp.substituteGoogle_adsense.height %>"<% } %> type="adsense" data-ad-client="<%- config.generator_amp.substituteGoogle_adsense.data_ad_client %>" data-ad-slot="<%- config.generator_amp.substituteGoogle_adsense.data_ad_slot %>">
-						    </amp-ad>
-                        <% }else{ %>
-                            <amp-ad width="100vw" height=320 type="adsense" data-ad-client="<%- config.generator_amp.substituteGoogle_adsense.data_ad_client %>" data-ad-slot="<%- config.generator_amp.substituteGoogle_adsense.data_ad_slot %>" data-auto-format="rspv" data-full-width><div overflow></div>
-                            </amp-ad>
-                        <% } %>
-					</div>
-					<% } %>
-					
-					
 					
 					<% if( config.generator_amp.theme && config.generator_amp.theme.share_button ){ %>
 			    	<div class="social-share">
@@ -320,13 +297,6 @@
 			    	</div>
 			    	<% } %>
 			    	
-					
-					<!-- google Adsense Matched content -->
-			  		<% if (config.generator_amp.substituteGoogle_adsense && config.generator_amp.substituteGoogle_adsense.data_ad_client && config.generator_amp.substituteGoogle_adsense.data_ad_slot_matched && ( config.generator_amp.substituteGoogle_adsense.width_matched || config.generator_amp.substituteGoogle_adsense.height_matched) ){ %>
-			  		<div class="ad-footer">
-						<amp-ad layout="<%- config.generator_amp.substituteGoogle_adsense.layout_matched || 'responsive' %>"<% if(config.generator_amp.substituteGoogle_adsense.width_matched){ %> width="<%- config.generator_amp.substituteGoogle_adsense.width_matched %>"<% } %><% if(config.generator_amp.substituteGoogle_adsense.height_matched){ %> height="<%- config.generator_amp.substituteGoogle_adsense.height_matched %>"<% } %> type="adsense" data-ad-client="<%- config.generator_amp.substituteGoogle_adsense.data_ad_client %>" data-ad-slot="<%- config.generator_amp.substituteGoogle_adsense.data_ad_slot_matched %>">
-					</div>
-					<% } %>
 			  	</div>
 				
 		  	</article>
