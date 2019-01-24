@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "new",
+      "type": "shell",
+      "command": "node_modules/.bin/hexo new ${input:layoutType} \"${input:title}\"",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "layoutType",
+      "description": "Select layout",
+      "default": "post",
+      "type": "pickString",
+      "options": [
+        "draft",
+        "page",
+        "post"
+      ]
+    },
+    {
+      "id": "title",
+      "description": "Title:",
+      "default": "Hello world",
+      "type": "promptString"
+    },
+  ]
+}
