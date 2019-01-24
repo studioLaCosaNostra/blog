@@ -95,7 +95,7 @@ generator_amp:
     path:   sample/sample-substituteTitleImage.png
     width:  1024
     height: 800
-  warningLog: false   # To display warning, please set true. 
+  warningLog: true   # To display warning, please set true. 
   theme:
     share_button:
       twitter: true

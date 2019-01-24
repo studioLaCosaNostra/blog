@@ -5,6 +5,9 @@ tags:
 - node.js
 - typescript
 - adsense
+ampSettings:
+  titleImage:
+    path: adsense-logo.jpg
 ---
 
 Unfortunately, Adsense requires you to log in to the real user of your Adsense account. For this purpose, we will use the key generated from the [Google Adsense Management API site](https://developers.google.com/adsense/management/getting_started) and **click**
