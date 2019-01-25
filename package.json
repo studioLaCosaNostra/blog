@@ -6,7 +6,7 @@
     "version": "3.8.0"
   },
   "scripts": {
-    "start": "hexo server",
+    "start": "hexo server --draft",
     "gh-pages-release": "NODE_ENV=production hexo generate",
     "gh-pages-publish": "ts-node bin/gh-pages-publish"
   },
@@ -15,6 +15,7 @@
     "@types/node": "^10.12.18",
     "gh-pages": "^2.0.1",
     "hexo": "^3.7.0",
+    "hexo-asset-image": "0.0.3",
     "hexo-generator-amp": "github:studioLaCosaNostra/hexo-generator-amp",
     "hexo-generator-archive": "^0.1.5",
     "hexo-generator-category": "^0.1.3",

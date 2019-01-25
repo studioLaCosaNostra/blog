@@ -5,8 +5,12 @@ tags:
 - android
 - developer tools
 - fake gps
+thumbnail: map.png
+ampSettings:
+  titleImage:
+    path: map.png
 ---
-{% asset_img map.png Article map header %}
+![Article map header](how-to-simulate-location-in-android-applications/map.png)
 
 To be able to do this, you must activate the developer mode in the android system.
 
@@ -17,11 +21,11 @@ Steps to activate mock location:
 [Steps to activate mock location video](https://youtu.be/CuGRWLS7dlQ)
 
 1. Install the [Fake GPS location](https://play.google.com/store/apps/details?id=com.lexa.fakegps) application.
-   {% asset_img step-1.png Step 1 - First page of Fake GPS location in google play %}
+   ![Step 1 - First page of Fake GPS location in google play](how-to-simulate-location-in-android-applications/step-1.png)
 
 2. Go to **Developer options**
-   {% asset_img step-2.png Step 2 - Additional settings view %}
+   ![Step 2 - Additional settings view](how-to-simulate-location-in-android-applications/step-2.png)
 
 3. **Select mock location app** and select application *Fake GPS location*
-   {% asset_img step-3a.png Step 3 - Developer options view %}
-   {% asset_img step-3b.png Step 3 - Select mock location app view %}
+   ![Step 3 - Developer options view](how-to-simulate-location-in-android-applications/step-3a.png)
+   ![Step 3 - Select mock location app view](how-to-simulate-location-in-android-applications/step-3b.png)

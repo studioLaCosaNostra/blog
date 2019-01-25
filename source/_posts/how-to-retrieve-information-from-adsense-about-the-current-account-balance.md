@@ -12,7 +12,7 @@ ampSettings:
 ---
 
 Unfortunately, Adsense requires you to log in to the real user of your Adsense account. For this purpose, we will use the key generated from the [Google Adsense Management API site](https://developers.google.com/adsense/management/getting_started) and **click**
-{% asset_img register-your-app-button.png Register your app button %}
+![Register your app button](how-to-retrieve-information-from-adsense-about-the-current-account-balance/register-your-app-button.png)
 
 Program code in typescript: `adsense.ts`
 
