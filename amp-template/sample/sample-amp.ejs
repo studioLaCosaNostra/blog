@@ -109,13 +109,13 @@
 		<%- cssTxt %>
 	</style>
   <% } %>
-  <% if (env.env !== 'development') { %>
+  <% if (env.env === 'production') { %>
     <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   <% } %>
   </head>
   <body>
-    <% if (env.env !== 'development') { %>
+    <% if (env.env === 'production') { %>
       <amp-auto-ads type="adsense" data-ad-client="ca-pub-7811559275890870"></amp-auto-ads>
       <amp-analytics type="gtag" data-credentials="include">
         <script type="application/json">
