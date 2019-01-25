@@ -1,13 +1,15 @@
 ---
 title: Hexo - How to determine production mode in theme
+tags:
+  - hexo
+  - javascript
+thumbnail: hexo-logo.png
 ampSettings:
   titleImage:
     path: hexo-logo.png
-tags:
-- hexo
-- javascript
-thumbnail: hexo-logo.png
+date: 2019-01-25 02:00:28
 ---
+
 
 To determine whether we are in production or development mode, we have an available variable in the template called `env`.
 Unfortunately, the hexo documentation does not give us details of what may be there.
