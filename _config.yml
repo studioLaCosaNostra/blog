@@ -107,3 +107,5 @@ generator_amp:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+all_minifier: true

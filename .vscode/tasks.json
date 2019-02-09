@@ -6,6 +6,14 @@
       "type": "shell",
       "command": "node_modules/.bin/hexo new ${input:layoutType} \"${input:title}\"",
       "problemMatcher": []
+    },
+    {
+      "type": "npm",
+      "script": "start",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     }
   ],
   "inputs": [

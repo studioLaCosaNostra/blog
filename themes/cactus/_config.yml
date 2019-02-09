@@ -15,9 +15,9 @@ direction: ltr
 # languages/*.yml
 nav:
   home: /
+  projects: /projects
   # about: /about/
   # articles: /archives/
-  # projects: /projects
 
 
 # Links to your social media accounts.
