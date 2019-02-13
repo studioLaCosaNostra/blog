@@ -10,9 +10,16 @@
     {
       "type": "npm",
       "script": "start",
-      "group": {
-        "kind": "build",
-        "isDefault": true
+      "problemMatcher": [
+        "$tsc"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "new"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
       }
     }
   ],

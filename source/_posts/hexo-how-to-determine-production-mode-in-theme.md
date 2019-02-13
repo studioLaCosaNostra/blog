@@ -10,7 +10,6 @@ ampSettings:
 date: 2019-01-25 02:00:28
 ---
 
-
 To determine whether we are in production or development mode, we have an available variable in the template called `env`.
 Unfortunately, the hexo documentation does not give us details of what may be there.
 
@@ -33,7 +32,7 @@ Then opening [localhost:4000](http://localhost:4000) you will see this result.
 ![hexo env variable result](hexo-how-to-determine-production-mode-in-theme/env-return.png)
 
 As we can see, hexo `env` contains an `env` property which represents the application mode in which it started.
-In `hexo server` will be development, and when generating a static page to change the value of `env.env` just add `NODE_ENV=production` before `hexo generate`
+In `hexo server` mode will be `development`, and when generating a static page to change the value of `env.env` just add `NODE_ENV=production` before `hexo generate`
 `NODE_ENV=production hexo generate`
 
 ![hexo env variable result in production mode](hexo-how-to-determine-production-mode-in-theme/env-return-production.png)

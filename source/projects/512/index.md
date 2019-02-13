@@ -1,4 +1,7 @@
-
+---
+title: projects/512
+date: 2019-01-23 18:24:10
+---
 # 512 - Number puzzle game
 [![Join the numbers and get to 512, Reach a high score, Endless mode](index/all.png)][Google play link]
 

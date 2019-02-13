@@ -6,7 +6,8 @@
     "version": "3.8.0"
   },
   "scripts": {
-    "start": "hexo server --draft",
+    "start": "hexo server --draft -p 5000",
+    "deploy": "hexo deploy",
     "gh-pages-release": "NODE_ENV=production hexo generate",
     "gh-pages-publish": "ts-node bin/gh-pages-publish"
   },
@@ -15,6 +16,8 @@
     "@types/node": "^10.12.18",
     "gh-pages": "^2.0.1",
     "hexo": "^3.7.0",
+    "hexo-admin": "^2.3.0",
+    "hexo-all-minifier": "^0.5.3",
     "hexo-asset-image": "0.0.3",
     "hexo-generator-amp": "github:studioLaCosaNostra/hexo-generator-amp",
     "hexo-generator-archive": "^0.1.5",
@@ -27,6 +30,7 @@
     "hexo-renderer-marked": "^0.3.2",
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.1",
+    "hexo-twitter-auto-publish": "file:../hexo-twitter-auto-publish",
     "ts-node": "^8.0.1",
     "typescript": "^3.2.4"
   }
