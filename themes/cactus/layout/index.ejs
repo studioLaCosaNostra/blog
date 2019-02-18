@@ -48,7 +48,7 @@
         <%- partial('_partial/post/date', { post: post, class_name: 'meta' }) %>
         <div>
           <div class="post-img">
-            <a href="<%- url_for(post.path) %>"><img src="<%- url_for(post.titleImageForAmp) %>" itemprop="image" /></a>
+            <a href="<%- url_for(post.path) %>"><img src="<%- url_for(post.titleImageForAmp) %>" itemprop="image" alt="<%- post.title %> header image" /></a>
           </div>
           <div>
             <%- partial('_partial/post/title', { post: post, index: true, class_name: '' }) %>
