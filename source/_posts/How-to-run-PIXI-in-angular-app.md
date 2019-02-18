@@ -13,6 +13,8 @@ date: 2019-02-11 17:39:00
 thumbnail: title-image.png
 author:
 ---
+Run PIXI without performance problems.
+<!-- more -->
 
 ![Angular and pixi.js 4](How-to-run-PIXI-in-angular-app/title-image.png)
 

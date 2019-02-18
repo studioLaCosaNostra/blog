@@ -17,10 +17,17 @@ function split (str, sep) {
     return result;
 }
 
-hexo.extend.helper.register('css', function (path) {
-  if (!path.includes('?') && !path.endsWith('.css')) path += '.css'
-  const url = this.url_for(path);
-  return `<link rel="stylesheet" href="${url}" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="${url}"></noscript>`
+hexo.extend.helper.register('css', function cssHelper(...args) {
+  return args.reduce((result, path, i) => {
+    if (i) result += '\n';
+
+    if (Array.isArray(path)) {
+      return result + Reflect.apply(cssHelper, this, path);
+    }
+    if (!path.includes('?') && !path.endsWith('.css')) path += '.css';
+    const url = hexo.extend.helper.get('url_for').bind(this)(path);
+    return `${result}<link rel="stylesheet" href="${url}" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="${url}"></noscript>`;
+  }, '');
 });
 
 hexo.extend.helper.register('meta', function (post) {

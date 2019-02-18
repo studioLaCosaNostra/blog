@@ -11,6 +11,8 @@ tags:
 thumbnail: title-image.png
 date: 2019-02-18 15:59:24
 ---
+How to create a good decorator in angular.
+<!-- more -->
 
 There is a problem in Angular when we want to create decorators that want to use [lifecycle hooks][lifecycle-hooks]. The current view engine angular will not detect our implementation of ngOnInit or ngOnDestroy in AOT ([issue source][issue-16023]). The best solution to this is to force methods by checking the type when compiling the code. Typescript will check for us if we have everything we need in our component. Below is the code that adds the CSS class to the body of the document when the component starts.
 
