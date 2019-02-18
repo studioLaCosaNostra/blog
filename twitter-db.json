@@ -1,0 +1,59 @@
+{
+  "published": [],
+  "to-destroy": [],
+  "to-publish": [
+    {
+      "title": "How to run PIXI in Angular application",
+      "permalink": "https://studiolacosanostra.github.io/2019/02/11/How-to-run-PIXI-in-angular-app/",
+      "hexoPublished": true,
+      "tags": [
+        "typescript",
+        "PIXI",
+        "angular",
+        "ngZone"
+      ]
+    },
+    {
+      "title": "Hexo - How to determine production mode in theme",
+      "permalink": "https://studiolacosanostra.github.io/2019/01/25/hexo-how-to-determine-production-mode-in-theme/",
+      "hexoPublished": true,
+      "tags": [
+        "hexo",
+        "javascript"
+      ]
+    },
+    {
+      "title": "Angular: Custom class Decorator. Force OnInit, OnDestroy implementation.",
+      "permalink": "https://studiolacosanostra.github.io/2019/02/18/Angular-Custom-Class-Decorator-Force-OnInit-OnDestroy-implementation/",
+      "hexoPublished": true,
+      "tags": [
+        "typescript",
+        "angular",
+        "decorators",
+        "CSS"
+      ]
+    },
+    {
+      "title": "Angular: Custom class decorator. Force OnInit, OnDestroy implementation.",
+      "permalink": "https://studiolacosanostra.github.io/2019/02/18/Angular-Custom-class-Decorator-Force-OnInit-OnDestroy-implementation/",
+      "hexoPublished": true,
+      "tags": [
+        "typescript",
+        "angular",
+        "decorators",
+        "CSS"
+      ]
+    },
+    {
+      "title": "Angular: Custom class decorator. Force OnInit, OnDestroy implementation.",
+      "permalink": "https://studiolacosanostra.github.io/2019/02/18/Angular-Custom-class-decorator-Force-OnInit-OnDestroy-implementation/",
+      "hexoPublished": true,
+      "tags": [
+        "typescript",
+        "angular",
+        "decorators",
+        "CSS"
+      ]
+    }
+  ]
+}
