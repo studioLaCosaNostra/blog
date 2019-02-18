@@ -17,6 +17,12 @@ function split (str, sep) {
     return result;
 }
 
+hexo.extend.helper.register('css', function (path) {
+  if (!path.includes('?') && !path.endsWith('.css')) path += '.css'
+  const url = this.url_for(path);
+  return `<link rel="stylesheet" href="${url}" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="${url}"></noscript>`
+});
+
 hexo.extend.helper.register('meta', function (post) {
     var metas = post.meta || [];
     var output = '';

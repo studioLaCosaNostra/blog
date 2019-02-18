@@ -8,7 +8,7 @@ subtitle:
 description:
 keywords:
 author:
-language:
+language: en
 timezone:
 
 # URL
@@ -102,10 +102,5 @@ generator_amp:
       twitter: true
       facebook: true
       google: true
-
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type:
 
 all_minifier: true
