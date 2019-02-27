@@ -19,4 +19,7 @@ With this in mind, combine the squares to get the highest number possible. When 
 
 [![Get it on google play](index/get-it-on-google-play.svg)][Google play link]
 
-[Google play link]: https://play.google.com/store/apps/details?id=com.laCosaNostra.FiveHundredAndTwelve2
+**Download from google play qrcode!**
+![Google play qrcode](index/qrcode.png)
+
+[Google play link]: https://play.google.com/store/apps/details?id=com.laCosaNostra.FiveHundredAndTwelve2&referrer=utm_source%3Dblog
