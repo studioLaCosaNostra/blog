@@ -21,7 +21,6 @@
     "hexo-admin": "^2.3.0",
     "hexo-all-minifier": "^0.5.3",
     "hexo-asset-image": "0.0.3",
-    "hexo-auto-canonical": "^0.1.1",
     "hexo-browsersync": "^0.3.0",
     "hexo-generator-amp": "github:studioLaCosaNostra/hexo-generator-amp",
     "hexo-generator-archive": "^0.1.5",
