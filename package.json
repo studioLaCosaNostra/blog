@@ -10,7 +10,7 @@
     "clean": "hexo clean",
     "twitter-publish": "hexo twitter-publish",
     "deploy": "npm run gh-pages-release && npm run gh-pages-publish && hexo twitter-publish",
-    "gh-pages-release": "NODE_ENV=production hexo generate",
+    "gh-pages-release": "NODE_ENV=production hexo generate --config _config.yml,_config.production.yml",
     "gh-pages-publish": "ts-node bin/gh-pages-publish"
   },
   "dependencies": {
@@ -19,8 +19,8 @@
     "gh-pages": "^2.0.1",
     "hexo": "^3.7.0",
     "hexo-admin": "^2.3.0",
-    "hexo-all-minifier": "^0.5.3",
     "hexo-asset-image": "0.0.3",
+    "hexo-asset-pipeline": "^1.7.0",
     "hexo-browsersync": "^0.3.0",
     "hexo-generator-amp": "github:studioLaCosaNostra/hexo-generator-amp",
     "hexo-generator-archive": "^0.1.5",
