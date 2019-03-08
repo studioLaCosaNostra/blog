@@ -5,7 +5,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.2/js/jquery.magnify-mobile.min.js"></script>
 <script>
   $(document).ready(function () {
-    console.log('ready', $('article img'))
     const a = $('article p img').each((_, element) => {
       const src = element.getAttribute('src');
       $(element).magnify({
