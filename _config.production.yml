@@ -1,6 +1,7 @@
 asset_pipeline:
   revisioning:
     enable: true
+    exclude: ['sitemap.xml', '*.json']
   clean_css:
     enable: true
   uglify_js:
