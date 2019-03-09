@@ -18,7 +18,7 @@ Steps to activate developer mode can be found in [google](https://www.google.com
 
 Steps to activate mock location:
 
-[Steps to activate mock location video](https://youtu.be/CuGRWLS7dlQ)
+{% youtube CuGRWLS7dlQ %}
 
 1. Install the [Fake GPS location](https://play.google.com/store/apps/details?id=com.lexa.fakegps) application.
    ![Step 1 - First page of Fake GPS location in google play](how-to-simulate-location-in-android-applications/step-1.png)
