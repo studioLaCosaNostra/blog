@@ -9,6 +9,8 @@ tags:
   - nodejs
 thumbnail:  title-image.png
 ---
+*You will never forget to publish post on twitter.*
+<!-- more -->
 
 Since I started writing a blog, I started publishing status on Twitter when something new comes out. I did it manually. By profession, I'm a programmer, so doing it started to torture me after a few times. I thought that maybe I could find a plugin on the Internet for this purpose, but unfortunately I was disappointed. (WordPress already has such a plugin ready. :() But I found that I could easily write a plugin and here is ready [hexo-twitter-auto-publish][hexo-twitter-auto-publish] plugin. Below are described step by step what you need to do in order to enjoy this solution.
 
