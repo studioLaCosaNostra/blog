@@ -102,3 +102,6 @@ generator_amp:
       twitter: true
       facebook: true
       google: true
+
+nofollow:
+  enable: true
