@@ -22,4 +22,8 @@ With this in mind, combine the squares to get the highest number possible. When 
 **Download from google play qrcode!**
 ![Google play qrcode](index/qrcode.png)
 
+- [Privacy Policy for Android & IOS][Privacy Policy]
+
+
 [Google play link]: https://play.google.com/store/apps/details?id=com.laCosaNostra.FiveHundredAndTwelve2&referrer=utm_source%3Dblog
+[Privacy Policy]: privacy_policy.html
