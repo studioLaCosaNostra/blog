@@ -1,6 +1,9 @@
 ---
 twitterAutoPublish: false
 ---
+
+# 512: Privacy Policy
+
 ## Privacy Policy
 
 PPHU NEXUS Paweł Łaski built the Puzzle 512 app as an Ad Supported app. This SERVICE is provided by PPHU NEXUS Paweł Łaski at no cost and is intended for use as is.
