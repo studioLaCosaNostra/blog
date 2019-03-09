@@ -9,7 +9,7 @@ tags:
 thumbnail:  title-image.png
 ---
 
-Since I started writing a blog, I started publishing status on Twitter when something new comes out. I did it manually. By profession I'm a programmer, so doing it started to torture me after a few times. I thought that maybe I could find a plugin on the Internet for this purpose, but unfortunately I was disappointed. (Wordpress already has such a plugin ready. :( ) But I found that I could easily write a plugin and here is ready [hexo-twitter-auto-publish][hexo-twitter-auto-publish] plugin. Below are described step by step what you need to do in order to enjoy this solution.
+Since I started writing a blog, I started publishing status on Twitter when something new comes out. I did it manually. By profession I'm a programmer, so doing it started to torture me after a few times. I thought that maybe I could find a plugin on the Internet for this purpose, but unfortunately I was disappointed. (Wordpress already has such a plugin ready. :() But I found that I could easily write a plugin and here is ready [hexo-twitter-auto-publish][hexo-twitter-auto-publish] plugin. Below are described step by step what you need to do in order to enjoy this solution.
 
 ## Setup Twitter application for API access.
 
@@ -47,5 +47,16 @@ Since I started writing a blog, I started publishing status on Twitter when some
 
 After creating the post or after generating the page, you should see the new `twitter-db.json` file in the main directory. Any post status changes will now be saved in this file.
 
+## About twitter-db.json
+
+There are three fields in the database: `published`, `to-publish`, `to-destroy`.
+
+- `published` - contains posts that are already on twitter and each post has a tweetId.
+- `to-publish` - contains all new posts that have not yet appeared on Twitter.
+- `to-destroy` - contains posts that for some reason have been moved to a working version, or we changed the `twitterAutoPublish` in the page from true to false.
+  
+**If you do not want a post to be sent to twitter, all you have to do is move it from `to-publish` to `published`.**
+
+**New statuses are sent to the twitter only after calling the command: `hexo deploy`, or after calling a custom command: `hexo twitter-publish`.**
 
 [hexo-twitter-auto-publish]: https://www.npmjs.com/package/hexo-twitter-auto-publish
