@@ -16,6 +16,7 @@
   "dependencies": {
     "@types/gh-pages": "^2.0.0",
     "@types/node": "^10.12.29",
+    "cheerio": "^1.0.0-rc.2",
     "gh-pages": "^2.0.1",
     "hexo": "^3.7.0",
     "hexo-admin": "^2.3.0",
