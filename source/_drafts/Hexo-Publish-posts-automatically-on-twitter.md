@@ -59,4 +59,7 @@ There are three fields in the database: `published`, `to-publish`, `to-destroy`.
 
 **New statuses are sent to the twitter only after calling the command: `hexo deploy`, or after calling a custom command: `hexo twitter-publish`.**
 
+That's all I hope you liked this plugin and if you have any problems or suggestions what can be done better, write in issues on [github][github].
+
 [hexo-twitter-auto-publish]: https://www.npmjs.com/package/hexo-twitter-auto-publish
+[github]: https://github.com/studioLaCosaNostra/hexo-twitter-auto-publish
