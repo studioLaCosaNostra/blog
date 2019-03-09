@@ -16,7 +16,7 @@ Unfortunately, the hexo documentation does not give us details of what may be th
 ![hexo global variables list](hexo-how-to-determine-production-mode-in-theme/hexo-global-variables-list.png)
 
 However, to see what is sitting there, you only need to print the contents of this variable in the template
-Example `themes/<some-theme>/layout/layout.ejs`
+Example `themes/some-theme/layout/layout.ejs`
 
 ```html
 <!DOCTYPE html>
