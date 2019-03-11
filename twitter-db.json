@@ -69,6 +69,19 @@
         "fake gps"
       ],
       "tweetId": "1101259913676894208"
+    },
+    {
+      "title": "VSCode: NVM /bin/bash: npm: command not found",
+      "permalink": "https://studiolacosanostra.github.io/2019/03/11/VSCode-NVM-bin-bash-npm-command-not-found/",
+      "hexoPublished": true,
+      "tags": [
+        "nodejs",
+        "vscode",
+        "bash",
+        "nvm",
+        "npm"
+      ],
+      "tweetId": "1105034989031297024"
     }
   ],
   "to-destroy": [],
