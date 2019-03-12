@@ -10,6 +10,7 @@ tags:
   - nvm
   - npm
 thumbnail: title-image.png
+date: 2019-03-11
 ---
 *When you want to run a task but you get an adventure with `bash`*
 <!-- more -->

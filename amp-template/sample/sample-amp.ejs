@@ -100,6 +100,15 @@
 			"publisher": {
 			    "@type": "Organization",
 			    "name": "<%= config.title %>"
+			    <% if (config.generator_amp.logo.height && config.generator_amp.logo.width && config.generator_amp.logo.height){ %>
+			    ,
+			    "logo": {
+			      "@type": "ImageObject",
+			      "url": "<%= logoPathForAmp %>",
+			      "width": <%= config.generator_amp.logo.width %>,
+			      "height": <%= config.generator_amp.logo.height %>
+			    }
+			    <% } %>
 			}
 		}
 	</script>

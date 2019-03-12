@@ -7,7 +7,7 @@ title: Studio La cosa nostra blog, game dev
 subtitle:
 description: A blog about creating games using the latest web technologies.
 keywords: games, game dev, pixi, typescript, angular
-author:
+author: 'Paweł Łaski'
 language: en
 timezone:
 
@@ -37,7 +37,7 @@ filename_case: 0
 render_drafts: false
 post_asset_folder: true
 relative_link: false
-future: true
+future: false
 highlight:
   enable: false
   line_number: true
@@ -89,7 +89,7 @@ generator_amp:
   templateDir:  amp-template
   assetDistDir: amp-dist
   logo:
-    path:   sample/sample-logo.png
+    path:   logo.png
     width:  600
     height: 60
   substituteTitleImage:
