@@ -25,12 +25,13 @@ nav:
 # (see https://fontawesome.com/icons?d=gallery&s=brands);
 # only 'mail' is an exception.
 social_links:
+  google-play: https://play.google.com/store/apps/developer?id=La+cosa+nostra
   github: https://github.com/studioLaCosaNostra
   twitter: https://twitter.com/la_cosa_nostrai
   youtube: https://www.youtube.com/channel/UCTCoOqyugQFUTX1it84LkRA
+  mail: mailto:studiolacosanostra@gmail.com
   # facebook: /
   # linkedin: /
-  mail: mailto:studiolacosanostra@gmail.com
 
 # Customize the overview with displaying a tagcloud on the index page.
 # Options: https://hexo.io/docs/helpers.html#tagcloud
