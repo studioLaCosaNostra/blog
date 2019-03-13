@@ -82,6 +82,17 @@
         "npm"
       ],
       "tweetId": "1105034989031297024"
+    },
+    {
+      "title": "Hexo: Publish posts automatically on twitter.",
+      "permalink": "https://studiolacosanostra.github.io/2019/03/13/Hexo-Publish-posts-automatically-on-twitter/",
+      "hexoPublished": true,
+      "tags": [
+        "nodejs",
+        "hexo",
+        "twitter"
+      ],
+      "tweetId": "1105854348188401667"
     }
   ],
   "to-destroy": [],

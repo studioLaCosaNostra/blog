@@ -8,6 +8,7 @@ tags:
   - twitter
   - nodejs
 thumbnail:  title-image.png
+date: 2019-03-13
 ---
 *You will never forget to publish post on twitter.*
 <!-- more -->
