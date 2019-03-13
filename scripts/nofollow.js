@@ -1,13 +1,14 @@
 
 'use strict';
 
-var cheerio = require('cheerio');
-var URL = require('url');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const URL = require('url');
 
 function isExternal(url,config) {
-    var exclude = config.nofollow.exclude;
-    var myhost = URL.parse(config.url).hostname;
-    var hostname = URL.parse(url).hostname;
+    const exclude = config.nofollow.exclude;
+    const myhost = URL.parse(config.url).hostname;
+    const hostname = URL.parse(url).hostname;
     if (!hostname) {
         return false;
     }
@@ -29,19 +30,16 @@ function isExternal(url,config) {
 }
 
 function nofollow(source){
-  var config = this.config;
-  var $ = cheerio.load(source);
-  $('a').each(function(index, element) {
-      var href = $(element).attr('href');
-      if (href && isExternal(href,config)) {
-          $(element).attr({
-              rel: 'external nofollow noopener noreferrer',
-              target: '_blank'
-          });
-      }
-  });
-
-  return $.html();
+  const config = this.config;
+  const dom = new JSDOM(source);
+  dom.window.document.querySelectorAll('a').forEach((element) => {
+    const href = element.getAttribute('href');
+    if (href && isExternal(href,config)) {
+      element.setAttribute('rel', 'external nofollow noopener noreferrer');
+      element.setAttribute('target', '_blank');
+    }
+  })
+  return dom.serialize();
 };
 
 
