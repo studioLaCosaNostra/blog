@@ -1,5 +1,5 @@
 ---
-title: projects/512
+title: '512 - Number puzzle game'
 date: 2019-01-23 18:24:10
 ---
 # 512 - Number puzzle game
