@@ -86,6 +86,16 @@
         "twitter"
       ],
       "tweetId": "1105854348188401667"
+    },
+    {
+      "title": "QR Code Generator",
+      "permalink": "https://studiolacosanostra.github.io/projects/qr-code-generator/index.html",
+      "hexoPublished": true,
+      "tags": [
+        "qr-code",
+        "electron"
+      ],
+      "tweetId": "1108019535448137728"
     }
   ],
   "to-destroy": [],
