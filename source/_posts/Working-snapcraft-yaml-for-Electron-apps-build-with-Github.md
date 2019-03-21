@@ -2,9 +2,13 @@
 title: Working snapcraft.yaml for Electron apps (build with Github)
 ampSettings:
   titleImage:
-    path: null
+    path: title-image.png
 tags:
-thumbnail:
+  - snapcraft
+  - electron
+  - qr code
+  - nodejs
+thumbnail:  title-image.png
 ---
 
 A friend asked me for a simple application to [generate QR Codes][qr-code-generator]. It took me a few moments to design it in the angular. As the website already worked, a friend also wanted it to be an offline application on the desktop. Seconds have not passed since launching it in Electron and playing in refining the window. A friend was very happy with the sent .exe and that would be enough, but I was thought to share the snap. Canonical has created a snapcraft store that includes automatic building of github project on various architectures. Only there is a problem, electron-builder generates `.snap` but not `snapcraft.yaml`. I thought it would be easy and I will find an example on the internet. Well, there were a few, but they did not work properly on all systems (I tested on ubuntu 18.04 and 18.10 and there were problems with gtk). That's why I spent almost two days looking for a well-made `snapcraft.yaml` for the electron application. In the end, I found a nice project https://github.com/snapcrafters which contained examples of applications made in electron as *Atom*, *VSCode*, *Gitter*. Below I present the code which I managed to create based on other snaps for [QR Code Generator][qr-code-generator].

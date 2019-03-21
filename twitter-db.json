@@ -96,6 +96,18 @@
         "electron"
       ],
       "tweetId": "1108019535448137728"
+    },
+    {
+      "title": "Working snapcraft.yaml for Electron apps (build with Github)",
+      "permalink": "https://studiolacosanostra.github.io/2019/03/21/Working-snapcraft-yaml-for-Electron-apps-build-with-Github/",
+      "hexoPublished": true,
+      "tags": [
+        "nodejs",
+        "snapcraft",
+        "electron",
+        "qr code"
+      ],
+      "tweetId": "1108760578364002304"
     }
   ],
   "to-destroy": [],
