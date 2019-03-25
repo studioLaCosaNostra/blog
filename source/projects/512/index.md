@@ -19,13 +19,15 @@ With this in mind, combine the squares to get the highest number possible. When 
 
 512 is a great version of the famous puzzle game 2048 to play on Android, with a gameplay perfectly adapted to touch screens.
 
-[![Get it on google play](index/get-it-on-google-play.svg)][Google play link]
+Web: [Puzzle 512][Web version]
+
+[![Get 512 on google play](index/get-it-on-google-play.svg)][Google play link]
 
 **Download from google play qrcode!**
-![Google play qrcode](index/qrcode.png)
+![Google play 512 qrcode](index/qrcode.png)
 
 - [Privacy Policy for Android & IOS][Privacy Policy]
 
-
+[Web version]: /games/512/
 [Google play link]: https://play.google.com/store/apps/details?id=com.laCosaNostra.FiveHundredAndTwelve2&referrer=utm_source%3Dblog
 [Privacy Policy]: privacy_policy.html
