@@ -108,6 +108,18 @@
         "qr code"
       ],
       "tweetId": "1108760578364002304"
+    },
+    {
+      "title": "Automate electron app release build on github with Travis CI",
+      "permalink": "https://studiolacosanostra.github.io/2019/03/26/Automate-electron-app-release-build-on-github-with-Travis-CI/",
+      "hexoPublished": true,
+      "tags": [
+        "Travis CI",
+        "electron",
+        "nodejs",
+        "automation"
+      ],
+      "tweetId": "1110649431349694464"
     }
   ],
   "to-destroy": [],
