@@ -8,6 +8,7 @@ tags:
   - electron
   - qr code
   - nodejs
+  - automation
 thumbnail:  title-image.png
 ---
 

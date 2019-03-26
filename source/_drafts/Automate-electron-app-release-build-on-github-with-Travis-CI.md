@@ -2,12 +2,20 @@
 title: Automate electron app release build on github with Travis CI
 ampSettings:
   titleImage:
-    path: null
+    path: title-image.png
 tags:
-thumbnail:
+  - Travis CI
+  - electron
+  - nodejs
+  - automation
+thumbnail: title-image.png
 ---
+*Run a remotely build project on three systems by tagging the commit.*
+<!-- more -->
 
-Kontynując pracę nad projektem QR Code Generator zauważyłem że dużo czasu poświęcam na lokalnym budowaniu aplikacji na swoim komputerze. Dodatkowo nie mogłem zbudować wersji na mac'a bez maca (pracuję na ubuntu). Pomocny okazał się Travis CI, który ma w sobie gotowy obraz osx do automatycznego testowania i budowania projektów. Wystarczyło napisać skrypt konfiguracyjny dla niego i gotowe. Teraz przy commitowaniu na mastera travis automatycznie testuje aplikację, oraz jeśli dodałeś do commita tag z nowym numerem wersji wykonują się dodatkowe etapy wdrożenia aplikacji na platformy Windows, Mac, Linux i wrzucone zostaną są jako draft do github release.
+Continuing work on the [QR Code Generator project](/projects/qr-code-generator) I noticed that I spend a lot of time on the local building of applications on my poor laptop. In addition, I could not build a mac version without a mac (I'm working on ubuntu). *Travis CI* solved my problem, it has a ready osx image for automatic testing and building projects. It was enough to write a configuration script for it and it was ready. Now when committing to the master, travis automatically tests the application, and if you added the commit tag with the new version number, additional steps will be made to deploy the application to the Windows, Mac, and Linux platforms and will be sent as a draft to the github release page.
+
+`/snap/snapcraft.yaml`
 
 ```yml
 sudo: false
@@ -52,12 +60,16 @@ jobs:
         - npm run release
 ```
 
+Travis has a built-in caching system design, specify the path to the directory that you want to keep after each stage of the job list from the configuration file.
+The `npm run release` script is actually `electron-builder -p always`, the command automatically sends build to github release. By adding the `--mac` flag, he builds a project for OSX. The flag `--win` is building a project for Windows. Building for Windows was done on OSX because there is an automated `wine` installation needed to edit `.exe`.
 
-Travis ma wbudowany system cachowania projektu, wystarczy podać ścieżki do katalogów które chcemy zachować po wykonaniu każdego etapu pliku konfiguracyjnego.
-Skrypt `npm run release` to tak naprawdę `electron-builder -p always`, komenda automatycznie wysyła build na github release. Dodając flagę `--mac` buduje projekt dla OSX. Flaga `--win` buduje projekt dla Windowsa. Budowanie dla Windowsa zostało wykonane na OSX ponieważ tam jest zautomatyzowana instalacja `wine` potrzebnego do edycji `.exe`.
 
-Aby projekt został wysłany na *github release page* potrzebne jest dodanie zmiennej `GH_TOKEN` w konfiguracji travisa.
+The necessary action that we need to do to send the project to the *github release page* is to add the `GH_TOKEN` variable to the travisa configuration.
+
 ![Environment Variables of Travis settings view](Automate-electron-app-release-build-on-github-with-Travis-CI/travis-env-settings.png)
-Dodając zmienną bądź pewny że nie masz zaznaczonego **Display value in build log**, logi travisa są dostępny przez internet, więc każdy może wykraść klucz jeśli wie gdzie szukać i jest on widoczny.
 
-Teraz jeśli masz gotowy taką konfigurację w projekcie travis będzie sam za ciebie wykonywał testy, a robiąc `git tag -a v1.0.1 -m "v1.0.1" && git push origin --tags` travis rozpocznie dodatkowo budowanie release aplikacji i wyśle na `github release page`.
+When adding a variable, be sure that you have not selected **Display value in build log**, travis build logs are available over the internet, so anyone can steal the key if they know where to look.
+
+Now if you have such a configuration in the travis project, it will perform the tests yourself for you, and by doing `git tag -a v1.0.1 -m 'v1.0.1' && git push origin --tags` travis will start to build an application release and send it to `github release page`.
+
+Link to [qr code generator github repository](https://github.com/studioLaCosaNostra/qr-code-generator-desktop).
