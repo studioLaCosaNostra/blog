@@ -106,3 +106,6 @@ generator_amp:
 nofollow:
   enable: true
 all_minifier: false
+
+include:
+  - .nojekyll
