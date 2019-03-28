@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.studiolaCosaNostra.qrCodeGenerator",
+      "sha256_cert_fingerprints": [
+        "8B:26:6C:8A:CB:0E:7A:83:9C:01:68:82:30:93:54:5A:51:2B:58:54:F5:7E:33:5F:CA:6F:E3:83:D3:CA:AC:2B"
+      ]
+    }
+  }
+]
