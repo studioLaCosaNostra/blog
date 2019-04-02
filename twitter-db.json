@@ -127,6 +127,16 @@
       "hexoPublished": true,
       "tags": [],
       "tweetId": "1111017688149704705"
+    },
+    {
+      "title": "Angular async pipe does not work in the electron",
+      "permalink": "https://studiolacosanostra.github.io/2019/04/02/Angular-async-pipe-does-not-work-in-the-electron/",
+      "hexoPublished": true,
+      "tags": [
+        "angular",
+        "electron"
+      ],
+      "tweetId": "1113081432988176385"
     }
   ],
   "to-destroy": [],
