@@ -137,6 +137,16 @@
         "electron"
       ],
       "tweetId": "1113081432988176385"
+    },
+    {
+      "title": "Deploy angular application to now.sh",
+      "permalink": "https://studiolacosanostra.github.io/2019/04/03/Deploy-angular-application-to-now-sh/",
+      "hexoPublished": true,
+      "tags": [
+        "angular",
+        "now.sh"
+      ],
+      "tweetId": "1113457764918091776"
     }
   ],
   "to-destroy": [],
