@@ -110,3 +110,4 @@ all_minifier: false
 include:
   - .nojekyll
   - .well-known/*
+  - robots.txt
