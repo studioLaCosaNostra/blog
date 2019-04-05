@@ -7,9 +7,15 @@
       <div id="logo" style="background-image: url(<%- url_for(theme.logo.url) %>);"></div>
     <% } %>
   <% } %>
+  <% if (!is_page()) { %>
+    <h1 id="title">
+      <%= config.title %>
+    </h1>
+  <% } else { %>
     <div id="title">
       <%= config.title %>
     </div>
+  <% } %>
   </a>
   <div id="nav">
     <ul>
