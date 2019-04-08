@@ -3,9 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Studio La cosa nostra blog, game dev
-subtitle:
-description: A blog about creating games using the latest web technologies.
+title: Studio La cosa nostra dev blog
+description: A blog about creating games using the latest web technologies. In addition, about problems with applications written in the angular framework.
 keywords: games, game dev, pixi, typescript, angular
 author: 'Studio La Cosa Nostra'
 language: en
@@ -111,3 +110,13 @@ include:
   - .nojekyll
   - .well-known/*
   - robots.txt
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
