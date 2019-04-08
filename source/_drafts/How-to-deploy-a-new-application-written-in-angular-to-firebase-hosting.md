@@ -11,6 +11,8 @@ tags:
 thumbnail: title-image.png
 ---
 
+
+
 add the `.firebase` directory to the `.gitignore` file
 
 ```gitignore
