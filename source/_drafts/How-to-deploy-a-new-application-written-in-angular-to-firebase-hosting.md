@@ -11,7 +11,19 @@ tags:
 thumbnail: title-image.png
 ---
 
+Install firebase tools.
 
+`npm install -g firebase-tools`
+
+Login to firebase via cli.
+
+`firebase login`
+
+Init firebase configuration in project directory
+
+`firebase init`
+
+it should create files
 
 add the `.firebase` directory to the `.gitignore` file
 
