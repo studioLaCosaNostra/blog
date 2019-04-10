@@ -11,19 +11,31 @@ tags:
 thumbnail: title-image.png
 ---
 
+`ng new test-firebase`
+
+ascii rec
+
 Install firebase tools.
 
 `npm install -g firebase-tools`
+
+ascii rec
 
 Login to firebase via cli.
 
 `firebase login`
 
+youtube video
+
 Init firebase configuration in project directory
 
 `firebase init`
 
-it should create files
+ascii rec
+
+it should create files:
+
+`files tree`
 
 add the `.firebase` directory to the `.gitignore` file
 
