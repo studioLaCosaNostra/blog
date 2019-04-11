@@ -11,6 +11,9 @@ tags:
 thumbnail: title-image.png
 ---
 
+Add project in firebase console
+
+
 `ng new test-firebase`
 
 ascii rec
