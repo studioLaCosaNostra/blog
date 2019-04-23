@@ -8,8 +8,37 @@ tags:
   - firebase
   - git
   - npm
+  - firebase console
 thumbnail: title-image.png
 ---
+
+In this article, I describe how easy and simple you can share your angular application on firebase hosting without having advanced knowledge about servers and sharing websites on the web.
+
+At the beginning, register on firebase console.
+
+https://console.firebase.google.com
+
+![Firebase console dashboard after login](firebase-console-login-dashboard.png)
+
+Add new project.m
+
+![Firebase console add new project](firebase-console-add-new-project.png)
+
+After creating the project, you should be moved to the project view.
+
+![Firebase console project dashboard](firebase-console-project-dashboard-after-create.png)
+
+Now that we've created a project in the firebase console, we can go on to create the application locally.
+
+In the next step install the angular CLI and firebase tools.
+
+`npm install -g @angular/cli`
+
+<script id="asciicast-5Q8TMhb8bl1vXoaiFSoNTX8BW" src="https://asciinema.org/a/5Q8TMhb8bl1vXoaiFSoNTX8BW.js" async></script>
+
+`npm install -g firebase-tools`
+
+<script id="asciicast-242425" src="https://asciinema.org/a/242425.js" async></script>
 
 Add project in firebase console
 
@@ -17,9 +46,7 @@ Add project in firebase console
 
 ascii rec
 
-Install firebase tools.
 
-`npm install -g firebase-tools`
 
 ascii rec
 
@@ -47,7 +74,7 @@ add the `.firebase` directory to the `.gitignore` file
 /.firebase
 ```
 
-    If you accidentally added this directory to the git, then you can remove it from the repository: `git rm -r --cached .firebase`
+If you accidentally added this directory to the git, then you can remove it from the repository using this command: `git rm -r --cached .firebase`
 
 In firebase.json you should have something like this.
 
