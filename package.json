@@ -31,6 +31,7 @@
     "hexo-generator-sitemap": "^1.2.0",
     "hexo-generator-tag": "^0.2.0",
     "hexo-prism-plugin": "github:studioLaCosaNostra/hexo-prism-plugin",
+    "hexo-related-popular-posts": "^3.0.4",
     "hexo-renderer-ejs": "^0.3.1",
     "hexo-renderer-marked": "^0.3.2",
     "hexo-renderer-stylus": "^0.3.3",

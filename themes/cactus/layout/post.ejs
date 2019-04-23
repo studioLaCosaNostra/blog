@@ -17,3 +17,12 @@
   <div>Word count: <%- wordcount(page.content) %></div>
 </article>
 <%- partial('_partial/comments') %>
+
+Related posts:
+<% if (env.env === 'production') { %>
+  <%-
+  popular_posts( {} , page )
+  %>
+<% } else { %>
+  Only on production environement.
+<% } %>
