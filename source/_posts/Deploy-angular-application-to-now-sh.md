@@ -7,6 +7,7 @@ tags:
   - now.sh
   - angular
 thumbnail: title-image.png
+date: 2019-04-03
 ---
 
 Angular is a platform for building applications across all platforms; web, mobile web, native mobile, and native desktop.

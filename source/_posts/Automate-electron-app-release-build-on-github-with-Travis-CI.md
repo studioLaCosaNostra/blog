@@ -9,6 +9,7 @@ tags:
   - nodejs
   - automation
 thumbnail: title-image.png
+date: 2019-03-26
 ---
 *Run a remotely build project on three systems by tagging the commit.*
 <!-- more -->

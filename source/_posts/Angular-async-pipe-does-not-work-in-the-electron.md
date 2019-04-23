@@ -7,6 +7,7 @@ tags:
   - angular
   - electron
 thumbnail: title-image.png
+date: 2019-04-02
 ---
 
 Yesterday, creating a document scanning program I was very surprised why angular does not update the view.
