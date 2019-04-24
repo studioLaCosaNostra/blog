@@ -20,7 +20,7 @@ https://console.firebase.google.com
 
 ![Firebase console dashboard after login](firebase-console-login-dashboard.png)
 
-Add new project.m
+Add new project.
 
 ![Firebase console add new project](firebase-console-add-new-project.png)
 
@@ -28,7 +28,7 @@ After creating the project, you should be moved to the project view.
 
 ![Firebase console project dashboard](firebase-console-project-dashboard-after-create.png)
 
-Now that we've created a project in the firebase console, we can go on to create the application locally.
+After creating the project, we can start creating the angular project locally.
 
 In the next step install the angular CLI and firebase tools.
 
@@ -40,7 +40,7 @@ In the next step install the angular CLI and firebase tools.
 
 <script id="asciicast-242425" src="https://asciinema.org/a/242425.js" async></script>
 
-Add project in firebase console
+Create a new angular project using the cli command.
 
 `ng new test-firebase`
 
