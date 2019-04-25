@@ -13,7 +13,7 @@
         <div>
           <% if (post.thumbnail) { %>
             <div class="post-img">
-              <a href="<%- url_for(post.path) %>"><img src="<%- url_for(post.path) + post.thumbnail %>" itemprop="image" alt="<%- post.title %> header image" /></a>
+              <a href="<%- url_for(post.path) %>" title="<%- post.title %>"><img src="<%- url_for(post.path) + post.thumbnail %>" itemprop="image" alt="<%- post.title %> header image" /></a>
             </div>
           <% } %>
           <div>

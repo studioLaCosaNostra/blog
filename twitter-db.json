@@ -147,10 +147,7 @@
         "now.sh"
       ],
       "tweetId": "1113457764918091776"
-    }
-  ],
-  "to-destroy": [],
-  "to-publish": [
+    },
     {
       "title": "How to deploy a new application written in angular to firebase hosting",
       "permalink": "https://studiolacosanostra.github.io/2019/04/25/How-to-deploy-a-new-application-written-in-angular-to-firebase-hosting/",
@@ -162,7 +159,10 @@
         "npm",
         "firebase console",
         "hosting"
-      ]
+      ],
+      "tweetId": "1121514969546330112"
     }
-  ]
+  ],
+  "to-destroy": [],
+  "to-publish": []
 }
