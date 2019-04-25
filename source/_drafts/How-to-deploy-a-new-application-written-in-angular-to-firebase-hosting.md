@@ -44,7 +44,7 @@ Create a new angular project using the cli command.
 
 `ng new test-firebase`
 
-ascii rec
+<script id="asciicast-242689" src="https://asciinema.org/a/242689.js" async></script>
 
 
 
