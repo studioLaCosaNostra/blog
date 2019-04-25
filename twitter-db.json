@@ -150,5 +150,19 @@
     }
   ],
   "to-destroy": [],
-  "to-publish": []
+  "to-publish": [
+    {
+      "title": "How to deploy a new application written in angular to firebase hosting",
+      "permalink": "https://studiolacosanostra.github.io/2019/04/25/How-to-deploy-a-new-application-written-in-angular-to-firebase-hosting/",
+      "hexoPublished": true,
+      "tags": [
+        "angular",
+        "firebase",
+        "git",
+        "npm",
+        "firebase console",
+        "hosting"
+      ]
+    }
+  ]
 }

@@ -9,7 +9,9 @@ tags:
   - git
   - npm
   - firebase console
+  - hosting
 thumbnail: title-image.png
+date: 2019-04-25
 ---
 
 In this article, I describe how easy and simple you can share your angular application on firebase hosting without having advanced knowledge about servers and sharing websites on the web.
@@ -46,27 +48,49 @@ Create a new angular project using the cli command.
 
 <script id="asciicast-242689" src="https://asciinema.org/a/242689.js" async></script>
 
-
-
-ascii rec
-
-Login to firebase via cli.
+Login to firebase CLI.
 
 `firebase login`
 
-youtube video
+<script id="asciicast-242844" src="https://asciinema.org/a/242844.js" async></script>
+
+When running a command, the command should open a browser window with a login view.
+
+![Firebase cli sign access grant view in browser](firebase-cli-sign-in-access.png)
+
+After correct login, this message should appear.
+
+![Firebase clis sign in success](firebase-cli-success-sign-in.png)
 
 Init firebase configuration in project directory
 
 `firebase init`
 
-ascii rec
+<script id="asciicast-242870" src="https://asciinema.org/a/242870.js" async></script>
 
-it should create files:
+It should create `firebase.json` and `dist` folder:
 
-`files tree`
+```
+master@master-Lenovo-B50-80:~/workspace/test-firebase$ tree -L 1 -a
+.
+├── angular.json
+├── dist
+├── e2e
+├── .editorconfig
+├── firebase.json
+├── .firebaserc
+├── .git
+├── .gitignore
+├── node_modules
+├── package.json
+├── package-lock.json
+├── README.md
+├── src
+├── tsconfig.json
+└── tslint.json
+```
 
-add the `.firebase` directory to the `.gitignore` file
+Add the `.firebase` directory to the `.gitignore` file
 
 ```gitignore
 ...
@@ -81,7 +105,7 @@ In firebase.json you should have something like this.
 ```
 {
   "hosting": {
-    "public": "dist",
+    "public": "dist/test-firebase",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -91,14 +115,25 @@ In firebase.json you should have something like this.
 }
 ```
 
-Link do pełnej konfguracji `firebase.json` https://firebase.google.com/docs/hosting/full-config
-Można przeczytać o pełnych możliwościach tej konfiguracji. W tym poradniku użyta jest podstawowa konfiguracja.
+Link to the full `firebase.json` configuration 
+https://firebase.google.com/docs/hosting/full-config
+You can read about the full possibilities of this configuration. The basic configuration is used in this guide.
 
 Build angular app with production environment and AOT.
 
 `ng build --prod`
 
+<script id="asciicast-242867" src="https://asciinema.org/a/242867.js" async></script>
+
 Upload app to firebase hosting.
 
 `firebase deploy`
 
+<script id="asciicast-242872" src="https://asciinema.org/a/242872.js" async></script>
+
+Now we can see our application on the internet 
+https://test-firebase-14dbe.firebaseapp.com/ :)
+
+![Test firebase angular application view](test-firebase-page-view.png)
+
+That's all, if some stage is unclear then please describe why below in the comments.
