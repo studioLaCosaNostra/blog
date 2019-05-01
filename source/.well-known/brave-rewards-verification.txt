@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: studiolacosanostra.github.io
+Token: 8ecaa13bb4354f7ed27ebe2d0fa803c21c5ea137069c83e9902465d4de75fce5
