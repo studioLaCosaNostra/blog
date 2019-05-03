@@ -14,6 +14,24 @@ ampSettings:
 Unfortunately, Adsense requires you to log via OAuth to get Adsense account informations. For this purpose, we will use the keys generated on [Google Adsense Management API site](https://developers.google.com/adsense/management/getting_started). On this site just **click** that button.
 ![Register your app button](how-to-retrieve-information-from-adsense-about-the-current-account-balance/register-your-app-button.png)
 
+- Enter new project name
+
+![Adsense Managment API - Enter new project name](Adsense-Managment-API-Enter-new-project-name.png)
+
+- Specify the project name
+
+![Adsense Managment API - Specify the product name](Adsense-Managment-API-Specify-the-product-name.png)
+
+- Configure your OAuth client
+  Set http://localhost:3000/oauth2callback as a redirect URI
+
+![Adsense Managment API - Configure your OAuth client](Adsense-Managment-API-Configure-your-OAuth-client.png)
+
+- Click **download client configuration** and save as `google-oauth-keys.json`
+
+![Adsense Management API - Download client configuration](Adsense-Management-API-Download-client-configuration.png)
+
+
 Google OAuth2 keys should look like this
 
 `google-oauth-keys.json`
@@ -34,7 +52,7 @@ Google OAuth2 keys should look like this
 }
 ```
 
-Code from a working program to extract information about your monthly earnings from Google Adsense.
+Code of program to extract information about your monthly earnings from Google Adsense.
 
 `adsense.ts`
 ```typescript
