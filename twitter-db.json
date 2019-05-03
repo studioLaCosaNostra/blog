@@ -164,12 +164,5 @@
     }
   ],
   "to-destroy": [],
-  "to-publish": [
-    {
-      "title": "",
-      "permalink": "https://studiolacosanostra.github.io/2019/05/03/how-to-retrieve-information-from-adsense-about-the-current-account-balance/",
-      "hexoPublished": true,
-      "tags": []
-    }
-  ]
+  "to-publish": []
 }

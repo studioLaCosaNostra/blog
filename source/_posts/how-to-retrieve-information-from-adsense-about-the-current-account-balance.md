@@ -11,6 +11,8 @@ ampSettings:
     path: title-image.png
 ---
 
+I create this post because maybe there is someone else in the world who wants to create program to receive information about the earnings of AdSense for their own purposes but does not yet know how to begin. Below I am describing the exact process of how to obtain this data in a quick and efficient way.
+
 Unfortunately, Adsense requires you to log via OAuth to get Adsense account informations. For this purpose, we will use the keys generated on [Google Adsense Management API site](https://developers.google.com/adsense/management/getting_started). On this site just **click** that button.
 ![Register your app button](how-to-retrieve-information-from-adsense-about-the-current-account-balance/register-your-app-button.png)
 
@@ -88,8 +90,6 @@ export async function getAdsense() {
   if (!oAuth2Client) {
     oAuth2Client = await getAuthenticatedClient();
   }
-  // After acquiring an access_token, you may want to check on the audience, expiration,
-  // or original scopes requested.  You can do that with the `getTokenInfo` method.
   const adsense = new adsense_v1_4.Adsense({
     auth: oAuth2Client
   })
@@ -119,7 +119,7 @@ export const initAdsense = getAdsense;
 async function getAuthenticatedClient() {
   const db = await getDb();
   const oauth2Client = await new Promise<OAuth2Client>(async (resolve, reject) => {
-    // create an oAuth client to authorize the API call.  Secrets are kept in a `keys.json` file,
+    // create an oAuth client to authorize the API call. Secrets are kept in a `google-oauth-keys.json` file,
     // which should be downloaded from the Google Developers Console.
     const keysBuffer = await readFileAsync('./configs/google-oauth-keys.json');
     const keys = JSON.parse(keysBuffer.toString())
@@ -189,7 +189,6 @@ async function getAuthenticatedClient() {
   });
   return oauth2Client;
 }
-
 
 initAdsense();
 ```
