@@ -111,154 +111,181 @@ export const environment = {
    `ng generate service GAPI`
    Copy to `src/app/gapi.service.ts`
 
-```typescript
-/// <reference path="../../node_modules/@types/gapi/index.d.ts" />
-/// <reference path="../../node_modules/@types/gapi.auth2/index.d.ts" />
-/// <reference path="../../node_modules/@types/gapi.client/index.d.ts" />
+  ```typescript
+  /// <reference path="../../node_modules/@types/gapi/index.d.ts" />
+  /// <reference path="../../node_modules/@types/gapi.auth2/index.d.ts" />
+  /// <reference path="../../node_modules/@types/gapi.client/index.d.ts" />
 
-import { Injectable } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
-import { environment } from 'src/environments/environment';
+  import { Injectable } from '@angular/core';
+  import { Observable, Observer } from 'rxjs';
+  import { environment } from 'src/environments/environment';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class GAPIService {
-  private readonly url: string = 'https://apis.google.com/js/api.js';
-  private loaded = false;
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GAPIService {
+    private readonly url: string = 'https://apis.google.com/js/api.js';
+    private loaded = false;
 
-  private loadGapi(): Observable<void> {
-    return new Observable((observer: Observer<void>) => {
-      if (this.loaded) {
-        observer.next();
-        observer.complete();
-        return;
-      }
-      const node = document.createElement('script');
-      node.src = this.url;
-      node.type = 'text/javascript';
-      document.getElementsByTagName('head')[0].appendChild(node);
-      node.onload = () => {
-        this.loaded = true;
-        observer.next();
-        observer.complete();
-      };
-      node.onerror = (error) => {
-        observer.error(error);
-      };
-    });
-  }
-
-  public async initClient(baseScopes: string[] = ['email']) {
-    await this.loadGapi().toPromise();
-    return new Promise<void>(async (resolve, reject) => {
-      try {
-        const initClient = async (error) => {
-          if (error) {
-            return reject(error);
-          }
-          try {
-            await gapi.client.init({
-              apiKey: environment.firebase.apiKey,
-              clientId: environment.firebase.clientId,
-              scope: baseScopes.join(' ')
-            });
-            return resolve();
-          } catch (error) {
-            return reject(error);
-          }
+    private loadGapi(): Observable<void> {
+      return new Observable((observer: Observer<void>) => {
+        if (this.loaded) {
+          observer.next();
+          observer.complete();
+          return;
         }
-        gapi.load('client:auth2', initClient);
-      } catch (error) {
-        return reject(error);
-      }
-    });
-  }
-}
+        const node = document.createElement('script');
+        node.src = this.url;
+        node.type = 'text/javascript';
+        document.getElementsByTagName('head')[0].appendChild(node);
+        node.onload = () => {
+          this.loaded = true;
+          observer.next();
+          observer.complete();
+        };
+        node.onerror = (error) => {
+          observer.error(error);
+        };
+      });
+    }
 
-```
-
-3. Create google authentication service
-   `ng generate service google-auth`
-   Copy to `src/app/google-auth.service.ts`
-
-```typescript
-import { Injectable, NgZone } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { environment } from 'src/environments/environment';
-import { auth } from 'firebase/app';
-import { Observable, ReplaySubject } from 'rxjs';
-import { GAPIService } from './gapi.service';
-import * as firebase from 'firebase';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class GoogleAuthService {
-  private isLoggedIn$ = new ReplaySubject<boolean>(1);
-  private user$ = new ReplaySubject<firebase.User>(1)
-
-  constructor(public afAuth: AngularFireAuth, public gapiService: GAPIService, private ngZone: NgZone) {
-    this.isLoggedIn$.next(false);
-    this.afAuth.auth.onAuthStateChanged(async (user) => {
-      this.ngZone.run(() => {
-        this.isLoggedIn$.next(Boolean(user));
-        this.user$.next(user);
-      })
-    });
-  }
-
-  get isLoggedIn(): Observable<boolean> {
-    return this.isLoggedIn$.asObservable();
-  }
-
-  get user(): Observable<firebase.User> {
-    return this.user$.asObservable();
-  }
-
-  async signOut(): Promise<void> {
-    return auth().signOut();
-  }
-
-  private async initAuth2(baseScopes: string[]): Promise<void> {
-    await this.gapiService.initClient(baseScopes);
-    if (!gapi.auth2.getAuthInstance()) {
-      gapi.auth2.init({
-        client_id: environment.firebase.clientId,
-        scope: baseScopes.join(' ')
+    public async initClient(baseScopes: string[] = ['email']) {
+      await this.loadGapi().toPromise();
+      return new Promise<void>(async (resolve, reject) => {
+        try {
+          const initClient = async (error) => {
+            if (error) {
+              return reject(error);
+            }
+            try {
+              await gapi.client.init({
+                apiKey: environment.firebase.apiKey,
+                clientId: environment.firebase.clientId,
+                scope: baseScopes.join(' ')
+              });
+              return resolve();
+            } catch (error) {
+              return reject(error);
+            }
+          }
+          gapi.load('client:auth2', initClient);
+        } catch (error) {
+          return reject(error);
+        }
       });
     }
   }
 
-  async signIn(baseScopes: string[] = ['email']): Promise<void> {
-    await this.initAuth2(baseScopes);
-    const googleUser = await gapi.auth2.getAuthInstance().signIn({
-      prompt: 'select_account'
-    });
-    const token = googleUser.getAuthResponse().id_token;
-    const credential = auth.GoogleAuthProvider.credential(token);
-    await auth().signInAndRetrieveDataWithCredential(credential);
-  }
-}
+  ```
 
-```
+3. Create Google Authentication service.
+   `ng generate service google-auth`
+   Copy to `src/app/google-auth.service.ts`
+
+  ```typescript
+  import { Injectable, NgZone } from '@angular/core';
+  import { AngularFireAuth } from '@angular/fire/auth';
+  import { environment } from 'src/environments/environment';
+  import { auth } from 'firebase/app';
+  import { Observable, ReplaySubject } from 'rxjs';
+  import { GAPIService } from './gapi.service';
+  import * as firebase from 'firebase';
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GoogleAuthService {
+    private isLoggedIn$ = new ReplaySubject<boolean>(1);
+    private user$ = new ReplaySubject<firebase.User>(1)
+
+    constructor(public afAuth: AngularFireAuth, public gapiService: GAPIService, private ngZone: NgZone) {
+      this.isLoggedIn$.next(false);
+      this.afAuth.auth.onAuthStateChanged(async (user) => {
+        this.ngZone.run(() => {
+          this.isLoggedIn$.next(Boolean(user));
+          this.user$.next(user);
+        })
+      });
+    }
+
+    get isLoggedIn(): Observable<boolean> {
+      return this.isLoggedIn$.asObservable();
+    }
+
+    get user(): Observable<firebase.User> {
+      return this.user$.asObservable();
+    }
+
+    async signOut(): Promise<void> {
+      return auth().signOut();
+    }
+
+    private async initAuth2(baseScopes: string[]): Promise<void> {
+      await this.gapiService.initClient(baseScopes);
+      if (!gapi.auth2.getAuthInstance()) {
+        gapi.auth2.init({
+          client_id: environment.firebase.clientId,
+          scope: baseScopes.join(' ')
+        });
+      }
+    }
+
+    async signIn(baseScopes: string[] = ['email']): Promise<void> {
+      await this.initAuth2(baseScopes);
+      const googleUser = await gapi.auth2.getAuthInstance().signIn({
+        prompt: 'select_account'
+      });
+      const token = googleUser.getAuthResponse().id_token;
+      const credential = auth.GoogleAuthProvider.credential(token);
+      await auth().signInAndRetrieveDataWithCredential(credential);
+    }
+  }
+
+  ```
 
 4. Create login component.
    `ng generate component google-sign-in`
    Copy to `src/app/google-sign-in/google-sign-in.component.html`
 
-```html
-<ng-container *ngIf="user$ | async as user; else loggedOut">
-  <span>{{ user.displayName }}</span>
-  <img class="user-photo" src="{{ user.photoURL }}">
-</ng-container>
-<ng-template #loggedOut>
-  <a (click)="login()">Login</a>
-</ng-template>
-```
+  ```html
+  <ng-container *ngIf="user$ | async as user; else loggedOut">
+    <span>{{ user.displayName }}</span>
+    <img class="user-photo" src="{{ user.photoURL }}">
+  </ng-container>
+  <ng-template #loggedOut>
+    <a (click)="login()">Login</a>
+  </ng-template>
+  ```
 
   Copy to `src/app/google-sign-in/google-sign-in.component.ts`
 
-```typescript
+  ```typescript
+  import { Component, OnInit } from '@angular/core';
+  import { GoogleAuthService } from '../google-auth.service';
+  import * as firebase from 'firebase';
+  import { Observable } from 'rxjs';
 
-```
+  @Component({
+    selector: 'app-google-sign-in',
+    templateUrl: './google-sign-in.component.html',
+    styleUrls: ['./google-sign-in.component.scss']
+  })
+  export class GoogleSignInComponent {
+    user$: Observable<firebase.User>;
+
+    constructor(
+      private googleAuth: GoogleAuthService
+    ) {
+      this.user$ = this.googleAuth.user;
+    }
+
+    login() {
+      this.googleAuth.signIn();
+    }
+
+  }
+
+  ```
+
+  Add `<app-google-sign-in>` to `app.component.html`
+
