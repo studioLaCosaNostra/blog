@@ -5,6 +5,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.2/js/jquery.magnify-mobile.min.js"></script>
 <script>
   $(document).ready(function () {
+    const isMobile = window.matchMedia('(min-device-width:320px) and (max-device-width:773px)');
+    if (!isMobile.matches) {
+      return;
+    }
     document.querySelectorAll('article li img, article p img, article td img').forEach((element) => {
       const src = element.getAttribute('src');
       $(element).magnify({
