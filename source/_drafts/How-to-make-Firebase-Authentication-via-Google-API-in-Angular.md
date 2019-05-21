@@ -13,7 +13,7 @@ date: 2019-05-16
 
 This article is a simple guide on how to implement google api in angular and how to integrate a user session with a firebase service.
 
-# Step 1: Create Angular project
+# Step 1: Create Angular project.
 
 1. Install angular cli
    `npm install @angular/cli` 
@@ -25,17 +25,17 @@ This article is a simple guide on how to implement google api in angular and how
    `npm install --save firebase @angular/fire`
    `npm install --save-dev @types/gapi @types/gapi.auth2 @types/gapi.client`
 
-# Step 2: Create Firebase project
+# Step 2: Create Firebase project.
 
-1. Go to https://console.firebase.google.com/
-2. Create new project
+1. Go to https://console.firebase.google.com/.
+2. Create new project.
    
 |||
 | - | - | 
 | ![Firebase console: Projects dashboard view](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/firebase-console-projects-dashboard.png) | ![Firebase console: Add a project view](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/firebase-console-add-a-project.png) |
 | ![Firebase console: Add a project view](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/firebase-console-add-a-project-2.png) | ![Firebase console: Add a project view - creating spinner](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/firebase-console-add-a-project-3.png) |
    
-3. Enable Google sign-in in Authentication
+3. Enable Google sign-in in Authentication.
 
 |||
 | - | - |
@@ -48,7 +48,7 @@ This article is a simple guide on how to implement google api in angular and how
 | - | - | - |
 | ![Firebase console: Add web app - step 1](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/firebase-console-project-overview.png) | ![Firebase console: Add web app - step 1](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/firebase-console-add-a-web-app.png) | ![Firebase console: Add web app - step 2](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/firebase-console-add-a-web-app-2.png) |
 
-Copy firebase config to `src/environments/environment.ts` 
+Copy firebase config to `src/environments/environment.ts`.
 
 ```typescript
 export const environment = {
@@ -66,9 +66,9 @@ export const environment = {
 
 ```
 
-# Step 3: Setup Google API project
+# Step 3: Setup Google API project.
 
-1. Go to https://console.developers.google.com
+1. Go to https://console.developers.google.com.
 2. Navigate to project Credentails.
 
 ||||
@@ -104,7 +104,7 @@ export const environment = {
 };
 ```
 
-# Step 4: Create Angular Google APIs service
+# Step 4: Create the necessary services and components in angular project.
 
 1. Go to angular project.
 2. Create Google API service.
