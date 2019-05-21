@@ -112,9 +112,9 @@ export const environment = {
    Copy to `src/app/gapi.service.ts`
 
 ```typescript
-/// <reference path="../../../node_modules/@types/gapi/index.d.ts" />
-/// <reference path="../../../node_modules/@types/gapi.auth2/index.d.ts" />
-/// <reference path="../../../node_modules/@types/gapi.client/index.d.ts" />
+/// <reference path="../../node_modules/@types/gapi/index.d.ts" />
+/// <reference path="../../node_modules/@types/gapi.auth2/index.d.ts" />
+/// <reference path="../../node_modules/@types/gapi.client/index.d.ts" />
 
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
@@ -183,6 +183,14 @@ export class GAPIService {
    Copy to `src/app/google-auth.service.ts`
 
 ```typescript
+import { Injectable, NgZone } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment';
+import { auth } from 'firebase/app';
+import { Observable, ReplaySubject } from 'rxjs';
+import { GAPIService } from './gapi.service';
+import * as firebase from 'firebase';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -216,7 +224,7 @@ export class GoogleAuthService {
     await this.gapiService.initClient(baseScopes);
     if (!gapi.auth2.getAuthInstance()) {
       gapi.auth2.init({
-        client_id: environment.googleApis.clientId,
+        client_id: environment.firebase.clientId,
         scope: baseScopes.join(' ')
       });
     }
@@ -232,5 +240,25 @@ export class GoogleAuthService {
     await auth().signInAndRetrieveDataWithCredential(credential);
   }
 }
+
+```
+
+4. Create login component.
+   `ng generate component google-sign-in`
+   Copy to `src/app/google-sign-in/google-sign-in.component.html`
+
+```html
+<ng-container *ngIf="user$ | async as user; else loggedOut">
+  <span>{{ user.displayName }}</span>
+  <img class="user-photo" src="{{ user.photoURL }}">
+</ng-container>
+<ng-template #loggedOut>
+  <a (click)="login()">Login</a>
+</ng-template>
+```
+
+  Copy to `src/app/google-sign-in/google-sign-in.component.ts`
+
+```typescript
 
 ```
