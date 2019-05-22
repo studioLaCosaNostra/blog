@@ -338,9 +338,14 @@ export const environment = {
    `npm run start`
 2. Go to http://localhost:4200/ and login via google account.
 
-
 ||||
 | - | - | - |
 | ![localhost:4200: Before login](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/localhost-4200-before-login.png) | ![Google Sign In pop-up](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-sign-in-pop-up.png) | ![localhost:4200: After login](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/localhost-4200-after-login.png) |
 
 That's all, now you can extend the capabilities of the application with all the possibilities of google apis and firebase.
+
+The repository of the entire example described in this article is on github.
+https://github.com/studioLaCosaNostra/firebase-auth-via-google-api-example
+
+If you have any problems in any of the steps of this guide, please write in a comment about it. 
+I will try to write back and refine the article. :)
