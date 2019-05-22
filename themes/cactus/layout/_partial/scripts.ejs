@@ -64,18 +64,24 @@
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
         ga('create', '<%= theme.google_analytics.id %>', 'auto');
         ga('send', 'pageview');
-    </script>
-<% } %>
-<!-- Baidu Analytics -->
-<% if (theme.baidu_analytics.enabled && theme.baidu_analytics.id){ %>
-    <script type="text/javascript">
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?<%= theme.baidu_analytics.id %>";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
+        document.querySelectorAll('a[href][rel*=external][target=_blank]').forEach((element) => {
+          element.addEventListener('click', (event) => {
+            event.preventDefault();
+            const open = () => window.open(event.target.href, '_blank');
+            if (ga.hasOwnProperty('loaded') && ga.loaded === true) {
+              ga('send', 'event', {
+                eventCategory: 'Outbound Link',
+                eventAction: 'click',
+                eventLabel: event.target.href,
+                transport: 'beacon',
+                hitCallback: open,
+                hitCallbackFail: open
+              });
+            } else {
+              open();
+            }
+          }, false);
+        })
     </script>
 <% } %>
 <!-- Disqus Comments -->
