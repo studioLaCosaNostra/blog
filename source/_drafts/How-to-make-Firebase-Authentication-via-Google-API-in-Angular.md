@@ -82,7 +82,10 @@ export const environment = {
 | - | - | - |
 | ![Google APIs console: Credentials](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-apis-project-credentials.png) | ![Google APIs console: Credentials](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-apis-project-credentials-2.png) | ![Google APIs console: Credentials](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-apis-project-credentials-3.png) |
 
-4. Copy client ID to `src/environments/environment.ts`
+4. Set email in OAuth consent screen.
+   ![Google APIs console: Credentials - OAuth consent screen](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-apis-project-credentials-oauth-consent-screen.png)
+
+5. Copy client ID to `src/environments/environment.ts`
 
 |||
 | - | - |
@@ -251,6 +254,7 @@ export const environment = {
   <ng-container *ngIf="user$ | async as user; else loggedOut">
     <span>{{ user.displayName }}</span>
     <img class="user-photo" src="{{ user.photoURL }}">
+    <a (click)="logout()">Logout</a>
   </ng-container>
   <ng-template #loggedOut>
     <a (click)="login()">Login</a>
@@ -283,9 +287,60 @@ export const environment = {
       this.googleAuth.signIn();
     }
 
+    logout() {
+      this.googleAuth.signOut();
+    }
+
   }
+  ```
+5. Add AngularFireModule and AngularFireAuthModule to `src/app/app.module.ts`
+   
+  ```typescript
+  import { BrowserModule } from '@angular/platform-browser';
+  import { NgModule } from '@angular/core';
+
+  import { AppRoutingModule } from './app-routing.module';
+  import { AppComponent } from './app.component';
+  import { GoogleSignInComponent } from './google-sign-in/google-sign-in.component';
+  import { AngularFireModule } from '@angular/fire';
+  import { environment } from 'src/environments/environment';
+  import { AngularFireAuthModule } from '@angular/fire/auth';
+
+  @NgModule({
+    declarations: [
+      AppComponent,
+      GoogleSignInComponent
+    ],
+    imports: [
+      BrowserModule,
+      AppRoutingModule,
+      AngularFireModule.initializeApp(environment.firebase),
+      AngularFireAuthModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+  })
+  export class AppModule { }
 
   ```
 
-  Add `<app-google-sign-in>` to `app.component.html`
+  Add `<app-google-sign-in>` to `src/app/app.component.html`
 
+  ```html
+  <div style="text-align:center">
+    <app-google-sign-in></app-google-sign-in>
+  </div>
+  ```
+
+# Step 5: Test application authorization.
+
+1. Start application.
+   `npm run start`
+2. Go to http://localhost:4200/ and login via google account.
+
+
+||||
+| - | - | - |
+| ![localhost:4200: Before login](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/localhost-4200-before-login.png) | ![Google Sign In pop-up](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-sign-in-pop-up.png) | ![localhost:4200: After login](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/localhost-4200-after-login.png) |
+
+That's all, now you can extend the capabilities of the application with all the possibilities of google apis and firebase.
