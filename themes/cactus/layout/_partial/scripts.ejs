@@ -66,20 +66,24 @@
         ga('send', 'pageview');
         document.querySelectorAll('a[href][rel*=external][target=_blank]').forEach((element) => {
           element.addEventListener('click', (event) => {
-            ga('send', 'event', {
-              eventCategory: 'Outbound Link',
-              eventAction: 'click',
-              eventLabel: event.target.href,
-              transport: 'beacon',
-              hitCallback: () => {
-                window.open(event.target.href, '_blank');
-              }
-            });
+            event.preventDefault();
+            const open = () => window.open(event.target.href, '_blank');
+            if (ga.hasOwnProperty('loaded') && ga.loaded === true) {
+              ga('send', 'event', {
+                eventCategory: 'Outbound Link',
+                eventAction: 'click',
+                eventLabel: event.target.href,
+                transport: 'beacon',
+                hitCallback: open,
+                hitCallbackFail: open
+              });
+            } else {
+              open();
+            }
           }, false);
         })
     </script>
 <% } %>
-
 <!-- Disqus Comments -->
 <% if (theme.disqus.enabled && theme.disqus.shortname){ %>
     <script type="text/javascript">
