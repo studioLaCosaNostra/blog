@@ -2,21 +2,34 @@
 title: How to automate iOS application submission process with puppeteer
 ampSettings:
   titleImage:
-    path: null
+    path: title-image.png
 tags:
-thumbnail:
+  - puppeteer
+  - node.js
+  - app store
+  - apple
+thumbnail: title-image.png
 ---
 
+Create project directory.
 `mkdir app-store-submission-cli`
+Go to project directory.
 `cd app-store-submission-cli`
+Initialize npm package.
 `npm init`
-`npm i puppeteer debug semver`
+Install required puppeteer, debug log, semver and minimist.
+`npm i puppeteer debug semver minimist`
+Install also typescript transpiler and types for libs.
 `npm i typescript @types/puppeteer @types/debug @types/semver @types/minimist --save-dev`
+Install also google typescript style helpers.
 `npx gts init`
+Create source code dir
 `mkdir src`
+Init index.ts
 `touch src/index.ts`
 
-add to package.json
+Add to package.json start script.
+
 ```json
 {
   "scripts": {
@@ -25,7 +38,7 @@ add to package.json
 }
 ```
 
-add to tsconfig.json *dom* lib for puppeteer types check
+Add to tsconfig.json *dom* lib for puppeteer types check
 ```json
 {
   "compilerOptions": {
