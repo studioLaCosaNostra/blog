@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@types/gh-pages": "^2.0.0",
-    "@types/node": "^10.12.29",
+    "@types/node": "^10.14.8",
     "gh-pages": "^2.0.1",
     "hexo": "^3.7.0",
     "hexo-admin": "^2.3.0",
@@ -31,16 +31,16 @@
     "hexo-generator-sitemap": "^1.2.0",
     "hexo-generator-tag": "^0.2.0",
     "hexo-prism-plugin": "github:studioLaCosaNostra/hexo-prism-plugin",
-    "hexo-related-popular-posts": "^3.0.4",
+    "hexo-related-popular-posts": "^3.0.6",
     "hexo-renderer-ejs": "^0.3.1",
     "hexo-renderer-marked": "^0.3.2",
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.1",
     "hexo-twitter-auto-publish": "0.0.6",
     "hexo-wordcount": "^6.0.1",
-    "jsdom": "^14.0.0",
-    "ts-node": "^8.0.2",
-    "typescript": "^3.3.3333"
+    "jsdom": "^14.1.0",
+    "ts-node": "^8.2.0",
+    "typescript": "^3.5.1"
   },
   "devDependencies": {
     "husky": "^1.3.1"

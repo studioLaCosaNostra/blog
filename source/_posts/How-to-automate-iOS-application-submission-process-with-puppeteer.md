@@ -48,6 +48,7 @@ Working on more and more programs, some activities beginning to become boring an
     }
   }
   ```
+  
 - Go to source dir
   `cd src`
 - Init index.ts

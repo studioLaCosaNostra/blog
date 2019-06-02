@@ -187,5 +187,17 @@
       "tweetId": "1131234553325129730"
     }
   ],
-  "to-publish": []
+  "to-publish": [
+    {
+      "title": "How to automate iOS application submission process with puppeteer",
+      "permalink": "https://studiolacosanostra.github.io/2019/06/02/How-to-automate-iOS-application-submission-process-with-puppeteer/",
+      "hexoPublished": true,
+      "tags": [
+        "node.js",
+        "puppeteer",
+        "app store",
+        "apple"
+      ]
+    }
+  ]
 }
