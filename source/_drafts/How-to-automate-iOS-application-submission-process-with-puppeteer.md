@@ -11,6 +11,10 @@ tags:
 thumbnail: title-image.png
 ---
 
+Working on more and more programs, some activities beginning to become boring and monotonous. One of them is reporting the application update in the app store. Unfortunately, this can not be done through the API, for example: in the Google Play Store. What could be integrated with jenkins or travis-ci. Everything needs to be clicked manually, and it takes our valuable time that can be used for other duties. Below I paste a project to automate these activities using the puppeteer and closing everything into one command.
+
+## Setup project.
+
 - Create project directory.
   `mkdir app-store-submission-cli`
 - Go to project directory.
@@ -408,7 +412,7 @@ thumbnail: title-image.png
       throw new Error('Missing argument --buildVersion | -b');
     }
     const browser = await puppeteer.launch({
-      headless: argv.headless || true,
+      headless: !(argv.headless === 'false' || argv.h === 'false'),
     });
     log('newPage');
     const page = await browser.newPage();
@@ -439,7 +443,7 @@ thumbnail: title-image.png
       await typePromotionalText(page, promotionalText);
       await selectBuild(page, buildVersion);
       await saveChanges(page);
-      await submitForReview(page);
+      // await submitForReview(page);
     }
     await saveCookies(page);
     log('close');
@@ -447,5 +451,64 @@ thumbnail: title-image.png
   };
 
   main().catch(error => console.error(error));
-
   ```
+
+- Compile program
+  `npm run compile`
+
+## How to use program.
+
+The program requires minimum options to provide a new version in the app store, ie:
+- `--login || -l && --password || -p` - Login data.
+- `--appleId || --id` - Application ID (AppleId).
+- `--versionInformation || -v` - Information about the new version (Apple requires us to know what's new appeared in the new version).
+- `--buildVersion || -b` - Build version number sent to Testflight.
+
+optional:
+- `--headless || -h` - set `false` to see browser.
+- `--promotionalText || -r` - Promotional text.
+- `--teamName || -t` - Team name (if we belong to more than one).
+
+Example use:
+`npm run start -- -l studiolacosanostra@gmail.com -p <password> --id 14445343 -v "Some awesome feature" -b 5.6.3`
+
+## How to debug and develop the program
+
+To simplify my work during debugging I added a debug package. By adding env at the start of the program, we have an insight into the various stages of the program.
+
+Example use:
+`DEBUG=apple-app-store* npm run start -- -l studiolacosanostra@gmail.com -p <password> --id 14445343 -v "Some awesome feature" -b 5.6.3 -h false`
+
+```bash
+  apple-app-store newPage +0ms
+  apple-app-store loadCookies +449ms
+  apple-app-store go to https://appstoreconnect.apple.com/ +2ms
+  apple-app-store isLoginForm +4s
+  apple-app-store login +5ms
+  apple-app-store clickSignInButton +3s
+  apple-app-store clickSignInButton +2s
+Verify device.
+  apple-app-store openVerifyDeviceOptions +1s
+  apple-app-store usePhoneTextCode +150ms
+  apple-app-store askForVerificationCode +81ms
+Please type your verification code: 581108
+Thank you for verification code: 581108
+  apple-app-store clickTrustBrowser +12s
+  apple-app-store isHomePage +2s
+  apple-app-store goToApps +2ms
+  apple-app-store goToApp +8s
+  apple-app-store isActiveSubmission +12s
+  apple-app-store goToPrepareSubmission +2s
+  apple-app-store typeVersionInformation: START
+  apple-app-store Some awesome feature
+  apple-app-store END +6s
+  apple-app-store typePromotionalText: START
+  apple-app-store 
+  apple-app-store END +192ms
+  apple-app-store selectBuild +130ms
+  apple-app-store saveChanges +8s
+  apple-app-store saveCookies +408ms
+  apple-app-store close +3ms
+```
+
+When logging in, Apple asks you to enter the code from a trusted device. I improved login by remembering cookies which reduces the number of attempts to log into the app store, but to completely automate it would be necessary to add a GSM modem that will send this code to the server when it is needed. Unfortunately, you can not disable two-factor verification. :(
