@@ -163,32 +163,6 @@
       "tweetId": "1121514969546330112"
     },
     {
-      "title": "How to make Firebase Authentication via Google API in Angular",
-      "permalink": "https://studiolacosanostra.github.io/2019/05/16/How-to-make-Firebase-Authentication-via-Google-API-in-Angular/",
-      "hexoPublished": true,
-      "tags": [
-        "angular",
-        "firebase",
-        "google api"
-      ],
-      "tweetId": "1131234553325129730"
-    }
-  ],
-  "to-destroy": [
-    {
-      "title": "How to make Firebase Authentication via Google API in Angular",
-      "permalink": "https://studiolacosanostra.github.io/2019/05/16/How-to-make-Firebase-Authentication-via-Google-API-in-Angular/",
-      "hexoPublished": true,
-      "tags": [
-        "angular",
-        "firebase",
-        "google api"
-      ],
-      "tweetId": "1131234553325129730"
-    }
-  ],
-  "to-publish": [
-    {
       "title": "How to automate iOS application submission process with puppeteer",
       "permalink": "https://studiolacosanostra.github.io/2019/06/02/How-to-automate-iOS-application-submission-process-with-puppeteer/",
       "hexoPublished": true,
@@ -197,7 +171,10 @@
         "puppeteer",
         "app store",
         "apple"
-      ]
+      ],
+      "tweetId": "1135220918433849344"
     }
-  ]
+  ],
+  "to-destroy": [],
+  "to-publish": []
 }
