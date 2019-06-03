@@ -514,3 +514,5 @@ Thank you for verification code: 581108
 ```
 
 When logging in, Apple asks you to enter the code from a trusted device. I improved login by remembering cookies which reduces the number of attempts to log into the app store, but to completely automate it would be necessary to add a GSM modem that will send this code to the server when it is needed. Unfortunately, you can not disable two-factor verification. :(
+
+source code: https://github.com/studioLaCosaNostra/app-store-submission-cli
