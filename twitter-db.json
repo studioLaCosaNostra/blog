@@ -173,10 +173,7 @@
         "apple"
       ],
       "tweetId": "1135220918433849344"
-    }
-  ],
-  "to-destroy": [],
-  "to-publish": [
+    },
     {
       "title": "How to make Firebase Authentication via Google API in Angular",
       "permalink": "https://studiolacosanostra.github.io/2019/05/16/How-to-make-Firebase-Authentication-via-Google-API-in-Angular/",
@@ -185,7 +182,10 @@
         "angular",
         "firebase",
         "google api"
-      ]
+      ],
+      "tweetId": "1135404914425962496"
     }
-  ]
+  ],
+  "to-destroy": [],
+  "to-publish": []
 }
