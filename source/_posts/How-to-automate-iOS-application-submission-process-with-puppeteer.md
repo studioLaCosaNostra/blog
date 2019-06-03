@@ -9,6 +9,7 @@ tags:
   - app store
   - apple
 thumbnail: title-image.png
+date: 2019-06-02
 ---
 
 Working on more and more programs, some activities beginning to become boring and monotonous. One of them is reporting the application update in the app store. Unfortunately, this can not be done through the API, for example: in the Google Play Store. What could be integrated with jenkins or travis-ci. Everything needs to be clicked manually, and it takes our valuable time that can be used for other duties. Below I paste a project to automate these activities using the puppeteer and closing everything into one command.

@@ -176,5 +176,16 @@
     }
   ],
   "to-destroy": [],
-  "to-publish": []
+  "to-publish": [
+    {
+      "title": "How to make Firebase Authentication via Google API in Angular",
+      "permalink": "https://studiolacosanostra.github.io/2019/05/16/How-to-make-Firebase-Authentication-via-Google-API-in-Angular/",
+      "hexoPublished": true,
+      "tags": [
+        "angular",
+        "firebase",
+        "google api"
+      ]
+    }
+  ]
 }
