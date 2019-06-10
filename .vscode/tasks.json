@@ -14,10 +14,6 @@
         "$tsc"
       ],
       "group": "build",
-      "presentation": {
-        "reveal": "silent",
-        "panel": "new"
-      },
       "runOptions": {
         "runOn": "folderOpen"
       }
