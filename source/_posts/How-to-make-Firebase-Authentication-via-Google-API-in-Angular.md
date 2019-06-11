@@ -13,10 +13,10 @@ date: 2019-05-16
 
 This article is a simple guide on how to implement google api in angular and how to integrate a user session with a firebase service.
 
-# Step 1: Create Angular project.
+## Step 1: Create Angular project
 
 1. Install Angular CLI.
-   `npm install @angular/cli` 
+   `npm install @angular/cli`
 2. Create new angular project.
    `ng new firebase-auth-via-google-api-example`
 3. Go to project directory.
@@ -25,17 +25,17 @@ This article is a simple guide on how to implement google api in angular and how
    `npm install --save firebase @angular/fire`
    `npm install --save-dev @types/gapi @types/gapi.auth2 @types/gapi.client`
 
-# Step 2: Create Firebase project.
+## Step 2: Create Firebase project
 
-1. Go to https://console.firebase.google.com/.
+1. Go to [https://console.firebase.google.com/](https://console.firebase.google.com/)
 2. Create new project.
-   
+
 |||
-| - | - | 
+| - | - |
 | ![Firebase console: Projects dashboard view](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/firebase-console-projects-dashboard.png) | ![Firebase console: Add a project view](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/firebase-console-add-a-project.png) |
 | ![Firebase console: Add a project view](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/firebase-console-add-a-project-2.png) | ![Firebase console: Add a project view - creating spinner](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/firebase-console-add-a-project-3.png) |
-   
-3. Enable Google sign-in in Authentication.
+
+1. Enable Google sign-in in Authentication.
 
 |||
 | - | - |
@@ -66,26 +66,26 @@ export const environment = {
 
 ```
 
-# Step 3: Setup Google API project.
+## Step 3: Setup Google API project
 
-1. Go to https://console.developers.google.com.
-2. Navigate to project Credentails.
+- Go to [https://console.developers.google.com](https://console.developers.google.com)
+- Navigate to project Credentials.
 
 ||||
 | - | - | - |
 | ![Google APIs console: Dashboard](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-apis-project-dashboard.png) | ![Google APIs console: Menu](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-apis-project-menu.png) | ![Google APIs console: Menu](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-apis-project-menu-2.png) |
 
-3. Open **OAuth 2.0 client IDs** - *Web client  (auto created by Google Service)*
-   Add **http://localhost:4200/** to *Restrictions - Authorized Javascript origins*
+- Open **OAuth 2.0 client IDs** - *Web client  (auto created by Google Service)*
+  Add **[http://localhost:4200/](http://localhost:4200/)** to *Restrictions - Authorized Javascript origins*
 
 ||||
 | - | - | - |
 | ![Google APIs console: Credentials](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-apis-project-credentials.png) | ![Google APIs console: Credentials](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-apis-project-credentials-2.png) | ![Google APIs console: Credentials](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-apis-project-credentials-3.png) |
 
-4. Set email in OAuth consent screen.
-   ![Google APIs console: Credentials - OAuth consent screen](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-apis-project-credentials-oauth-consent-screen.png)
+- Set email in OAuth consent screen.
+  ![Google APIs console: Credentials - OAuth consent screen](How-to-make-Firebase-Authentication-via-Google-API-in-Angular/google-apis-project-credentials-oauth-consent-screen.png)
 
-5. Copy client ID to `src/environments/environment.ts`
+- Copy client ID to `src/environments/environment.ts`
 
 |||
 | - | - |
@@ -107,12 +107,12 @@ export const environment = {
 };
 ```
 
-# Step 4: Create the necessary services and components in angular project.
+## Step 4: Create the necessary services and components in angular project
 
-1. Go to angular project.
-2. Create Google API service.
-   `ng generate service GAPI`
-   Copy to `src/app/gapi.service.ts`
+- Go to angular project.
+- Create Google API service.
+  `ng generate service GAPI`
+  Copy to `src/app/gapi.service.ts`
 
   ```typescript
   /// <reference path="../../node_modules/@types/gapi/index.d.ts" />
@@ -181,9 +181,9 @@ export const environment = {
 
   ```
 
-3. Create Google Authentication service.
-   `ng generate service google-auth`
-   Copy to `src/app/google-auth.service.ts`
+- Create Google Authentication service.
+  `ng generate service google-auth`
+  Copy to `src/app/google-auth.service.ts`
 
   ```typescript
   import { Injectable, NgZone } from '@angular/core';
@@ -246,9 +246,9 @@ export const environment = {
 
   ```
 
-4. Create login component.
-   `ng generate component google-sign-in`
-   Copy to `src/app/google-sign-in/google-sign-in.component.html`
+- Create login component.
+  `ng generate component google-sign-in`
+  Copy to `src/app/google-sign-in/google-sign-in.component.html`
 
   ```html
   <ng-container *ngIf="user$ | async as user; else loggedOut">
@@ -293,8 +293,9 @@ export const environment = {
 
   }
   ```
-5. Add AngularFireModule and AngularFireAuthModule to `src/app/app.module.ts`
-   
+
+- Add AngularFireModule and AngularFireAuthModule to `src/app/app.module.ts`
+
   ```typescript
   import { BrowserModule } from '@angular/platform-browser';
   import { NgModule } from '@angular/core';
@@ -332,11 +333,12 @@ export const environment = {
   </div>
   ```
 
-# Step 5: Test application authorization.
+## Step 5: Test application authorization
 
-1. Start application.
-   `npm run start`
-2. Go to http://localhost:4200/ and login via google account.
+- Start application.
+  `npm run start`
+
+- Go to [http://localhost:4200/](http://localhost:4200/) and login via google account.
 
 ||||
 | - | - | - |
@@ -345,7 +347,7 @@ export const environment = {
 That's all, now you can extend the capabilities of the application with all the possibilities of google apis and firebase.
 
 The repository of the entire example described in this article is on github.
-https://github.com/studioLaCosaNostra/firebase-auth-via-google-api-example
+[https://github.com/studioLaCosaNostra/firebase-auth-via-google-api-example](https://github.com/studioLaCosaNostra/firebase-auth-via-google-api-example)
 
-If you have any problems in any of the steps of this guide, please write in a comment about it. 
+If you have any problems in any of the steps of this guide, please write in a comment about it.
 I will try to write back and refine the article. :)
