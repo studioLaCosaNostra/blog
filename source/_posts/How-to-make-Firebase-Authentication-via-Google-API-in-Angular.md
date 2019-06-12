@@ -16,7 +16,7 @@ This article is a simple guide on how to implement google api in angular and how
 ## Step 1: Create Angular project
 
 1. Install Angular CLI.
-   `npm install @angular/cli`
+   `npm install -g @angular/cli`
 2. Create new angular project.
    `ng new firebase-auth-via-google-api-example`
 3. Go to project directory.
