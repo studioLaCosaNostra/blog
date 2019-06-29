@@ -184,6 +184,18 @@
         "google api"
       ],
       "tweetId": "1135404914425962496"
+    },
+    {
+      "title": "How to debug Angular tests in VSCode",
+      "permalink": "https://studiolacosanostra.github.io/2019/05/16/How-to-debug-Angular-tests-in-VSCode/",
+      "hexoPublished": true,
+      "tags": [
+        "angular",
+        "karma",
+        "unit tests",
+        "debugging"
+      ],
+      "tweetId": "1144951612055707648"
     }
   ],
   "to-destroy": [],
