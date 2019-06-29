@@ -9,6 +9,7 @@ tags:
   - unit tests
   - debugging
 thumbnail: title-image.png
+date: 2019-05-16
 ---
 
 VSCode has the option of debugging code inside the editor. While in typical console programs running the debug is very easy, so on the Angular test environment which is Karma is not so easy, because here we have a browser as a test environment.
