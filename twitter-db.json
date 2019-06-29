@@ -187,5 +187,17 @@
     }
   ],
   "to-destroy": [],
-  "to-publish": []
+  "to-publish": [
+    {
+      "title": "How to debug Angular tests in VSCode",
+      "permalink": "https://studiolacosanostra.github.io/2019/06/29/How-to-debug-Angular-tests-in-VSCode/",
+      "hexoPublished": true,
+      "tags": [
+        "angular",
+        "unit tests",
+        "karma",
+        "debugging"
+      ]
+    }
+  ]
 }
