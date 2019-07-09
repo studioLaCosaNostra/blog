@@ -1,3 +1,5 @@
 language: node_js
 script:
     - npm run deploy
+after_script:
+    - sh ./.travis-commit-changes.sh
