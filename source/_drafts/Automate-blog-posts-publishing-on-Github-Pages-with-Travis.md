@@ -11,9 +11,9 @@ tags:
 thumbnail:
 ---
 
-Od kiedy zautomatyzowałem w Travisie tworzenie nowych wersji aplikacji elektronowych. Naszła mnie myśl że identycznie można zrobić z moim blogiem. Dzisiaj znalazłem czas i nareszcie już nie muszę tego wykonywać ręcznie. :) Poniżej opisuję jak dokładnie działa automatyczna publikacja w moim blogu.
+Od kiedy zautomatyzowałem w Travisie tworzenie nowych wersji {% post_link Automate-electron-app-release-build-on-github-with-Travis-CI aplikacji electronowej qrcode generator %}. Naszła mnie myśl że identycznie można zrobić z moim blogiem. Dzisiaj znalazłem czas i wreszcie nie muszę tracić czasu na generowanie aktualizacji. :) Poniżej opisuję jak dokładnie działa automatyczna publikacja zmian w moim blogu.
 
-Na sam początek trzeba utworzyć plik konfiguracyjny dla Travisa.
+Na początku należy utworzyć plik konfiguracyjny dla Travisa.
 
 `./.travis.yml`
 
@@ -43,7 +43,7 @@ Jak widać jest ekstremalnie krótki a to dlatego, że mam utworzone dodatkowe s
 }
 ```
 
-Na samym początku `gh-pages-build` generuje nam wszystkie pliki statyczne w katalogu `public`.
+Komenda `gh-pages-build` generuje nam wszystkie pliki statyczne w katalogu `public`.
 Następnie `gh-pages-publish` wysyła wszystkie zmiany na github pages. Nie wysyłam przez hexo deploy git, ponieważ strona posiada też dodatkowe katalogi, których nie chcę stracić.
 
 `bin/gh-pages-publish.ts`
@@ -67,7 +67,7 @@ ghpages.publish('public', {
 
 Dzięki temu także nie mam problemu z dodaniem env `GH_TOKEN`, który jest potrzebny Travisowi do wysłania zmian na github'a.
 
-Po zakończeniu wysyłania publikacji, uruchamiana jest komenda `hexo twitter-publish`. Dzięki niej automatycznie wysyłany jest nowy wpisy na twittera jak tylko post się pojawi publicznie.
+Po zakończeniu wysyłania publikacji, uruchamiana jest komenda `hexo twitter-publish`. Dzięki niej automatycznie wysyłany jest nowy wpisy na twittera jak tylko post się pojawi publicznie. Jeśli chcesz wiedzieć więcej o tym module to zapraszam do posta w którym opisuję {% post_link Hexo-Publish-posts-automatically-on-twitter "jak publikować automatycznie wpisy na twitterze w hexo" %}
 
 Dodatkowo musiałem stworzyć prosty skrypt w bash który wysyła wszelkie zmiany jakie się pojawiły w plikach po `gh-pages-deploy`
 
