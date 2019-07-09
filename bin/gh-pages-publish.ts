@@ -6,4 +6,9 @@ ghpages.publish('public', {
   dest: '.',
   add: true,
   dotfiles: true
-}, function (error) { console.error(error); });
+}, function (error) {
+  if (error) {
+    console.error(error);
+    process.exit(-1);
+  }
+});
