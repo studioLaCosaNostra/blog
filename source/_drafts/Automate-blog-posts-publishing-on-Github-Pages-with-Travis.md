@@ -2,18 +2,19 @@
 title: Automate blog posts publishing on Github Pages with Travis
 ampSettings:
   titleImage:
-    path: null
+    path: title-image.png
 tags:
   - automation
   - hexo
   - nodejs
   - Travis CI
-thumbnail:
+thumbnail: title-image.png
+date: 2019-07-11
 ---
 
-Od kiedy zautomatyzowałem w Travisie tworzenie nowych wersji {% post_link Automate-electron-app-release-build-on-github-with-Travis-CI aplikacji electronowej qrcode generator %}. Naszła mnie myśl że identycznie można zrobić z moim blogiem. Dzisiaj znalazłem czas i wreszcie nie muszę tracić czasu na generowanie aktualizacji. :) Poniżej opisuję jak dokładnie działa automatyczna publikacja zmian w moim blogu.
+Since I automated the creation of new versions of {% post_link Automate-electron-app-release-build-on-github-with-Travis-CI the qrcode generator %} electron application. I was overcome by the thought that I could do the same with my blog. Today I have found the time and finally I do not have to waste time on generating updates. :) Below you will find a detailed description of how I did it using Travis.
 
-Na początku należy utworzyć plik konfiguracyjny dla Travisa.
+First, create a configuration file for Travis.
 
 `./.travis.yml`
 
@@ -25,7 +26,7 @@ after_script:
   - sh ./.travis-commit-changes.sh
 ```
 
-Jak widać jest ekstremalnie krótki a to dlatego, że mam utworzone dodatkowe skrypty.
+As you can see, it is extremely short, and this is because I have created additional scripts.
 
 `./package.json`
 
@@ -43,8 +44,8 @@ Jak widać jest ekstremalnie krótki a to dlatego, że mam utworzone dodatkowe s
 }
 ```
 
-Komenda `gh-pages-build` generuje nam wszystkie pliki statyczne w katalogu `public`.
-Następnie `gh-pages-publish` wysyła wszystkie zmiany na github pages. Nie wysyłam przez hexo deploy git, ponieważ strona posiada też dodatkowe katalogi, których nie chcę stracić.
+The `gh-pages-build` command generates all static files in the `public` directory.
+Then `gh-pages-publish` sends all changes to github pages. I do not send via hexo deploy git, because the site also has additional directories that I do not want to lose.
 
 `bin/gh-pages-publish.ts`
 
@@ -65,11 +66,11 @@ ghpages.publish('public', {
 });
 ```
 
-Dzięki temu także nie mam problemu z dodaniem env `GH_TOKEN`, który jest potrzebny Travisowi do wysłania zmian na github'a.
+Thanks to this I also have no problem adding env `GH_TOKEN`, which Travis needs to send changes to github pages.
 
-Po zakończeniu wysyłania publikacji, uruchamiana jest komenda `hexo twitter-publish`. Dzięki niej automatycznie wysyłany jest nowy wpisy na twittera jak tylko post się pojawi publicznie. Jeśli chcesz wiedzieć więcej o tym module to zapraszam do posta w którym opisuję {% post_link Hexo-Publish-posts-automatically-on-twitter "jak publikować automatycznie wpisy na twitterze w hexo" %}
+When the publication is finished, the command `hexo twitter-publish` is run. It automatically sends new Twitter entries as soon as the post appears publicly. If you want to know more about this module, I invite you to read the post in which I describe {% post_link Hexo-Publish-posts-automatically-on-twitter how to automatically publish twitter posts in hexo %}.
 
-Dodatkowo musiałem stworzyć prosty skrypt w bash który wysyła wszelkie zmiany jakie się pojawiły w plikach po `gh-pages-deploy`
+In addition, I had to create a simple script in bash that sends any changes that appeared in the files after `gh-pages-deploy`
 
 `./.travis-commit-changes.sh`
 
@@ -109,13 +110,12 @@ else
 fi
 ```
 
-## Jak dodać GH_TOKEN do Travisa
+## How to add GH_TOKEN to Travis
 
-1. Należy wejść na stronę travisa z projektem u mnie to https://travis-ci.org/studioLaCosaNostra/blog
-2. Kliknąć `More options` w prawym górnym rogu.
-3. Wybrać `Settings`
-4. Przewinąć do `Environment Variables`
-5. Dodać nowy wpis `GH_TOKEN`
+1. Go to Travis website with the project (for me it is [https://travis-ci.org/studioLaCosaNostra/blog](https://travis-ci.org/studioLaCosaNostra/blog))
+2. Click `More options` in the upper right corner.
+3. Select `Settings`
+4. Scroll to 'Environment Variables`
+5. Add a new entry `GH_TOKEN`
 
-Przy następnej budowie Travis powinien sam dodać zmienną do środowiska.
-
+At the next build, Travis should add the variable itself to the environment.
