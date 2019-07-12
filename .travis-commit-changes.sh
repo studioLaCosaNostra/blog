@@ -17,7 +17,7 @@ commit_changes() {
 
 push_changes() {
   # Add new "origin" with access token in the git URL for authentication
-  git push https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG master
+  git push https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG $TRAVIS_REPO_SLUG
 }
 
 setup_git
