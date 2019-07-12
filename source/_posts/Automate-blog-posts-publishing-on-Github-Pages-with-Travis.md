@@ -84,6 +84,12 @@ setup_git() {
   git config --global user.name "Travis CI"
 }
 
+change_to_master_branch() {
+  git stash
+  git checkout master
+  git stash pop
+}
+
 commit_changes() {
   git add -A
   # Create a new commit with a custom message
@@ -94,10 +100,12 @@ commit_changes() {
 
 push_changes() {
   # Add new "origin" with access token in the git URL for authentication
-  git push https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG master > /dev/null 2>&1
+  git push https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG master
 }
 
 setup_git
+
+change_to_master_branch
 
 commit_changes
 
