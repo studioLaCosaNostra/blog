@@ -10,6 +10,7 @@ setup_git() {
 change_to_master_branch() {
   git stash
   git checkout master
+  git pull
   git stash pop
 }
 
