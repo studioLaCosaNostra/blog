@@ -196,10 +196,7 @@
         "debugging"
       ],
       "tweetId": "1144951612055707648"
-    }
-  ],
-  "to-destroy": [],
-  "to-publish": [
+    },
     {
       "title": "Automate blog posts publishing on Github Pages with Travis",
       "permalink": "https://studiolacosanostra.github.io/2019/07/11/Automate-blog-posts-publishing-on-Github-Pages-with-Travis/",
@@ -209,7 +206,10 @@
         "hexo",
         "nodejs",
         "Travis CI"
-      ]
+      ],
+      "tweetId": "1149613301350817793"
     }
-  ]
+  ],
+  "to-destroy": [],
+  "to-publish": []
 }
