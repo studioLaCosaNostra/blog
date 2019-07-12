@@ -119,3 +119,5 @@ fi
 5. Add a new entry `GH_TOKEN`
 
 At the next build, Travis should add the variable itself to the environment.
+
+That's all, I hope that you could use my article, if you have any questions, then boldly write them in a comment, and I will try to answer them.

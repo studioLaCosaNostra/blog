@@ -199,5 +199,17 @@
     }
   ],
   "to-destroy": [],
-  "to-publish": []
+  "to-publish": [
+    {
+      "title": "Automate blog posts publishing on Github Pages with Travis",
+      "permalink": "https://studiolacosanostra.github.io/2019/07/11/Automate-blog-posts-publishing-on-Github-Pages-with-Travis/",
+      "hexoPublished": true,
+      "tags": [
+        "Travis CI",
+        "nodejs",
+        "automation",
+        "hexo"
+      ]
+    }
+  ]
 }
