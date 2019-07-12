@@ -9,7 +9,7 @@
     "start": "hexo server --draft -p 5000",
     "clean": "hexo clean",
     "twitter-publish": "hexo twitter-publish",
-    "gh-pages-deploy": "npm run gh-pages-build && npm run gh-pages-publish && hexo twitter-publish",
+    "gh-pages-deploy": "npm run gh-pages-build && npm run gh-pages-publish",
     "gh-pages-build": "NODE_ENV=production hexo generate --config _config.yml,_config.production.yml",
     "gh-pages-publish": "ts-node bin/gh-pages-publish",
     "test": "NODE_ENV=production hexo generate --config _config.yml"
