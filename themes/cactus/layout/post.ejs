@@ -11,6 +11,7 @@
     </div>
   </header>
   <%- partial('_partial/post/gallery') %>
+  <img class="image" src="<%- url_for(page.path) + page.thumbnail %>" itemprop="image" alt="<%- page.title %>" />
   <div class="content" itemprop="articleBody">
     <%- page.content %>
   </div>
@@ -19,10 +20,8 @@
 <%- partial('_partial/comments') %>
 
 Related posts:
-<% if (env.env === 'production') { %>
-  <%-
-  popular_posts( {} , page )
-  %>
-<% } else { %>
-  Only on production environement.
-<% } %>
+<%-
+  htmlGenerator( 
+    popular_posts_json({ maxCount: 5 , ulClass: 'popular-posts' , PPMixingRate: 0.0 , isDate: true , isImage: true , isExcerpt: true}, page )
+  )
+%>
