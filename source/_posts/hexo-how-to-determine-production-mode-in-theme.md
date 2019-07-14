@@ -3,6 +3,7 @@ title: Hexo - How to determine production mode in theme
 tags:
   - hexo
   - javascript
+  - blogging
 thumbnail: hexo-logo.png
 ampSettings:
   titleImage:
