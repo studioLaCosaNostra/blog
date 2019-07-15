@@ -16,8 +16,6 @@ author:
 Run PIXI without performance problems.
 <!-- more -->
 
-![Angular and pixi.js 4](How-to-run-PIXI-in-angular-app/title-image.png)
-
 Pixi.js version used: `4.8.6`
 
 Angular detects any change due to Zone.js. If within the new component we add `setTimeout`,` setInterval` or `requestAnimationFrame` then Angular will detect the function's body call and trigger the change detection mechanism, which is the basis for the framework.
