@@ -18,13 +18,13 @@ Run PIXI without performance problems.
 
 Pixi.js version used: `4.8.6`
 
-Angular detects any change due to Zone.js. If within the new component we add `setTimeout`,` setInterval` or `requestAnimationFrame` then Angular will detect the function's body call and trigger the change detection mechanism, which is the basis for the framework.
+Angular detects any change due to Zone.js. If within the new component we add `setTimeout`,`setInterval` or `requestAnimationFrame` then Angular will detect the function's body call and trigger the change detection mechanism, which is the basis for the framework.
 
 PIXI has its own Ticker inside which is responsible for canvas updates. It is based of course on the `requestAnimationFrame`.
 
 If we normally start PIXI in a component, we will have a problem because the ticker will trigger the change detection mechanism every moment, which will cause problems for weaker devices or larger projects.
 
-#### Wrong:
+#### Wrong
 
 ```typescript
 
@@ -47,10 +47,10 @@ export class PIXIComponent implements OnInit {
 }
 ```
 
-The best solution to this problem is to run PIXI outside of Angular's zone.
-Angular has a special service for these purposes `NgZone` and the` runOutsideAngular` method.
+The best solution to this problem is to run PIXI outside of Angular zone.
+Angular has a special service for these purposes `NgZone` and the `runOutsideAngular` method.
 
-#### Good:
+#### Good
 
 ```typescript
 
