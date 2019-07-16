@@ -1,5 +1,5 @@
 ---
-title: cookie content
+title: 'cookie content'
 ampSettings:
   titleImage:
     path: null

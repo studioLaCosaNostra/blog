@@ -20,8 +20,12 @@
 <%- partial('_partial/comments') %>
 
 Related posts:
-<%-
-  htmlGenerator( 
-    popular_posts_json({ maxCount: 5 , ulClass: 'popular-posts' , PPMixingRate: 0.0 , isDate: true , isImage: true , isExcerpt: true}, page )
-  )
-%>
+<% if (env.env === 'production') { %>
+  <%-
+    htmlGenerator( 
+      popular_posts_json({ maxCount: 5 , ulClass: 'popular-posts' , PPMixingRate: 0.0 , isDate: true , isImage: true , isExcerpt: true}, page )
+    )
+  %>
+<% } else { %>
+Only on production environment.
+<% } %>
