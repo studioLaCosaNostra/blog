@@ -2,14 +2,20 @@
 title: 'cookie content'
 ampSettings:
   titleImage:
-    path: null
+    path: title-image.png
 tags:
-thumbnail:
+  - angular
+  - angular elements
+  - web components
+  - cookie
+  - travis
+  - npm
+thumbnail: title-image.png
 ---
 
-Below I am describing a step-by-step example of how to create angulara libraries for reuse in Angular projects, but also thanks to Angular Elements they can be used outside of Angular. An example is my blog, where the basis is Hexo, and additional functions I write in Angular Elements and attach them to the project as ordinary HTML tags.
+Below I am describing a step-by-step example of how to create libraries for reuse in Angular projects, but also thanks to Angular Elements they can be used outside of Angular. An example is my blog, where the basis is Hexo, and additional functions I write in Angular Elements and attach them to the project as ordinary HTML tags.
 
-# Create Angular Project
+## Create Angular Project
 
 ```bash
 ng new cookie-consent
