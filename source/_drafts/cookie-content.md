@@ -17,6 +17,8 @@ Below I am describing a step-by-step example of how to create libraries for reus
 
 ## Create Angular Project
 
+Create a new angular project in which all the codes and scripts of the project will be included.
+
 ```bash
 ng new cookie-consent
 ```
@@ -28,6 +30,8 @@ Generate a library that you can use later in Angular projects.
 ```bash
 ng generate library @lacosanostra/ngx-cookie-consent
 ```
+
+
 
 `package.json`
 
