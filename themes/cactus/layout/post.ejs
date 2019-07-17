@@ -1,9 +1,9 @@
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="post">
   <header>
     <%- partial('_partial/post/title', { post: page, index: false, class_name: 'posttitle' }) %>
     <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name"><% if (page.author) { %><%- page.author %><% } else { %><%- config.title %><% } %></span>
+      <span class="author">
+        <span><% if (page.author) { %><%- page.author %><% } else { %><%- config.title %><% } %></span>
       </span>
       <%- partial('_partial/post/date', { post: page, class_name: 'postdate' }) %>
       <%- partial('_partial/post/category') %>
@@ -11,8 +11,8 @@
     </div>
   </header>
   <%- partial('_partial/post/gallery') %>
-  <img class="image" src="<%- url_for(page.path) + page.thumbnail %>" itemprop="image" alt="<%- page.title %>" />
-  <div class="content" itemprop="articleBody">
+  <img class="image" src="<%- url_for(page.path) + page.thumbnail %>" alt="<%- page.title %>" />
+  <div class="content">
     <%- page.content %>
   </div>
   <div>Word count: <%- wordcount(page.content) %></div>
@@ -29,3 +29,36 @@ Related posts:
 <% } else { %>
 Only on production environment.
 <% } %>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "thumbnailUrl": "<%- config.url + url_for(page.path) + page.thumbnail %>",
+  "url": "<%- page.permalink %>",
+  "name": "<%- page.title %>",
+  "headline": "<%- page.title %>",
+  "dateCreated": "<%= date_xml(page.updated) %>",
+  "datePublished": "<%= date_xml(page.updated) %>",
+  "dateModified": "<%= date_xml(page.updated) %>",
+  "image": "<%- config.url + url_for(page.path) + page.thumbnail %>",
+  "keywords": [
+    <%- page.tags.map(tag => '"' + (tag.name || tag) + '"').join(',').toString() %>
+  ],
+  "mainEntityOfPage": "<%- page.permalink %>",
+  "author": {
+    "@type": "Organization",
+    "name": "<%- config.author %>"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "<%- config.author %>",
+    "url": "<%- config.url %>",
+    "logo": {
+      "@type": "ImageObject",
+      "width": "615",
+      "height": "615",
+      "url": "<%- config.url + '/images/logo.png' %>"
+    }
+  }
+}
+</script>
