@@ -1,5 +1,5 @@
 language: node_js
 script:
+  - set -e
   - npm run gh-pages-deploy
-after_script:
   - ./.travis-commit-changes.sh
