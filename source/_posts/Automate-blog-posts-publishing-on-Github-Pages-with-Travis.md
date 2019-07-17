@@ -21,9 +21,9 @@ First, create a configuration file for Travis.
 ```yml
 language: node_js
 script:
-  - npm run deploy
-after_script:
-  - sh ./.travis-commit-changes.sh
+  - set -e
+  - npm run gh-pages-deploy
+  - ./.travis-commit-changes.sh
 ```
 
 As you can see, it is extremely short, and this is because I have created additional scripts.
@@ -123,6 +123,8 @@ fi
 echo "Push to GitHub"
 push_changes
 ```
+
+Also do `chmod +x .travis-commit-changes.sh` to get execute permissions.
 
 ## How to add GH_TOKEN to Travis
 
