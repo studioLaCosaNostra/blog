@@ -7,8 +7,20 @@ tags:
 thumbnail:
 ---
 
+Below I am describing a step-by-step example of how to create angulara libraries for reuse in Angular projects, but also thanks to Angular Elements they can be used outside of Angular. An example is my blog, where the basis is Hexo, and additional functions I write in Angular Elements and attach them to the project as ordinary HTML tags.
+
+# Create Angular Project
+
 ```bash
 ng new cookie-consent
+```
+
+Go inside of project. `cd cookie-consent`
+
+Generate a library that you can use later in Angular projects.
+
+```bash
+ng generate library @lacosanostra/ngx-cookie-consent
 ```
 
 `package.json`
@@ -28,9 +40,6 @@ ng new cookie-consent
 }
 ```
 
-```bash
-ng generate library @lacosanostra/ngx-cookie-consent
-```
 
 `projects/lacosanostra/ngx-cookie-conset/package.json`
 
@@ -72,6 +81,39 @@ export class AppModule {
     customElements.define('cookie-consent', ngElement);
   }
 }
+```
+
+```typescript
+/***************************************************************************************************
+ * APPLICATION IMPORTS
+ */
+import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js';
+```
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CookieConsent</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    cookie-consent {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <cookie-consent>
+    This site uses cookies to analyse traffic, remember your preferences, and optimise your experience.
+    <a href="/policy">Learn more</a>
+  </cookie-consent>
+</body>
+</html>
 ```
 
 ```bash
