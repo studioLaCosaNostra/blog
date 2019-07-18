@@ -31,9 +31,7 @@ Generate a library that you can use later in Angular projects.
 ng generate library @lacosanostra/ngx-cookie-consent
 ```
 
-
-
-`package.json`
+Edit `package.json`
 
 ```json
 {
@@ -50,6 +48,8 @@ ng generate library @lacosanostra/ngx-cookie-consent
 }
 ```
 
+- `build-web-component` will generate the project as a web-component, the `build.sh` script will be given below.
+- `build-ngx-cookie-consent` will build the Angular version of the component ready for publication in `npm`. The command is also needed for the `build-web-component` because it uses this library. While working on the new module, you can run it with the `watch` option, example:  `npm run build-ngx-cookie-constent -- --watch`
 
 `projects/lacosanostra/ngx-cookie-conset/package.json`
 
