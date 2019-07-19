@@ -1,5 +1,5 @@
 ---
-title: 'cookie content'
+title: 'cookie contendt'
 ampSettings:
   titleImage:
     path: title-image.png
@@ -11,9 +11,12 @@ tags:
   - travis
   - npm
 thumbnail: title-image.png
+date: 2019-07-19
 ---
 
-Below I am describing a step-by-step example of how to create libraries for reuse in Angular projects, but also thanks to Angular Elements they can be used outside of Angular. An example is my blog, where the basis is Hexo, and additional functions I write in Angular Elements and attach them to the project as ordinary HTML tags. The following steps show the creation of `cookie consent` which is visible on the blog page at the first entry.
+Below I am describing a step-by-step example of how to create libraries for reuse in Angular projects, but also thanks to Angular Elements they can be used outside of Angular. An example is my blog, where the basis is Hexo, and additional functions I write in Angular Elements and attach them to the project as ordinary HTML tags. The following steps show the creation of `cookie consent` which is visible on the blog page at the first entry and also in my app [qrcode generator](https://studiolacosanostra.github.io/apps/qr-code-generator/)
+
+![Cookie consent view][cookie-consent-view-image]
 
 ## Create Angular Project
 
@@ -246,12 +249,47 @@ Edit `src/index.html`
 
 Now we can see how our web-component presents itself in the code on an ordinary website.  Additionally, for the close button it is required to import icons from Material Design.
 
+### Run project
+
+To start the project, we will need to build the library:
+
+```bash
+npm run build-ngx-cookie-consent
+```
+
+Then our web-component project has all the dependencies needed to start.
+
+```bash
+npm start
+```
+
+### Build release web-component
+
+Create `build.sh`
+Give execute permission. `chmod +x build.sh`
+
 ```bash
 #!/bin/bash
 set -x
 APP=cookie-consent
 ng build $APP --prod --output-hashing=none && cat dist/$APP/runtime-es5.js dist/$APP/polyfills-es5.js dist/$APP/scripts.js dist/$APP/main-es5.js > dist/$APP/$APP.js
 ```
+
+The above script builds the project and combines all the files into one, so that later it would be easier to use our web-component. The combined file is in path `dist/cookie-consent/cookie-consent.js`
+
+The final file should be added at the bottom of the body of the page where you want to use `<cookie-consent>`.
+
+```html
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/studioLaCosaNostra/cookie-consent@latest/dist/cookie-consent/cookie-consent.js"></script>
+```
+
+Basically, that's all. If you have any questions, write in a comment under the post. I will try to answer them and update the content of the article based on it.
+
+## Build on Travis
+
+For those who would like to not worry about upgrading their module in `npm registry` and updating `dist` later, I put a ready solution in Travis below.
+
+Create `.travis.yml`
 
 ```yml
 language: node_js
@@ -273,6 +311,9 @@ deploy:
   api_key: $NPM_TOKEN
 
 ```
+
+Create `.travis-commit-changes.sh`
+Give execute permission. `chmod +x .travis-commit-changes.sh`
 
 ```bash
 #!/bin/bash
@@ -323,3 +364,5 @@ fi
 echo "Push to GitHub"
 push_changes
 ```
+
+[cookie-consent-view-image]: cookie-content/cookie-consent-view.png
