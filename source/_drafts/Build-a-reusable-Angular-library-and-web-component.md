@@ -1,5 +1,5 @@
 ---
-title: 'cookie contendt'
+title: Build a reusable Angular library and web component
 ampSettings:
   titleImage:
     path: title-image.png
@@ -283,6 +283,12 @@ The final file should be added at the bottom of the body of the page where you w
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/studioLaCosaNostra/cookie-consent@latest/dist/cookie-consent/cookie-consent.js"></script>
 ```
 
+Add material icons to **html**. For the closing button to display correctly.
+
+```html
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+```
+
 Basically, that's all. If you have any questions, write in a comment under the post. I will try to answer them and update the content of the article based on it.
 
 ## Build on Travis
@@ -365,4 +371,4 @@ echo "Push to GitHub"
 push_changes
 ```
 
-[cookie-consent-view-image]: cookie-content/cookie-consent-view.png
+[cookie-consent-view-image]: cookie-consent-view.png
