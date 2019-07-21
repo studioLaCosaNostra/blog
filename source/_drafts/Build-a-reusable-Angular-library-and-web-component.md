@@ -291,6 +291,10 @@ Add material icons to **html**. For the closing button to display correctly.
 
 Basically, that's all. If you have any questions, write in a comment under the post. I will try to answer them and update the content of the article based on it.
 
+The entire source code of the project is available on Github in the link below.
+
+[Cookie consent web-component repository](https://github.com/studioLaCosaNostra/cookie-consent)
+
 ## Build on Travis
 
 For those who would like to not worry about upgrading their module in `npm registry` and updating `dist` later, I put a ready solution in Travis below.
@@ -306,16 +310,20 @@ script:
   - npm run test-headless
   - npm run build-ngx-cookie-consent
   - npm run build-web-component
-  - ./.travis-commit-changes.sh
-
-before_deploy:
   - cd dist/lacosanostra/ngx-cookie-consent
-deploy:
-  provider: npm
-  skip_cleanup: true
-  email: $NPM_EMAIL
-  api_key: $NPM_TOKEN
 
+deploy:
+  - provider: npm
+    skip_cleanup: true
+    email: $NPM_EMAIL
+    api_key: $NPM_TOKEN
+    on:
+      branch: master
+  - provider: script
+    script: ../../../.travis-commit-changes.sh
+    skip_cleanup: true
+    on:
+      branch: master
 ```
 
 Create `.travis-commit-changes.sh`
@@ -370,5 +378,7 @@ fi
 echo "Push to GitHub"
 push_changes
 ```
+
+Now, after each update on the master, Travis will update `npm` if we raise the version number and update the `dist` directory
 
 [cookie-consent-view-image]: cookie-consent-view.png

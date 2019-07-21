@@ -8,14 +8,8 @@
       "type": "chrome",
       "request": "launch",
       "name": "Launch site",
+      "runtimeExecutable": "/snap/bin/brave",
       "url": "http://localhost:5000",
-      "webRoot": "${workspaceFolder}"
-    },
-    {
-      "type": "chrome",
-      "request": "launch",
-      "name": "Launch admin",
-      "url": "http://localhost:5000/admin",
       "webRoot": "${workspaceFolder}"
     }
   ]
