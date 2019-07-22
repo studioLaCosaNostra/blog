@@ -208,10 +208,7 @@
         "Travis CI"
       ],
       "tweetId": "1149613301350817793"
-    }
-  ],
-  "to-destroy": [],
-  "to-publish": [
+    },
     {
       "title": "Build a reusable Angular library and web component",
       "permalink": "https://studiolacosanostra.github.io/2019/07/19/Build-a-reusable-Angular-library-and-web-component/",
@@ -221,10 +218,13 @@
         "npm",
         "angular elements",
         "web components",
+        "web-component",
         "cookie",
-        "travis",
-        "web-component"
-      ]
+        "travis"
+      ],
+      "tweetId": "1153159208625410048"
     }
-  ]
+  ],
+  "to-destroy": [],
+  "to-publish": []
 }
