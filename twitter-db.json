@@ -211,5 +211,20 @@
     }
   ],
   "to-destroy": [],
-  "to-publish": []
+  "to-publish": [
+    {
+      "title": "Build a reusable Angular library and web component",
+      "permalink": "https://studiolacosanostra.github.io/2019/07/19/Build-a-reusable-Angular-library-and-web-component/",
+      "hexoPublished": true,
+      "tags": [
+        "angular",
+        "npm",
+        "angular elements",
+        "web components",
+        "cookie",
+        "travis",
+        "web-component"
+      ]
+    }
+  ]
 }

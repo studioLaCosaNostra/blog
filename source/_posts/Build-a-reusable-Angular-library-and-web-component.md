@@ -7,6 +7,7 @@ tags:
   - angular
   - angular elements
   - web components
+  - web-component
   - cookie
   - travis
   - npm
@@ -379,6 +380,6 @@ echo "Push to GitHub"
 push_changes
 ```
 
-Now, after each update on the master, Travis will update `npm` if we raise the version number and update the `dist` directory
+Now, after each update on the master, Travis will update `npm` if we raise the version number and also update the `dist` directory
 
 [cookie-consent-view-image]: cookie-consent-view.png
