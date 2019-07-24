@@ -4,6 +4,8 @@ ampSettings:
   titleImage:
     path: null
 tags:
+- cordova
+- android
 thumbnail:
 ---
 

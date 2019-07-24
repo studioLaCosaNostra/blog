@@ -14,6 +14,8 @@ tags:
 thumbnail: title-image.png
 date: 2019-07-19
 ---
+Find out how to easily create libraries in Angular and transform them into web-components.
+<!-- more -->
 
 Below I am describing a step-by-step example of how to create libraries for reuse in Angular projects, but also thanks to Angular Elements they can be used outside of Angular. An example is my blog, where the basis is Hexo, and additional functions I write in Angular Elements and attach them to the project as ordinary HTML tags. The following steps show the creation of `cookie consent` which is visible on the blog page at the first entry and also in my app [qrcode generator](https://studiolacosanostra.github.io/apps/qr-code-generator/)
 
