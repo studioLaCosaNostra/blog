@@ -238,17 +238,5 @@
     }
   ],
   "to-destroy": [],
-  "to-publish": [
-    {
-      "title": "Cordova - Setup Android SDK on Ubuntu",
-      "permalink": "https://studiolacosanostra.github.io/2019/07/29/Cordova-Setup-Android-SDK-on-Ubuntu/",
-      "hexoPublished": true,
-      "tags": [
-        "cordova",
-        "android",
-        "java",
-        "ubuntu"
-      ]
-    }
-  ]
+  "to-publish": []
 }

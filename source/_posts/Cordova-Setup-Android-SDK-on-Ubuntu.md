@@ -9,6 +9,7 @@ tags:
 - java
 - ubuntu
 thumbnail: title-image.png
+date: 2019-07-29
 ---
 If you're looking for a simple instruction on how to run Cordova project for the first time on an Android system, you've just found it.
 <!-- more -->
