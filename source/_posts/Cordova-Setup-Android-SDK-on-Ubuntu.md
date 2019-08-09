@@ -18,7 +18,7 @@ Below I describe the steps to be taken to start building an Android project in C
 
 ## Download the latest Android SDK
 
-[https://developer.android.com/studio/index.html#command-tools](https://developer.android.com/studio/index.html#command-tools)
+[Download Android SDK command tools](https://developer.android.com/studio/index.html#command-tools)
 
 ## Extract Android SDK
 
@@ -28,7 +28,7 @@ unzip -d ~/Downloads/sdk-tools-linux ~/Downloads/sdk-tools-linux-*.zip
 
 ## Download the latest Java JDK 8 from Oracle
 
-[https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+[Download JAVA JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 ## Create `/usr/lib/jvm`
 
