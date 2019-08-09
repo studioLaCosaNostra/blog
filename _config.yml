@@ -110,6 +110,7 @@ include:
   - .nojekyll
   - .well-known/*
   - robots.txt
+  - ads.txt
 
 feed:
   type: rss2
