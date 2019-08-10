@@ -21,5 +21,30 @@
     </div>
     <%- partial('_partial/styles') %>
     <%- partial('_partial/scripts') %>
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "<%= config.url %>",
+      "name": "<%= config.title %>"
+    }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "<%= config.title %>",
+        "email": "<%= config.organization_links.email %>",
+        "url": "<%= config.url %>",
+        "sameAs": [
+          "<%= config.organization_links.facebook %>",
+          "<%= config.organization_links.twitter %>",
+          "<%= config.organization_links.github %>",
+          "<%= config.organization_links.google_play %>",
+          "<%= config.organization_links.youtube %>",
+          "<%= config.organization_links.linkedin %>"
+        ]
+      }
+      </script>  
 </body>
 </html>

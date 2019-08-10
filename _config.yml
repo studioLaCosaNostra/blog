@@ -121,3 +121,12 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
+
+organization_links:
+  google_play: https://play.google.com/store/apps/developer?id=La+cosa+nostra
+  github: https://github.com/studioLaCosaNostra
+  twitter: https://twitter.com/la_cosa_nostrai
+  youtube: https://www.youtube.com/channel/UCTCoOqyugQFUTX1it84LkRA
+  email: studiolacosanostra@gmail.com
+  facebook: https://www.facebook.com/studiolacosanostra/
+  linkedin: https://www.linkedin.com/company/studio-la-cosa-nostra/
