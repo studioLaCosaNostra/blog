@@ -238,5 +238,17 @@
     }
   ],
   "to-destroy": [],
-  "to-publish": []
+  "to-publish": [
+    {
+      "title": "Angular, Zone, WebSocket  === Change detection Nightmare",
+      "permalink": "https://studiolacosanostra.github.io/2019/09/14/Angular-Zone-WebSocket-Change-detection-Nightmare/",
+      "hexoPublished": true,
+      "tags": [
+        "angular",
+        "zone.js",
+        "websocket",
+        "change detection"
+      ]
+    }
+  ]
 }

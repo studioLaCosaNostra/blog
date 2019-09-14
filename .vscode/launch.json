@@ -8,7 +8,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "Launch site",
-      "runtimeExecutable": "/snap/bin/brave",
+      // "runtimeExecutable": "/snap/bin/brave",
       "url": "http://localhost:5000",
       "webRoot": "${workspaceFolder}"
     }
