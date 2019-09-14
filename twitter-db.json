@@ -235,10 +235,7 @@
         "ubuntu"
       ],
       "tweetId": "1155727911514791941"
-    }
-  ],
-  "to-destroy": [],
-  "to-publish": [
+    },
     {
       "title": "Angular, Zone, WebSocket  === Change detection Nightmare",
       "permalink": "https://studiolacosanostra.github.io/2019/09/14/Angular-Zone-WebSocket-Change-detection-Nightmare/",
@@ -248,7 +245,10 @@
         "zone.js",
         "websocket",
         "change detection"
-      ]
+      ],
+      "tweetId": "1172893480034668545"
     }
-  ]
+  ],
+  "to-destroy": [],
+  "to-publish": []
 }
