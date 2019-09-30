@@ -28,6 +28,10 @@ Web: [Puzzle 512][Web version]
 
 - [Privacy Policy for Android & IOS][Privacy Policy]
 
+{% raw %}
+<iframe data-aa="1251765" src="//acceptable.a-ads.com/1251765" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe>
+{% endraw %}
+
 [Web version]: /games/512/
 [Google play link]: https://play.google.com/store/apps/details?id=com.laCosaNostra.FiveHundredAndTwelve2&referrer=utm_source%3Dblog
 [Privacy Policy]: privacy_policy.html
