@@ -14,4 +14,13 @@ thumbnail:
 ```bash
 firebase login
 firebase init
+wybierz firestore, functions, hosting
 ```
+
+```bash
+npm install --save express body-parser
+```
+
+Przydatne rozszerzenie do firestore dla vscode.
+https://marketplace.visualstudio.com/items?itemName=ChFlick.firecode
+
