@@ -23,4 +23,4 @@ npm install --save express body-parser
 
 Przydatne rozszerzenie do firestore dla vscode.
 https://marketplace.visualstudio.com/items?itemName=ChFlick.firecode
-
+https://firebase.google.com/docs/functions/schedule-functions
