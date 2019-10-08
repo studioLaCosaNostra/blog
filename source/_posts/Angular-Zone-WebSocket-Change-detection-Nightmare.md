@@ -21,7 +21,7 @@ global['__Zone_ignore_on_properties'] = [];
 
 // disable on properties
 // tslint:disable-next-line: typedef
-const targets = [WebSocket];
+const targets = [WebSocket.prototype];
 targets.forEach((target) => {
   global['__Zone_ignore_on_properties'].push({
     target,
