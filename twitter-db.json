@@ -247,10 +247,7 @@
         "change detection"
       ],
       "tweetId": "1172893480034668545"
-    }
-  ],
-  "to-destroy": [],
-  "to-publish": [
+    },
     {
       "title": "Color cells using keyboard shortcuts in Google Sheets",
       "permalink": "https://studiolacosanostra.github.io/2019/10/09/Color-cells-using-keyboard-shortcuts-in-Google-Sheets/",
@@ -259,7 +256,10 @@
         "google sheets",
         "macros",
         "google sheets scripts"
-      ]
+      ],
+      "tweetId": "1182055341607010304"
     }
-  ]
+  ],
+  "to-destroy": [],
+  "to-publish": []
 }
