@@ -14,6 +14,7 @@ date: 2019-06-11
 
 Stworzenie komponentu do przeglądania plików z google drive może być trochę czasochłonne. Dlatego poniżej pokazuje jak to zrobić z użyciem Google API oraz dla ułatwienia tworzenia interfejsu użytkownika wykorzystam gotową angularową bibliotekę Material Design. Do autoryzacji google zostanie użyty kod z poprzedniego artykułu {% post_link How-to-make-Firebase-Authentication-via-Google-API-in-Angular How to make Firebase Authentication via Google API in Angular %} żeby nie wydłużać tekstu, polecam przeczytać go przed rozpoczęciem. Zawiera opis jak uzyskać klucze od Google API potrzebne do całej zabawy.
 
+
 ## Step 1: Create Angular project
 
 1. Install Angular CLI.
