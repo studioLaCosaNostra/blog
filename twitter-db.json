@@ -250,5 +250,16 @@
     }
   ],
   "to-destroy": [],
-  "to-publish": []
+  "to-publish": [
+    {
+      "title": "Color cells using keyboard shortcuts in Google Sheets",
+      "permalink": "https://studiolacosanostra.github.io/2019/10/09/Color-cells-using-keyboard-shortcuts-in-Google-Sheets/",
+      "hexoPublished": true,
+      "tags": [
+        "google sheets",
+        "macros",
+        "google sheets scripts"
+      ]
+    }
+  ]
 }
