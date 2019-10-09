@@ -29,6 +29,6 @@ npm install --save express body-parser
 ```
 
 Przydatne rozszerzenie do firestore dla vscode.
-https://marketplace.visualstudio.com/items?itemName=ChFlick.firecode
-https://firebase.google.com/docs/functions/schedule-functions
-https://firebase.google.com/docs/firestore/solutions/role-based-access
+[Firestore Security Rules Syntax Highlighting and Suggestions](https://marketplace.visualstudio.com/items?itemName=ChFlick.firecode)
+[Schedule function](https://firebase.google.com/docs/functions/schedule-functions)
+[Solutions role based access](https://firebase.google.com/docs/firestore/solutions/role-based-access)
