@@ -163,6 +163,12 @@ The library ready, our `lib-ngx-cookie-consent` can already be used in angular p
 
 ## Create web-component
 
+Add angular elements to project.
+
+```bash
+ng add @angular/elements
+```
+
 Delete the unnecessary `app component` and its test.
 
 ```bash
