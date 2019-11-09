@@ -48,6 +48,20 @@ ngsw-config.json
     }
   ]
 ```
+
+```ts
+Unhandled error { Error: The query requires a COLLECTION_GROUP_ASC index for collection user-role and field newsletterId. You can create it here: https://console.firebase.google.com/v1/r/project/newsletter-f8570/firestore/indexes?create_exemption=Clxwcm9qZWN0cy9uZXdzbGV0dGVyLWY4NTcwL2RhdGFiYXNlcy8oZGVmYXVsdCkvY29sbGVjdGlvbkdyb3Vwcy91c2VyLXJvbGUvZmllbGRzL25ld3NsZXR0ZXJJZBACGhAKDG5ld3NsZXR0ZXJJZBAB
+    at Http2CallStream.call.on (/srv/node_modules/@grpc/grpc-js/build/src/call.js:68:41)
+    at emitOne (events.js:121:20)
+    at Http2CallStream.emit (events.js:211:7)
+    at process.nextTick (/srv/node_modules/@grpc/grpc-js/build/src/call-stream.js:75:22)
+    at _combinedTickCallback (internal/process/next_tick.js:132:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:219:9)
+  code: 9,
+  details: 'The query requires a COLLECTION_GROUP_ASC index for collection user-role and field newsletterId. You can create it here: https://console.firebase.google.com/v1/r/project/newsletter-f8570/firestore/indexes?create_exemption=Clxwcm9qZWN0cy9uZXdzbGV0dGVyLWY4NTcwL2RhdGFiYXNlcy8oZGVmYXVsdCkvY29sbGVjdGlvbkdyb3Vwcy91c2VyLXJvbGUvZmllbGRzL25ld3NsZXR0ZXJJZBACGhAKDG5ld3NsZXR0ZXJJZBAB',
+  metadata: Metadata { internalRepr: Map {}, options: {} } }
+```
+
 Przydatne rozszerzenie do firestore dla vscode.
 [Firestore Security Rules Syntax Highlighting and Suggestions](https://marketplace.visualstudio.com/items?itemName=ChFlick.firecode)
 [Schedule function](https://firebase.google.com/docs/functions/schedule-functions)
