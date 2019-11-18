@@ -258,10 +258,7 @@
         "google sheets scripts"
       ],
       "tweetId": "1182055341607010304"
-    }
-  ],
-  "to-destroy": [],
-  "to-publish": [
+    },
     {
       "title": "Prerender angular application - generate static pages",
       "permalink": "https://studiolacosanostra.github.io/2019/11/18/Prerender-angular-application-generate-static-pages/",
@@ -270,7 +267,10 @@
         "angular",
         "prerender",
         "universal"
-      ]
+      ],
+      "tweetId": "1196456598723604480"
     }
-  ]
+  ],
+  "to-destroy": [],
+  "to-publish": []
 }
