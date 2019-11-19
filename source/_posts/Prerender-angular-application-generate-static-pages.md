@@ -11,13 +11,13 @@ thumbnail: title-image.png
 date: 2019-11-18
 ---
 
-**Build seo friendly website without server-side rendering.**
+**Build an SEO friendly website without server-side rendering.**
 <!--more-->
 
-From the very beginning of Angular 2 there was a capability to generate HTML content of the application on the server side. Without this bots search engines simply are not able to see what is on the site without the interpretation of javascript very few bots will improve. But what if you don't have a server with node.js and you want to be visible? Prerender subpages may help in this case. In previous versions of Angular Universal there is an example of how to do this [link to prerender.ts in unversal-starter archive](https://github.com/angular/universal-starter/blob/master/prerender.ts). Some time has passed and angular universal has officially become part of the angular ecosystem, but unfortunately there is no example of how to make prerender code anywhere.
+From the very beginning of Angular 2, there was a capability to generate HTML content of the application on the server-side. Without this, bots search engines simply are not able to see what is on the site without the interpretation of javascript very few bots will improve. But what if you don’t have a server with node.js and you want to be visible? Prerender subpages may help in this case. In previous versions of Angular Universal, there is an example of how to do this [link to prerender.ts in universal-starter archive](https://github.com/angular/universal-starter/blob/master/prerender.ts). Some time has passed and angular universal has officially become part of the Angular ecosystem, but unfortunately, there is no example of how to make prerender code anywhere.
 Today I present an example of how I solved it in my project trying to minimize the interference in the generated nguniversal code.
 
-First of all you need to add angular universal to your project with this command from [server-side rendering guide](https://angular.io/guide/universal)
+First of all, you need to add angular universal to your project with this command from [server-side rendering guide](https://angular.io/guide/universal)
 
 ```bash
 ng add @nguniversal/express-engine --clientProject project-example
@@ -82,7 +82,7 @@ app.listen(PORT, async () => {
 });
 ```
 
-Now add main code that performs prerender of our subpages. (you also need to install additional library to create subfolders `npm install mkdirp @types/mkdirp`)
+Now add the main code that performs prerender of our subpages. (you also need to install additional library to create subfolders `npm install mkdirp @types/mkdirp`)
 
 `prerender.ts`
 
@@ -125,7 +125,7 @@ prerender(app, ROUTES);
 
 ```
 
-We also need to add new entry to the wepack so that it can generate the final file `prerender.js`
+Now add the main code that performs prerender of our subpages. (you also need to install additional library to create subfolders `npm install mkdirp @types/mkdirp`)
 
 ```javascript
 // Work around for https://github.com/angular/angular-cli/issues/7200
@@ -195,10 +195,10 @@ Add a new script to `package.json` for ease of use.
 
 ```
 
-And that's all, now you just need to build an application in ssr mode and run the command prerender.
+And that's all, now you just need to build an application in SSR mode and run the command prerender.
 
 ```bash
 npm run build:ssr && npm run prerender
 ```
 
-In the `dist/browser` directory you will find subfolders with `index.html` files containing SEO-friendly generated HTML content of the application.
+In the `dist/browser` directory, you will find subfolders with `index.html` files containing SEO-friendly generated HTML content of the application.
