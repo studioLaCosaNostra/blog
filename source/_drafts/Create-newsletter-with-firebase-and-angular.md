@@ -7,62 +7,19 @@ tags:
 thumbnail:
 ---
 
-E-mail marketing to jeden z najtańszych i najprostrzyszch sposobów, aby Twoja strona, sklep internetowa zdobyła powracających odbiorców. Jest to forma reklamy która trafia w najbardziej prywatne miejsce w sieci, jakim jest Twoja skrzynka pocztowa. Wyniki raportów z wielu kampanii na całym świecie pokazują że inwestycja w taką formę reklamy działa i odnosi sukces. Dlatego warto rozpocząć pracę nad Twoim newsletterem!
+E-mail marketing to jeden z najtańszych i najprostszych sposobów, aby Twoja strona, sklep internetowa zdobyła powracających odbiorców. Jest to forma reklamy, która trafia w najbardziej prywatne miejsce w sieci, jakim jest Twoja skrzynka pocztowa. Wyniki raportów z wielu kampanii na całym świecie pokazują, że inwestycja w taką formę reklamy działa i odnosi sukces. Dlatego warto rozpocząć pracę nad Twoim newsletterem!
 
-## Usługa newslettera
+Jest wiele gotowych narzędzi do tworzenia kampanii e-mail marketingowych jak Mailchimp, Freshmail czy Getresponse. Są to istne kombajny mające niekończący się wachlarz możliwości, ale w tym artykule nie będziemy opisywać ich możliwości. Tylko poruszymy temat zbudowania samemu od zera własnego mini systemu do wysyłki e-maili naszym subskrybentom. Wykorzystamy do tego celu platformę developerską **Firebase** oraz framework aplikacji webowych **Angular**.
 
-Jest wiele gotowych narzędzi do tworzenia kampanii e-mail marketingowych jak Mailchimp, Freshmail czy Getresponse. Ale w tym artykule poruszymy temat zbudowania od zera prostego systemu do zbierania adresów email od naszych klientów i wysyłania kampanii marketingowych. Wykorzystamy do tego celu platformę developerską **Firebase** oraz framework aplikacji webowych **Angular**.
+Czym jest Firebase?
+
+Firebase jest to platforma deweloperska stworzona przez Firebase Inc w 2011, która została później wykupiona przez Google w 2014. Platforma jest głównie skupiona na stworzeniu ekosystemu ułatwiającego szybkie tworzenie dobrej jakości aplikacji mobilnych. W naszej aplikacji wykorzystamy tylko parę ściadczonych przez nią usług:
+
+1. Hosting - 1GB przestrzeni dyskowej na nasz projekt, 10GB darmowego transferu miesięcznie + automatycznie skonfigurowany certyfikat SSL. Plus dzięki firebase cli wysyłamy nasz gotowy kod w parę sekund.
+2. Uwierzytelnianie użytkownika - Wbudowany w platformę system rejestracji i logowania użytkownika z wielu usług jak Facebook, Twitter czy oczywiście Google.
+3. Firestore - Elasytczna i skalowalna baza danych NoSQL o której napiszę więcej później.
+4. Firebase cloud functions - Usługa umożliwiająca tworzeniu kodu backendowego naszego projektu. Mamy pełen dostęp do obsługi zapytań HTTPS, tworzenia wyzwalaczy dla zdarzeń z Firebase czy uwierzytenień użytkownika, oraz kodu wykonywanego zgodnie z określonym interwałem czasowym.
+
+
+
 Dodatkowo stworzymy systemy kontroli dostępu aby każdy użytkownik miał przypisaną rolę i odpowiednie dostępy.
-
-1. Create newsletter project on firebase console.
-2. Create repository on github.
-3. Setup firebase in project
-
-```bash
-firebase login
-firebase init
-wybierz firestore, functions, hosting
-```
-
-```bash
-npm install --save express body-parser
-```
-
-npm install firebase
-ng add @ngrx/store
-ng add @ngrx/effects
-ng g module auth --route=auth --module app.module
-ng g module newsletter-settings --route=newsletter/:id/settings --module app.module
-ng add @angular/pwa --project newsletter-app
-ngsw-config.json
-```
-  "dataGroups": [
-    {
-      "name": "api",
-      "urls": ["/api"],
-      "cacheConfig": {
-        "maxSize": 0,
-        "maxAge": "0u",
-        "strategy": "freshness"
-      }
-    }
-  ]
-```
-
-```ts
-Unhandled error { Error: The query requires a COLLECTION_GROUP_ASC index for collection user-role and field newsletterId. You can create it here: https://console.firebase.google.com/v1/r/project/newsletter-f8570/firestore/indexes?create_exemption=Clxwcm9qZWN0cy9uZXdzbGV0dGVyLWY4NTcwL2RhdGFiYXNlcy8oZGVmYXVsdCkvY29sbGVjdGlvbkdyb3Vwcy91c2VyLXJvbGUvZmllbGRzL25ld3NsZXR0ZXJJZBACGhAKDG5ld3NsZXR0ZXJJZBAB
-    at Http2CallStream.call.on (/srv/node_modules/@grpc/grpc-js/build/src/call.js:68:41)
-    at emitOne (events.js:121:20)
-    at Http2CallStream.emit (events.js:211:7)
-    at process.nextTick (/srv/node_modules/@grpc/grpc-js/build/src/call-stream.js:75:22)
-    at _combinedTickCallback (internal/process/next_tick.js:132:7)
-    at process._tickDomainCallback (internal/process/next_tick.js:219:9)
-  code: 9,
-  details: 'The query requires a COLLECTION_GROUP_ASC index for collection user-role and field newsletterId. You can create it here: https://console.firebase.google.com/v1/r/project/newsletter-f8570/firestore/indexes?create_exemption=Clxwcm9qZWN0cy9uZXdzbGV0dGVyLWY4NTcwL2RhdGFiYXNlcy8oZGVmYXVsdCkvY29sbGVjdGlvbkdyb3Vwcy91c2VyLXJvbGUvZmllbGRzL25ld3NsZXR0ZXJJZBACGhAKDG5ld3NsZXR0ZXJJZBAB',
-  metadata: Metadata { internalRepr: Map {}, options: {} } }
-```
-
-Przydatne rozszerzenie do firestore dla vscode.
-[Firestore Security Rules Syntax Highlighting and Suggestions](https://marketplace.visualstudio.com/items?itemName=ChFlick.firecode)
-[Schedule function](https://firebase.google.com/docs/functions/schedule-functions)
-[Solutions role based access](https://firebase.google.com/docs/firestore/solutions/role-based-access)
