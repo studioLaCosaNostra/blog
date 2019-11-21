@@ -60,4 +60,10 @@ Z API to będzie już wszystko, dzięki temu że firestore daje nam możliwość
 Zmiając ustawienia newslettera mamy opcję ustalania dziennego limitu wysłanych wiadomości, musimy obserwować jego zmianę. Firestore posiada funkcję uruchamiania kodu cloud functions podczas edycji konkrentego dokumentu z kolekcji, pozwala nam ona zaktualizować pozostały przydział na ten konkretny dzień.
 Wysyłając nasz wiadomość nasz system dostawy musi oznaczyć w każdym użytkowniku informację czy została do niego wysłana ta konkretna wiadomość, bez tej operacji nie jest możliwe tworzenie późniejszych zapytań do bazy o użytkowników oczekujących na wysłanie wiadomości.
 Nowo zarejestrowanemu użytkownikowi musimy też za pomocą kodu backendowego znaleźć wszystkie zaproszenia jakie otrzymał i dodać nowe role do systemu.
+Pewnie się zastanawiasz jak wysyłane są wiadomości przez nasz system, otóż robimy to dosyć prosto. Co godzinę uruchamiany jest kod backendu (cron jobs) który przeszukuje kolekcje newsletterów z nie zużytym limitem wiadomości i z flagą informującą czy oczekuje jakaś wiadomość do wysłania w kolekcji wysyłka. Przy użyciu biblioteki nodemailer system łączy się z usługą mailiongową i wysyła pokoleji wiadomości aż do skończenia się subskrybentów lub do dziennego limitu wiadomości.
+Podobnie limity wiadomości są resetowane codziennie o godzinie 10.
+
+Część backendową mamy już opisaną teraz czas przejść do frontendu :)
+
+## Czym jest Angular?
 
