@@ -67,3 +67,8 @@ Część backendową mamy już opisaną teraz czas przejść do frontendu :)
 
 ## Czym jest Angular?
 
+Angular jest napisanym w języku Typescript frameworkiem do tworzenia szybkich i wydajnych aplikacji webowych. Systematycznie rozwijany przez Google, z roku na rok staje się najbardziej kompletną technologią (aktualny z trendami webowymi) zaraz obok Reacta czy Vue.
+
+### Użyte technologie
+
+Projekt w swoim rdzeniu korzysta z biblioteki firebase do komunikacji z firestore oraz z NGRX do trzymania ostatnio pobranych danych z naszej bazy co łagodzi etap ładowania treści podczas aktywnego korzystania z aplikacji. 
