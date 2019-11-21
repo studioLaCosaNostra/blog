@@ -46,3 +46,18 @@ Wyczerpaliśmy już w pełni temat struktury naszej bazy czas przejść do tworz
 
 ## Firebase cloud functions - backend
 
+Do obsługi subskrybentów musimy stworzyć REST API. Każdy newsletter musi mieć możliwość zapisania się na niego, wysłania potwierdzenia e-maila oraz wypisania się z niego jedym kliknięciem w każdym emailu jaki otrzyma. Cloud functions pozwalają tworzyć taki interfejsc przy użyciu popularnej biblioteki express.js, ostatecznie powstaną nam takie endpointy:
+
+* /api/v1/subscribe - odpowiada za zapisywanie nowych subskrybentów.
+* /api/v1/confirm - url z tego endpointu wysyłany jest podczas pierwszej wiadomości zaraz po zapisie do newslettera
+* /api/v1/unsubscribe - url jest podawany w każdej wiadomości do subskrybenta, zazwyczaj na dole ale można to zmienić w ustawieniach newslettera
+
+Z API to będzie już wszystko, dzięki temu że firestore daje nam możliwość pracy z bazą danych już po stronie frontendu nie mamy potrzeby tworzenia kolejnych endpointów odpowiedzialnych za poszczególne akcje w naszym systemie. Tylko skomplikowane operacje na bazie danych są wykonywane po stronie cloud functions. W naszym systemie mamy takie dwa przypadki:
+
+* usunięcie newslettera - W Firestore usunięcie dokumentu nie usunie nam jego podkolekcji więc w takim przypadku musimy dostać się do każdego dokumentu podkolekcji i go usunąć, co jest bardzo skomplikowaną operacją i zalecane jest jej wykonanie po stronie backendu. Do tego celu wykorzystamy *Http Callable Functions* Jest to wariancja zapytań http ale z ułatwioną identyfikacją użytkownika.
+* zmiana nazwy newslettera - Dla usprawnienia działania aplikacji, nazwa newslettera nie tylko znajduje się w dokumencie newslettera, ale także przypisana jest do każdej ról użytkowników co pozwala łatwo ją póżniej wyświetlić w aplikacji webowej.
+
+Zmiając ustawienia newslettera mamy opcję ustalania dziennego limitu wysłanych wiadomości, musimy obserwować jego zmianę. Firestore posiada funkcję uruchamiania kodu cloud functions podczas edycji konkrentego dokumentu z kolekcji, pozwala nam ona zaktualizować pozostały przydział na ten konkretny dzień.
+Wysyłając nasz wiadomość nasz system dostawy musi oznaczyć w każdym użytkowniku informację czy została do niego wysłana ta konkretna wiadomość, bez tej operacji nie jest możliwe tworzenie późniejszych zapytań do bazy o użytkowników oczekujących na wysłanie wiadomości.
+Nowo zarejestrowanemu użytkownikowi musimy też za pomocą kodu backendowego znaleźć wszystkie zaproszenia jakie otrzymał i dodać nowe role do systemu.
+
