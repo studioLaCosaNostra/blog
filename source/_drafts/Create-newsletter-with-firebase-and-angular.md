@@ -38,7 +38,7 @@ Kiedy już mamy system roli musimy ustalić jakie dane musimy mieć, aby funkcjo
   * *Wiadomości* - Nazwa w systemie, Tytuł wiadomości, Treść wiadomości oraz autora tejże wiadomości. Wiadomość może edytować autor, właściciel i administratorzy. Odczytać może każdy kto posiada jakąś rolę w *newsletterze*.
   * *Dostawa* - Identyfikator *newslettera*, *wiadomość* do przesłania, status przesyłki, data utworzenia dostawy. Tylko właściciel i administratorzy mają możliwość wysyłać i odczytywać nasze dostawy.
 
-Dodatkową kolekcją jaką jeszcze trzeba stworzyć to *zaproszenia*. Przecież nie każdy ma już konto w naszym systemie, trzeba go najpierw zaprosić e-mailem, a system musi wiedzieć że nowy użytkownik był wcześniej zaproszony do *newslettera* i przypisać mu nowe role.
+Dodatkową kolekcją, jaką jeszcze trzeba stworzyć to *zaproszenia*. Przecież nie każdy ma już konto w naszym systemie, trzeba go najpierw zaprosić e-mailem, a system musi wiedzieć, że nowy użytkownik był wcześniej zaproszony do *newslettera* i przypisać mu nowe role.
 
 * *Zaproszenia* - adres email, identyfikator *newslettera*, przyznana rola.
 
@@ -46,16 +46,16 @@ Wyczerpaliśmy już w pełni temat struktury naszej bazy czas przejść do tworz
 
 ## Firebase cloud functions - backend
 
-Do obsługi subskrybentów musimy stworzyć REST API. Każdy newsletter musi mieć możliwość zapisania się na niego, wysłania potwierdzenia e-maila oraz wypisania się z niego jedym kliknięciem w każdym emailu jaki otrzyma. Cloud functions pozwalają tworzyć taki interfejsc przy użyciu popularnej biblioteki express.js, ostatecznie powstaną nam takie endpointy:
+Do obsługi subskrybentów musimy stworzyć REST API. Każdy newsletter musi mieć możliwość zapisania się na niego, wysłania potwierdzenia e-maila oraz wypisania się z niego każdym e-mailu jednym kliknięciem. Cloud functions pozwalają tworzyć taki interfejs przy użyciu popularnej biblioteki express.js, ostatecznie powstaną nam takie endpointy:
 
-* /api/v1/subscribe - odpowiada za zapisywanie nowych subskrybentów.
-* /api/v1/confirm - url z tego endpointu wysyłany jest podczas pierwszej wiadomości zaraz po zapisie do newslettera
-* /api/v1/unsubscribe - url jest podawany w każdej wiadomości do subskrybenta, zazwyczaj na dole ale można to zmienić w ustawieniach newslettera
+* /api/v1/subscribe — odpowiada za zapisywanie nowych subskrybentów.
+* /api/v1/confirm — W pierwszej wiadomości zaraz po zapisie do newslettera, URL z tego endpointu wysyłany jest do subskrybenta, aby mógł potwierdzić swój adres e-mail.
+* /api/v1/unsubscribe — URL jest podawany w każdej wiadomości do subskrybenta, zazwyczaj na dole, ale można to zmienić w ustawieniach newslettera.
 
-Z API to będzie już wszystko, dzięki temu że firestore daje nam możliwość pracy z bazą danych już po stronie frontendu nie mamy potrzeby tworzenia kolejnych endpointów odpowiedzialnych za poszczególne akcje w naszym systemie. Tylko skomplikowane operacje na bazie danych są wykonywane po stronie cloud functions. W naszym systemie mamy takie dwa przypadki:
+Z API to będzie już wszystko, dzięki temu, że firestore umożliwia nam możliwość pracy z bazą danych już po stronie frontendu, nie musimy tworzyć kolejnych endpointów odpowiedzialnych za poszczególne akcje w naszym systemie. Tylko skomplikowane operacje na bazie danych są wykonywane po stronie cloud functions. W naszym systemie mamy takie dwa przypadki:
 
-* usunięcie newslettera - W Firestore usunięcie dokumentu nie usunie nam jego podkolekcji więc w takim przypadku musimy dostać się do każdej podkolekcji dokumentu i usuwać istniejącą tam zawartość. Bardzo czasowo długa i skomplikowana operacją, więc zalecane jest jej wykonanie po stronie backendu. Do tego celu można użyć *Http Callable Functions*, które są wariancją zapytań http ale z obłużoną  identyfikacją użytkownika.
-* zmiana nazwy newslettera - Dla usprawnienia działania aplikacji, nazwa newslettera nie tylko znajduje się w dokumencie newslettera, ale także przypisana jest do każdej ról użytkowników co pozwala łatwo ją póżniej wyświetlić w aplikacji webowej.
+* Usunięcie newslettera — W Firestore usunięcie dokumentu nie usunie nam jego podkolekcji, więc w takim przypadku musimy dostać się do każdej podkolekcji dokumentu i usuwać istniejącą tam zawartość. Jest to bardzo czasowo długa i skomplikowana operacja, więc zalecane jest jej wykonanie po stronie backendu. Do tego celu można użyć *Http Callable Functions*, które są wariancją zapytań http, ale z obłożoną identyfikacją użytkownika.
+* Zmiana nazwy newslettera — Dla usprawnienia działania aplikacji, nazwa newslettera nie tylko znajduje się w dokumencie newslettera, ale także przy każdej roli użytkowników co usprawnia działanie strony frontendowej projektu.
 
 Zmieniając ustawienia newslettera mamy opcję ustalania dziennego limitu wysłanych wiadomości, musimy obserwować jego zmianę. Firestore ma funkcję uruchamiania kodu cloud functions podczas edycji konkretnego dokumentu z kolekcji, pozwala nam ona zaktualizować pozostały przydział na ten konkretny dzień.
 
