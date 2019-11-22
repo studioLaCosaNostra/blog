@@ -54,7 +54,7 @@ Do obsługi subskrybentów musimy stworzyć REST API. Każdy newsletter musi mie
 
 Z API to będzie już wszystko, dzięki temu że firestore daje nam możliwość pracy z bazą danych już po stronie frontendu nie mamy potrzeby tworzenia kolejnych endpointów odpowiedzialnych za poszczególne akcje w naszym systemie. Tylko skomplikowane operacje na bazie danych są wykonywane po stronie cloud functions. W naszym systemie mamy takie dwa przypadki:
 
-* usunięcie newslettera - W Firestore usunięcie dokumentu nie usunie nam jego podkolekcji więc w takim przypadku musimy dostać się do każdego dokumentu podkolekcji i go usunąć, co jest bardzo skomplikowaną operacją i zalecane jest jej wykonanie po stronie backendu. Do tego celu wykorzystamy *Http Callable Functions* Jest to wariancja zapytań http ale z ułatwioną identyfikacją użytkownika.
+* usunięcie newslettera - W Firestore usunięcie dokumentu nie usunie nam jego podkolekcji więc w takim przypadku musimy dostać się do każdej podkolekcji dokumentu i usuwać istniejącą tam zawartość. Bardzo czasowo długa i skomplikowana operacją, więc zalecane jest jej wykonanie po stronie backendu. Do tego celu można użyć *Http Callable Functions*, które są wariancją zapytań http ale z obłużoną  identyfikacją użytkownika.
 * zmiana nazwy newslettera - Dla usprawnienia działania aplikacji, nazwa newslettera nie tylko znajduje się w dokumencie newslettera, ale także przypisana jest do każdej ról użytkowników co pozwala łatwo ją póżniej wyświetlić w aplikacji webowej.
 
 Zmiając ustawienia newslettera mamy opcję ustalania dziennego limitu wysłanych wiadomości, musimy obserwować jego zmianę. Firestore posiada funkcję uruchamiania kodu cloud functions podczas edycji konkrentego dokumentu z kolekcji, pozwala nam ona zaktualizować pozostały przydział na ten konkretny dzień.
@@ -75,16 +75,23 @@ Projekt w swoim rdzeniu korzysta z biblioteki firebase do komunikacji z firestor
 
 ### Strony aplikacji webowej
 
-Opiszę tutaj krótko w punktach jakie widoki będą nam potrzebne, aby użytkownik mógł swobodnie posługiwać się swoim email newsletterem.
+Opiszę tutaj krótko w punktach, jakie widoki będą nam potrzebne, aby użytkownik mógł swobodnie posługiwać się swoim e-mail newsletterem.
 
-* *Logowanie i rejestracja* - Jak każda rozbudowana usługa musimy zawżeć stronę przez którą użytkownik będzie się swobodnie logował czy też tworzył nowe konto.
+* *Logowanie i rejestracja* - Jak każda rozbudowana usługa musimy zawrzeć stronę, przez którą użytkownik będzie się swobodnie logował czy też tworzył nowe konto.
 * *Lista newsletterów* - Pierwszy widok po logowaniu. Lista dostępnych dla nas newsletterów, wyciągnięta zapytaniem do kolekcji ról użytkownika.
 * *Nowy newsletter* - Podajemy nazwę nowego newslettera.
-* *Newsletter* - Podstawowe statystyki czyli ilość subskrybentów, ilość wysłanych emaili od początku istnienia. Kod HTML dla stworzonego custom elementu (Formularza subskrybcji), którego można natychmiast wstawić na swoją stronę www czy Lead Magnet Landing Page-y. Ten widok jest także wejściem w pozostałe podstrony każdego newslettera.
-  * *Ustawienia* - Edycja uwierzytelnienia SMTP, zmiana nazwy newslettera, edycja wiadomości potwierdzającej subskrybcję, lista użytkowników z możliwością edycji roli oraz zapraszania nowych osób. Widok dostępny rest tylko dla właściciela i administratorów.
+* *Newsletter* - Podstawowe statystyki, czyli ilość subskrybentów, ilość wysłanych e-maili od początku istnienia. Kod HTML dla stworzonego custom elementu (Formularza subskrypcji), którego można natychmiast wstawić na swoją stronę www czy Lead Magnet Landing Page-y. Ten widok jest także wejściem w pozostałe podstrony każdego newslettera.
+* *Ustawienia* - Edycja uwierzytelnienia SMTP, zmiana nazwy newslettera, edycja wiadomości potwierdzającej subskrybuje, lista użytkowników z możliwością edycji roli oraz zapraszania nowych osób. Widok dostępny jest tylko dla właściciela i administratorów.
   * *Subskrybenci* - Lista wszystkich zapisanych członków newslettera.
   * *Nowa wiadomość* - Widok nowej wiadomości. Z polami jak nazwa, tytuł i treść wiadomości. Jest też używany do ponownej edycji wiadomości w systemie.
   * *Wiadomości* - Lista utworzonych wiadomości, które możemy natychmiast wysłać do naszych subskrybentów.
   * *Dostawa* - Lista wszystkich nadanych lub oczekujących na wysłanie wiadomości do użytkowników.
 
-### Formularz subskrybcji
+### Formularz subskrypcji
+
+Do stworzenia formularza subskrypcji użyta została biblioteka @angular/elements. Angular Elements jest biblioteką zawierającą wszystkie potrzebne narzędzia, by przekształcić Component Angulara w niezależny od frameworka niestandardowy element HTML (również nazywany Web Component). Dzięki takiemu rozwiązaniu możemy zapewnić klientowi łatwy start w integracji newslettera z jego stronami.
+
+## Podsumowanie
+
+Mało być więcej kodu w artykule, ale raczej to wymagałoby zrobienie z niego kilkuczęściowego kursu. Jeśli po przeczytaniu tekstu jesteś zaintersowany obejrzeniem całego kodu projektu, to zapraszam na [githuba](link do projektu) znajduje się cały projekt lub chcesz skorzystać z e-mail marketing w swoim biznesie [https://email-newsletter.web.app/](http://email-newsletter.web.app/).
+Projekt jest dalej rozwijany hobbystycznie po pracy, wymaga dodania jeszcze wielu funkcji, aby mógł konkurować z ofertą dostępną na rynku. Jeśli chciałbyś wnieść wkład w dalszy rozwój, czy to programistyczny, czy podpowiedzieć jakąś funkcjonalność to zapraszam do [kontaktu](mailto:pawel.laski@gmail.com).
