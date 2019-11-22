@@ -58,12 +58,14 @@ Z API to będzie już wszystko, dzięki temu że firestore daje nam możliwość
 * zmiana nazwy newslettera - Dla usprawnienia działania aplikacji, nazwa newslettera nie tylko znajduje się w dokumencie newslettera, ale także przypisana jest do każdej ról użytkowników co pozwala łatwo ją póżniej wyświetlić w aplikacji webowej.
 
 Zmiając ustawienia newslettera mamy opcję ustalania dziennego limitu wysłanych wiadomości, musimy obserwować jego zmianę. Firestore posiada funkcję uruchamiania kodu cloud functions podczas edycji konkrentego dokumentu z kolekcji, pozwala nam ona zaktualizować pozostały przydział na ten konkretny dzień.
-Wysyłając nasz wiadomość nasz system dostawy musi oznaczyć w każdym użytkowniku informację czy została do niego wysłana ta konkretna wiadomość, bez tej operacji nie jest możliwe tworzenie późniejszych zapytań do bazy o użytkowników oczekujących na wysłanie wiadomości.
-Nowo zarejestrowanemu użytkownikowi musimy też za pomocą kodu backendowego znaleźć wszystkie zaproszenia jakie otrzymał i dodać nowe role do systemu.
-Pewnie się zastanawiasz jak wysyłane są wiadomości przez nasz system, otóż robimy to dosyć prosto. Co godzinę uruchamiany jest kod backendu (cron jobs) który przeszukuje kolekcje newsletterów z nie zużytym limitem wiadomości i z flagą informującą czy oczekuje jakaś wiadomość do wysłania w kolekcji wysyłka. Przy użyciu biblioteki nodemailer system łączy się z usługą mailiongową i wysyła pokoleji wiadomości aż do skończenia się subskrybentów lub do dziennego limitu wiadomości.
+
+Pewnie zastanawiasz się, jak wysyłane są wiadomości przez nasz system. Otóż robimy to dosyć prosto. Co godzinę uruchamiany jest kod backendu (cron jobs), który przeszukuje kolekcje newsletterów z nie zużytym limitem wiadomości i z flagą informującą czy oczekuje jakaś wiadomość do wysłania w kolekcji *dostawa*. Każdy subskrybent przechowuje w swoim dokumencie aktualny status otrzymanych wiadomości z kolekcji *dostawa*. Bez tego nie jest możliwe późniejsze tworzenie zapytań do bazy o subskrybentów oczekujących na wysłanie wiadomości. Przy użyciu biblioteki nodemailer system łączy się z usługą mailingową i wysyła wiadomości aż do skończenia się subskrybentów lub do końca dziennego limitu wiadomości.
+
 Podobnie limity wiadomości są resetowane codziennie o godzinie 10.
 
-Część backendową mamy już opisaną teraz czas przejść do frontendu :)
+Nowo zarejestrowanemu użytkownikowi musimy też za pomocą kodu backendowego znaleźć wszystkie zaproszenia, jakie otrzymał i dodać nowe role do systemu.
+
+Część backendową mamy już opisaną teraz czas przejść do frontendu. :)
 
 ## Czym jest Angular?
 
@@ -71,7 +73,7 @@ Angular jest napisanym w języku Typescript frameworkiem do tworzenia szybkich i
 
 ### Użyte technologie
 
-Projekt w swoim rdzeniu korzysta z biblioteki firebase do komunikacji z firestore oraz z NGRX do trzymania ostatnio pobranych danych z naszej bazy co łagodzi etap ładowania treści podczas aktywnego korzystania z aplikacji. Ułatwiając sobie pracę nad wyglądem aplikacji, została użyta biblioteka material design oraz flex-layout. Dla zmniejszenia kosztów związanych z pobieraniem strony dodano do projektu bibliotekę @angular/pwa, która wprowadza nasz system w swiat service-workerów i inteligentnego cachowania aplikacji po stronie klienta. Do edycji wiadomości użyliśmy prosemirror, biblioteka posiada zestaw narzędzi gotowych do stworzenia bogatego w opcje edytora tekstu. Jego główną zaletą jest gotowy system tranzakcyjny co pozwala nam na edycję jednego dokumentu przez wiele osób jednocześnie jak w Google Docs. Webowa wersja systemu jest typową aplikacją SPA, czyli cała treść strony generowana jest wyłącznie przez funkcje javascriptowe. Problem jest taki że roboty wyszukiwarek nie mają możliwości wykonywania javascriptu po swojej stronie, a bazują głównie na zwracanej treści HTML. Angular universal jest gotową biblioteką do generowania treści HTML z wnętrza angularowej aplikacji. Za jej pomocą generujemy wcześniej zdefiniowane podstrony aplikacji i wysyłamy je jako statyczny html na hosting Firebase.
+Projekt w swoim rdzeniu korzysta z biblioteki firebase do komunikacji z firestore oraz z NGRX do trzymania ostatnio pobranych danych z naszej bazy co łagodzi etap ładowania treści podczas aktywnego korzystania z aplikacji. Ułatwiając sobie pracę nad wyglądem aplikacji, została użyta biblioteka material design oraz flex-layout. Dla zmniejszenia kosztów związanych z pobieraniem strony dodano do projektu bibliotekę @angular/pwa, która wprowadza nasz system w świat service-workerów i inteligentnego cachowania aplikacji po stronie klienta. Do edycji wiadomości użyliśmy prosemirror, biblioteka posiada zestaw narzędzi gotowych do stworzenia bogatego w opcje edytora tekstu. Jego główną zaletą jest gotowy system transakcyjny pozwalający nam na edycję jednego dokumentu przez wiele osób jednocześnie tak jak w Google Docs.  Jednym z problemów do rozwiązania była widoczność strony przez wyszukiwarki. Frontendowa cześć systemu jest typową aplikacją SPA, czyli cała treść strony generowana jest wyłącznie przez funkcje javascriptowe. Dla wielu wyszukiwarek jest to problem, ponieważ ich roboty potrafią tylko analizować zwracanej treści HTML z odpowiedzi serwer. Rozwiązaniem tego problemu jest Angular Universal. Gotową biblioteką do generowania treści HTML z wnętrza angularowej aplikacji. Za jej pomocą generujemy wcześniej zdefiniowane podstrony aplikacji i wysyłamy je jako statyczny html na hosting Firebase.
 
 ### Strony aplikacji webowej
 
