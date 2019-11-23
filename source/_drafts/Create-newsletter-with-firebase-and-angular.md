@@ -2,9 +2,9 @@
 title: Create newsletter with firebase and angular
 ampSettings:
   titleImage:
-    path: null
+    path: title-image.png
 tags:
-thumbnail:
+thumbnail: title-image.png
 ---
 
 E-mail marketing to jeden z najtańszych i najprostszych sposobów, aby Twoja strona, sklep internetowa zdobyła powracających odbiorców. Jest to forma reklamy, która trafia w najbardziej prywatne miejsce w sieci, jakim jest Twoja skrzynka pocztowa. Wyniki raportów z wielu kampanii na całym świecie pokazują, że inwestycja w taką formę reklamy działa i odnosi sukces. Dlatego warto rozpocząć pracę nad Twoim newsletterem!
@@ -34,8 +34,8 @@ Kiedy już mamy system roli musimy ustalić jakie dane musimy mieć, aby nasz ne
 
 * *Newsletter* — Nazwa w systemie, adres e-mail, z którego wysyłamy wiadomości, informacja o błędach, jakie wystąpiły (np.: źle skonfigurowane uwierzytelnienie SMTP), ilość subskrybentów, ilość wysłanych wiadomości. Poza tymi polami nasz dokument będzie zawierał w sobie dodatkowe kolekcje dokumentów (Firestore pozwala na zagnieżdżanie się w dokumencie kolekcji z kolejnymi dokumentami):
   * *Subskrybenci* - adres e-mail, czy potwierdził subskrypcję, data dodania i informacje, jakie otrzymał wiadomości od nas od początku istnienia na liście. Tylko właściciel i administratorzy będą mieli wgląd do naszej listy.
-  * *Subskrybenci internal* - Token potwierdzenia subskrypcji oraz anulowania jej. Te dane zostały specjalnie oddzielona od *Subskrybentów* ponieważ tylko tak możemy im nadać inne zasady bezpieczeństwa. W tym przypadku nikt nie ma dostępu poza cloud functions, które mają dostęp zawsze, ale o tym będzie później.
-  * *Wiadomości* - Nazwa w systemie, Tytuł wiadomości, Treść wiadomości oraz autora tejże wiadomości. Wiadomość może edytować autor, właściciel i administratorzy. Odczytać może każdy, kto posiada określoną rolę w *newsletterze*.
+  * *Subskrybenci internal* - Token potwierdzenia subskrypcji oraz anulowania jej. Te dane zostały specjalnie oddzielona od *Subskrybentów*, ponieważ tylko tak możemy im nadać inne zasady bezpieczeństwa. Zabezpieczone tokeny znane są tylko systemowi i dostępne tylko przy użyciu cloud functions, mające pełen dostęp do wszystkich zasobów firestore.
+  * *Wiadomości* - Nazwa w systemie, Tytuł wiadomości, Treść wiadomości oraz identyfikator autora tejże wiadomości. Wiadomość może edytować autor, właściciel i administratorzy. Odczytać może każdy, kto posiada określoną rolę w *newsletterze*.
   * *Dostawa* - Identyfikator *newslettera*, *wiadomość* do przesłania, status przesyłki, data utworzenia dostawy. Tylko właściciel i administratorzy mają możliwość wysyłać i odczytywać nasze dostawy.
 
 Dodatkową kolekcją, jaką jeszcze trzeba stworzyć to *zaproszenia*. Przecież nie każdy ma już konto w naszym systemie, trzeba go najpierw zaprosić e-mailem, a system musi wiedzieć, że nowy użytkownik był wcześniej zaproszony do *newslettera* i przypisać mu nowe role.
@@ -95,5 +95,5 @@ Do stworzenia formularza subskrypcji użyta została biblioteka @angular/element
 
 ## Podsumowanie
 
-Mało być więcej kodu w artykule, ale raczej to wymagałoby zrobienie z niego kilkuczęściowego kursu. Jeśli po przeczytaniu tekstu jesteś zaintersowany obejrzeniem całego kodu projektu, to zapraszam na [githuba](link do projektu) znajduje się cały projekt lub chcesz skorzystać z e-mail marketing w swoim biznesie [https://email-newsletter.web.app/](http://email-newsletter.web.app/).
+Mało być więcej kodu w artykule, ale raczej to wymagałoby zrobienie z niego kilkuczęściowego kursu. Jeśli po przeczytaniu tekstu jesteś zaintersowany obejrzeniem całego kodu projektu, to zapraszam na [githuba](link do projektu) gdzie znajduje się cały projekt lub jeśli chcesz skorzystać z e-mail marketing w swoim biznesie to wystarczy, że wejdziesz na [https://email-newsletter.web.app/](http://email-newsletter.web.app/).
 Projekt jest dalej rozwijany hobbystycznie po pracy, wymaga dodania jeszcze wielu funkcji, aby mógł konkurować z ofertą dostępną na rynku. Jeśli chciałbyś wnieść wkład w dalszy rozwój, czy to programistyczny, czy podpowiedzieć jakąś funkcjonalność to zapraszam do [kontaktu](mailto:pawel.laski@gmail.com).
