@@ -13,6 +13,8 @@ Jest wiele gotowych narzędzi do tworzenia kampanii e-mail marketingowych jak Ma
 
 ## Czym jest Firebase?
 
+![Firebase logo](../Create-newsletter-with-firebase-and-angular/firebase-logo.png)
+
 Firebase jest to platforma deweloperska stworzona przez Firebase Inc w 2011, która została później wykupiona przez Google w 2014. Platforma jest głównie skupiona na stworzeniu ekosystemu ułatwiającego szybkie tworzenie dobrej jakości aplikacji mobilnych. W naszej aplikacji wykorzystamy tylko parę świadczonych przez nią usług:
 
 1. Hosting - 1GB przestrzeni dyskowej na nasz projekt, 10GB darmowego transferu miesięcznie + automatycznie skonfigurowany certyfikat SSL. Plus dzięki firebase-cli wysyłamy nasz gotowy kod w parę sekund.
