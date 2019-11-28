@@ -28,9 +28,11 @@ Jak już się dowiedzieliśmy Firestore to wbudowana w platformę baza danych No
 
 ### Jakich kolekcji będzie potrzebować nasza aplikacja?
 
+![firestore console view](../Create-newsletter-with-firebase-and-angular/firestore-console-view.png)
+
 Od samego początku projektowania należy myśleć, że nie tylko właściciel będzie chciał pracować nad newsletterem. Trzeba opracować kolekcję, która będzie przechowywać informacje, jaką rolę odgrywa w newsletterze dany użytkownik systemu. Dla ułatwienia mamy tylko trzy role: właściciel, administrator i członek. Każdy z nich ma różne prawa dostępu do kolekcji w systemie. Firestore pozwala na dostęp do bazy już na poziomie frontendu, więc pewnie się zastanawiasz, jak to zrobić skoro można odpytać bazę o każdy dokument i go edytować. Zazwyczaj backend jest od chronienia i komunikacji z bazą danych. Tu z pomocą przychodzi Firestore Seciurity Rules. Przy użyciu prostej składni podobnej do javascriptu mamy możliwość tworzenia zasad bezpieczeństwa. Ustalać kto ma jaki dostęp do danego zasobu na podstawie informacji znajdujących się w kolekcji ról użytkownika.
 
-Kiedy już mamy system roli musimy ustalić jakie dane musimy mieć, aby nasz newsletter mógł działać:
+Kiedy już mamy system roli musimy ustalić jakie dane musimy mieć, aby newsletter mógł wykonywać swoje zadanie:
 
 * *Ustawienia newslettera* — Uwierzytelnienia dla SMTP, opis pierwszej wiadomości dla potwierdzenia subskrypcji, dzienny limit wiadomości (niektóre usługi jak Gmail pozwalają tylko na określoną ilość przesłanych wiadomości dziennie). Do tych danych dostęp będą mieli tylko właściciel i administratorzy.
 
@@ -48,16 +50,22 @@ Wyczerpaliśmy już w pełni temat struktury naszej bazy czas przejść do tworz
 
 ## Firebase cloud functions - backend
 
+![firebase cloud functions console view](../Create-newsletter-with-firebase-and-angular/firebase-cloud-functions-console-view.png)
+
 Do obsługi subskrybentów musimy stworzyć REST API. Każdy newsletter musi mieć możliwość zapisania się na niego, wysłania potwierdzenia e-maila oraz wypisania się z niego każdym e-mailu jednym kliknięciem. Cloud functions pozwalają tworzyć taki interfejs przy użyciu popularnej biblioteki express.js, ostatecznie powstaną nam takie endpointy:
 
 * /api/v1/subscribe — odpowiada za zapisywanie nowych subskrybentów.
 * /api/v1/confirm — W pierwszej wiadomości zaraz po zapisie do newslettera, URL z tego endpointu wysyłany jest do subskrybenta, aby mógł potwierdzić swój adres e-mail.
 * /api/v1/unsubscribe — URL jest podawany w każdej wiadomości do subskrybenta, zazwyczaj na dole, ale można to zmienić w ustawieniach newslettera.
 
+![firebase cloud functions web api](../Create-newsletter-with-firebase-and-angular/firebase-cloud-functions-web-api.png)
+
 Z API to będzie już wszystko, dzięki temu, że firestore umożliwia nam możliwość pracy z bazą danych już po stronie frontendu, nie musimy tworzyć kolejnych endpointów odpowiedzialnych za poszczególne akcje w naszym systemie. Tylko skomplikowane operacje na bazie danych są wykonywane po stronie cloud functions. W naszym systemie mamy takie dwa przypadki:
 
 * Usunięcie newslettera — W Firestore usunięcie dokumentu nie usunie nam jego podkolekcji, więc w takim przypadku musimy dostać się do każdej podkolekcji dokumentu i usuwać istniejącą tam zawartość. Jest to bardzo czasowo długa i skomplikowana operacja, więc zalecane jest jej wykonanie po stronie backendu. Do tego celu można użyć *Http Callable Functions*, które są wariancją zapytań http, ale z obłożoną identyfikacją użytkownika.
 * Zmiana nazwy newslettera — Dla usprawnienia działania aplikacji, nazwa newslettera nie tylko znajduje się w dokumencie newslettera, ale także przy każdej roli użytkowników co usprawnia działanie strony frontendowej projektu.
+
+![firebase cloud functions rename newsletter](../Create-newsletter-with-firebase-and-angular/firebase-cloud-functions-rename-newsletter.png)
 
 Zmieniając ustawienia newslettera mamy opcję ustalania dziennego limitu wysłanych wiadomości, musimy obserwować jego zmianę. Firestore ma funkcję uruchamiania kodu cloud functions podczas edycji konkretnego dokumentu z kolekcji, pozwala nam ona zaktualizować pozostały przydział na ten konkretny dzień.
 
@@ -70,6 +78,8 @@ Nowo zarejestrowanemu użytkownikowi musimy też za pomocą kodu backendowego zn
 Część backendową mamy już opisaną teraz czas przejść do frontendu. :)
 
 ## Czym jest Angular?
+
+![Angular logo](../Create-newsletter-with-firebase-and-angular/angular-logo.png)
 
 Angular jest frameworkiem usprawniającym tworzenie szybkich i wydajnych aplikacji webowych. Systematycznie rozwijany przez Google, z roku na rok coraz bardziej staje się kompleksową platformą do tworzenia SPA zaraz obok Reacta czy Vue.
 
@@ -93,9 +103,13 @@ System newsletterów potrzebuje kilka podstawowych widoków, aby użytkownik mó
 
 ### Formularz subskrypcji
 
-Do stworzenia formularza subskrypcji użyta została biblioteka @angular/elements. Angular Elements jest biblioteką zawierającą wszystkie potrzebne narzędzia, by przekształcić Component Angulara w niezależny od frameworka niestandardowy element HTML (również nazywany Web Component). Dzięki takiemu rozwiązaniu możemy zapewnić klientowi łatwy start w integracji newslettera z jego stronami.
+![subscribe form](../Create-newsletter-with-firebase-and-angular/subscribe-form.png)
+
+![custom element code](../Create-newsletter-with-firebase-and-angular/custom-element-code.png)
+
+Do stworzenia formularza subskrypcji użyta została biblioteka @angular/elements. Angular Elements jest biblioteką zawierającą wszystkie potrzebne narzędzia, by przekształcić Component Angulara w niezależny od frameworka niestandardowy element HTML (również nazywany Web Component). Dzięki takiemu rozwiązaniu możemy zapewnić klientowi łatwy start w integracji newslettera z jego witryną.
 
 ## Podsumowanie
 
-Mało być więcej kodu w artykule, ale raczej to wymagałoby zrobienie z niego kilkuczęściowego kursu. Jeśli po przeczytaniu tekstu jesteś zaintersowany obejrzeniem całego kodu projektu, to zapraszam na [githuba](link do projektu) gdzie znajduje się cały projekt lub jeśli chcesz skorzystać z e-mail marketing w swoim biznesie to wystarczy, że wejdziesz na [https://email-newsletter.web.app/](http://email-newsletter.web.app/).
+Mało być więcej kodu w artykule, ale raczej to wymagałoby zrobienie z niego kilkuczęściowego kursu. Jeśli po przeczytaniu tekstu jesteś zaintersowany obejrzeniem całego kodu projektu, to zapraszam na [githuba](link do projektu) gdzie znajduje się cały projekt lub jeśli chcesz skorzystać z e-mail marketingu w swoim biznesie to wystarczy, że wejdziesz na [https://email-newsletter.web.app/](http://email-newsletter.web.app/).
 Projekt jest dalej rozwijany hobbystycznie po pracy, wymaga dodania jeszcze wielu funkcji, aby mógł konkurować z ofertą dostępną na rynku. Jeśli chciałbyś wnieść wkład w dalszy rozwój, czy to programistyczny, czy podpowiedzieć jakąś funkcjonalność to zapraszam do [kontaktu](mailto:pawel.laski@gmail.com).
