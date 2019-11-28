@@ -32,6 +32,8 @@ Jak już się dowiedzieliśmy Firestore to wbudowana w platformę baza danych No
 
 Od samego początku projektowania należy myśleć, że nie tylko właściciel będzie chciał pracować nad newsletterem. Trzeba opracować kolekcję, która będzie przechowywać informacje, jaką rolę odgrywa w newsletterze dany użytkownik systemu. Dla ułatwienia mamy tylko trzy role: właściciel, administrator i członek. Każdy z nich ma różne prawa dostępu do kolekcji w systemie. Firestore pozwala na dostęp do bazy już na poziomie frontendu, więc pewnie się zastanawiasz, jak to zrobić skoro można odpytać bazę o każdy dokument i go edytować. Zazwyczaj backend jest od chronienia i komunikacji z bazą danych. Tu z pomocą przychodzi Firestore Seciurity Rules. Przy użyciu prostej składni podobnej do javascriptu mamy możliwość tworzenia zasad bezpieczeństwa. Ustalać kto ma jaki dostęp do danego zasobu na podstawie informacji znajdujących się w kolekcji ról użytkownika.
 
+![firestore example rule](../Create-newsletter-with-firebase-and-angular/firestore-example-rule.png)
+
 Kiedy już mamy system roli musimy ustalić jakie dane musimy mieć, aby newsletter mógł wykonywać swoje zadanie:
 
 * *Ustawienia newslettera* — Uwierzytelnienia dla SMTP, opis pierwszej wiadomości dla potwierdzenia subskrypcji, dzienny limit wiadomości (niektóre usługi jak Gmail pozwalają tylko na określoną ilość przesłanych wiadomości dziennie). Do tych danych dostęp będą mieli tylko właściciel i administratorzy.
