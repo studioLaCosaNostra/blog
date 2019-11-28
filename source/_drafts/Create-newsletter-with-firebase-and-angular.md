@@ -71,25 +71,25 @@ Część backendową mamy już opisaną teraz czas przejść do frontendu. :)
 
 ## Czym jest Angular?
 
-Angular jest napisanym w języku Typescript frameworkiem do tworzenia szybkich i wydajnych aplikacji webowych. Systematycznie rozwijany przez Google, z roku na rok staje się najbardziej kompletną technologią (aktualny z trendami webowymi) zaraz obok Reacta czy Vue.
+Angular jest frameworkiem usprawniającym tworzenie szybkich i wydajnych aplikacji webowych. Systematycznie rozwijany przez Google, z roku na rok coraz bardziej staje się kompleksową platformą do tworzenia SPA zaraz obok Reacta czy Vue.
 
 ### Użyte technologie
 
-Projekt w swoim rdzeniu korzysta z biblioteki firebase do komunikacji z firestore oraz z NGRX do trzymania ostatnio pobranych danych z naszej bazy co łagodzi etap ładowania treści podczas aktywnego korzystania z aplikacji. Ułatwiając sobie pracę nad wyglądem aplikacji, została użyta biblioteka material design oraz flex-layout. Dla zmniejszenia kosztów związanych z pobieraniem strony dodano do projektu bibliotekę @angular/pwa, która wprowadza nasz system w świat service-workerów i inteligentnego cachowania aplikacji po stronie klienta. Do edycji wiadomości użyliśmy prosemirror, biblioteka posiada zestaw narzędzi gotowych do stworzenia bogatego w opcje edytora tekstu. Jego główną zaletą jest gotowy system transakcyjny pozwalający nam na edycję jednego dokumentu przez wiele osób jednocześnie tak jak w Google Docs.  Jednym z problemów do rozwiązania była widoczność strony przez wyszukiwarki. Frontendowa cześć systemu jest typową aplikacją SPA, czyli cała treść strony generowana jest wyłącznie przez funkcje javascriptowe. Dla wielu wyszukiwarek jest to problem, ponieważ ich roboty potrafią tylko analizować zwracanej treści HTML z odpowiedzi serwer. Rozwiązaniem tego problemu jest Angular Universal. Gotową biblioteką do generowania treści HTML z wnętrza angularowej aplikacji. Za jej pomocą generujemy wcześniej zdefiniowane podstrony aplikacji i wysyłamy je jako statyczny html na hosting Firebase.
+Projekt w swoim rdzeniu korzysta z biblioteki Firebase do komunikacji z Firestore oraz z NGRX do zachowywania stanu ostatnio pobranych danych z naszej bazy co łagodzi etap ładowania treści podczas aktywnego korzystania z aplikacji. Ułatwiając sobie pracę nad wyglądem aplikacji, została użyta biblioteka material design oraz flex-layout. Dla zmniejszenia kosztów związanych z pobieraniem strony dodano do projektu bibliotekę @angular/pwa, która wprowadza nasz system w świat service-workerów i inteligentnego cachowania aplikacji po stronie klienta. Do edycji wiadomości użyto bibliotekę prosemirror. Posiada ona zestaw narzędzi gotowych do stworzenia bogatego w opcje edytora tekstu. Jego główną zaletą jest gotowy system transakcyjny pozwalający nam na edycję jednego dokumentu przez wiele osób jednocześnie tak jak w Google Docs. Jednym z problemów do rozwiązania była widoczność strony przez wyszukiwarki. Frontendowa cześć systemu jest typową aplikacją SPA, czyli cała treść strony generowana jest wyłącznie przez funkcje javascriptowe. Dla wielu wyszukiwarek jest to problem, ponieważ ich roboty potrafią tylko analizować zwracanej treści HTML z odpowiedzi serwer. Rozwiązaniem tego problemu jest biblioteka do prerenderowania treci HTML z wnętrza aplikacji, czyli Angular Universal. Za jej pomocą generujemy wcześniej zdefiniowane podstrony aplikacji i wysyłamy je jako statyczny html na hosting Firebase.
 
 ### Strony aplikacji webowej
 
-Opiszę tutaj krótko w punktach, jakie widoki będą nam potrzebne, aby użytkownik mógł swobodnie posługiwać się swoim e-mail newsletterem.
+System newsletterów potrzebuje kilka podstawowych widoków, aby użytkownik mógł swobodnie budować swoją bazę e-mail marketingową:
 
 * *Logowanie i rejestracja* - Jak każda rozbudowana usługa musimy zawrzeć stronę, przez którą użytkownik będzie się swobodnie logował czy też tworzył nowe konto.
-* *Lista newsletterów* - Pierwszy widok po logowaniu. Lista dostępnych dla nas newsletterów, wyciągnięta zapytaniem do kolekcji ról użytkownika.
-* *Nowy newsletter* - Podajemy nazwę nowego newslettera.
-* *Newsletter* - Podstawowe statystyki, czyli ilość subskrybentów, ilość wysłanych e-maili od początku istnienia. Kod HTML dla stworzonego custom elementu (Formularza subskrypcji), którego można natychmiast wstawić na swoją stronę www czy Lead Magnet Landing Page-y. Ten widok jest także wejściem w pozostałe podstrony każdego newslettera.
+* *Lista newsletterów* - Pierwszy widok po logowaniu. Lista dostępnych dla nas newsletterów, wyciągnięta zapytaniem z kolekcji ról użytkownika.
+* *Nowy newsletter* - Tworzenie nowego newslettera, gdzie podajemy nazwę nowego newslettera i po zatwierdzeniu jesteśmy kierowani do reszty ustawień.
 * *Ustawienia* - Edycja uwierzytelnienia SMTP, zmiana nazwy newslettera, edycja wiadomości potwierdzającej subskrybuje, lista użytkowników z możliwością edycji roli oraz zapraszania nowych osób. Widok dostępny jest tylko dla właściciela i administratorów.
   * *Subskrybenci* - Lista wszystkich zapisanych członków newslettera.
   * *Nowa wiadomość* - Widok nowej wiadomości. Z polami jak nazwa, tytuł i treść wiadomości. Jest też używany do ponownej edycji wiadomości w systemie.
   * *Wiadomości* - Lista utworzonych wiadomości, które możemy natychmiast wysłać do naszych subskrybentów.
   * *Dostawa* - Lista wszystkich nadanych lub oczekujących na wysłanie wiadomości do użytkowników.
+* *Newsletter* - Podstawowe statystyki, czyli ilość subskrybentów, ilość wysłanych e-maili od początku istnienia. Kod HTML dla stworzonego custom elementu (Formularza subskrypcji), którego można natychmiast wstawić na swoją stronę www czy Lead Magnet Landing Page-y. Ten widok jest także wejściem w pozostałe podstrony każdego newslettera.
 
 ### Formularz subskrypcji
 
