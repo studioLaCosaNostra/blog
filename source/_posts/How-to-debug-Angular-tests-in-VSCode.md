@@ -17,6 +17,7 @@ VSCode has the option of debugging code inside the editor. While in typical cons
 Fortunately, when looking for an answer, I discovered one source of microsoft [vscode-recipes](https://github.com/microsoft/vscode-recipes/tree/master/Angular-CLI). And by reading the description [vscode-chrome-debug](https://github.com/microsoft/vscode-chrome-debug) I was able to create a launcher of my dreams.
 
 - Install extension: Debugger for chrome
+
 ![Debugger for chrome extension view in vscode](./chrome-extension.png)
 
 - Add the configuration to the file `.vscode/launch.json`
