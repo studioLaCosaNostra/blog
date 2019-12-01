@@ -1,10 +1,11 @@
 ---
-title: Create newsletter with firebase and angular
+title: Stwórz od zera usługę newslettera z Firebase i Angular
 ampSettings:
   titleImage:
     path: title-image.png
 tags:
 thumbnail: title-image.png
+twitterAutoPublish: false
 ---
 
 E-mail marketing to jeden z najtańszych i najprostszych sposobów, aby Twoja strona, sklep internetowa zdobyła powracających odbiorców. Jest to forma reklamy, która trafia w najbardziej prywatne miejsce w sieci, jakim jest Twoja skrzynka pocztowa. Wyniki raportów z wielu kampanii na całym świecie pokazują, że inwestycja w taką formę reklamy działa i odnosi sukces. Dlatego warto rozpocząć pracę nad Twoim newsletterem!
@@ -13,7 +14,7 @@ Jest wiele gotowych narzędzi do tworzenia kampanii e-mail marketingowych jak Ma
 
 ## Czym jest Firebase?
 
-![Firebase logo](../Create-newsletter-with-firebase-and-angular/firebase-logo.png)
+![Firebase logo](Create-newsletter-with-firebase-and-angular/firebase-logo.png)
 
 Firebase jest to platforma deweloperska stworzona przez Firebase Inc w 2011, która została później wykupiona przez Google w 2014. Platforma jest głównie skupiona na stworzeniu ekosystemu ułatwiającego szybkie tworzenie dobrej jakości aplikacji mobilnych. W naszej aplikacji wykorzystamy tylko parę świadczonych przez nią usług:
 
@@ -28,11 +29,11 @@ Jak już się dowiedzieliśmy Firestore to wbudowana w platformę baza danych No
 
 ### Jakich kolekcji będzie potrzebować nasza aplikacja?
 
-![firestore console view](../Create-newsletter-with-firebase-and-angular/firestore-console-view.png)
+![firestore console view](Create-newsletter-with-firebase-and-angular/firestore-console-view.png)
 
 Od samego początku projektowania należy myśleć, że nie tylko właściciel będzie chciał pracować nad newsletterem. Trzeba opracować kolekcję, która będzie przechowywać informacje, jaką rolę odgrywa w newsletterze dany użytkownik systemu. Dla ułatwienia mamy tylko trzy role: właściciel, administrator i członek. Każdy z nich ma różne prawa dostępu do kolekcji w systemie. Firestore pozwala na dostęp do bazy już na poziomie frontendu, więc pewnie się zastanawiasz, jak to zrobić skoro można odpytać bazę o każdy dokument i go edytować. Zazwyczaj backend jest od chronienia i komunikacji z bazą danych. Tu z pomocą przychodzi Firestore Seciurity Rules. Przy użyciu prostej składni podobnej do javascriptu mamy możliwość tworzenia zasad bezpieczeństwa. Ustalać kto ma jaki dostęp do danego zasobu na podstawie informacji znajdujących się w kolekcji ról użytkownika.
 
-![firestore example rule](../Create-newsletter-with-firebase-and-angular/firestore-example-rule.png)
+![firestore example rule](Create-newsletter-with-firebase-and-angular/firestore-example-rule.png)
 
 Kiedy już mamy system roli musimy ustalić jakie dane musimy mieć, aby newsletter mógł wykonywać swoje zadanie:
 
@@ -52,7 +53,7 @@ Wyczerpaliśmy już w pełni temat struktury naszej bazy czas przejść do tworz
 
 ## Firebase cloud functions - backend
 
-![firebase cloud functions console view](../Create-newsletter-with-firebase-and-angular/firebase-cloud-functions-console-view.png)
+![firebase cloud functions console view](Create-newsletter-with-firebase-and-angular/firebase-cloud-functions-console-view.png)
 
 Do obsługi subskrybentów musimy stworzyć REST API. Każdy newsletter musi mieć możliwość zapisania się na niego, wysłania potwierdzenia e-maila oraz wypisania się z niego każdym e-mailu jednym kliknięciem. Cloud functions pozwalają tworzyć taki interfejs przy użyciu popularnej biblioteki express.js, ostatecznie powstaną nam takie endpointy:
 
@@ -60,18 +61,18 @@ Do obsługi subskrybentów musimy stworzyć REST API. Każdy newsletter musi mie
 * /api/v1/confirm — W pierwszej wiadomości zaraz po zapisie do newslettera, URL z tego endpointu wysyłany jest do subskrybenta, aby mógł potwierdzić swój adres e-mail.
 * /api/v1/unsubscribe — URL jest podawany w każdej wiadomości do subskrybenta, zazwyczaj na dole, ale można to zmienić w ustawieniach newslettera.
 
-![firebase cloud functions web api](../Create-newsletter-with-firebase-and-angular/firebase-cloud-functions-web-api.png)
+![firebase cloud functions web api](Create-newsletter-with-firebase-and-angular/firebase-cloud-functions-web-api.png)
 
 Z API to będzie już wszystko, dzięki temu, że firestore umożliwia nam możliwość pracy z bazą danych już po stronie frontendu, nie musimy tworzyć kolejnych endpointów odpowiedzialnych za poszczególne akcje w naszym systemie. Tylko skomplikowane operacje na bazie danych są wykonywane po stronie cloud functions. W naszym systemie mamy takie dwa przypadki:
 
 * Usunięcie newslettera — W Firestore usunięcie dokumentu nie usunie nam jego podkolekcji, więc w takim przypadku musimy dostać się do każdej podkolekcji dokumentu i usuwać istniejącą tam zawartość. Jest to bardzo czasowo długa i skomplikowana operacja, więc zalecane jest jej wykonanie po stronie backendu. Do tego celu można użyć *Http Callable Functions*, które są wariancją zapytań http, ale z obłożoną identyfikacją użytkownika.
 * Zmiana nazwy newslettera — Dla usprawnienia działania aplikacji, nazwa newslettera nie tylko znajduje się w dokumencie newslettera, ale także przy każdej roli użytkowników co usprawnia działanie strony frontendowej projektu.
 
-![firebase cloud functions rename newsletter](../Create-newsletter-with-firebase-and-angular/firebase-cloud-functions-rename-newsletter.png)
+![firebase cloud functions rename newsletter](Create-newsletter-with-firebase-and-angular/firebase-cloud-functions-rename-newsletter.png)
 
-Zmieniając ustawienia newslettera mamy opcję ustalania dziennego limitu wysłanych wiadomości, musimy obserwować jego zmianę. Firestore ma funkcję uruchamiania kodu cloud functions podczas edycji konkretnego dokumentu z kolekcji, pozwala nam ona zaktualizować pozostały przydział na ten konkretny dzień.
+Zmieniając ustawienia newslettera mamy opcję ustalania dziennego limitu wysłanych wiadomości, musimy obserwować jego zmianę. Firestore ma funkcję uruchamiania kodu cloud functions podczas edycji konkretnego dokumentu z kolekcji, dziki temu mamy możliwość zaktualizować limit wiadomości na ten konkretny dzień.
 
-Pewnie zastanawiasz się, jak wysyłane są wiadomości przez nasz system. Otóż robimy to dosyć prosto. Co godzinę uruchamiany jest kod backendu (cron jobs), który przeszukuje kolekcje newsletterów z nie zużytym limitem wiadomości i z flagą informującą czy oczekuje jakaś wiadomość do wysłania w kolekcji *dostawa*. Każdy subskrybent przechowuje w swoim dokumencie aktualny status otrzymanych wiadomości z kolekcji *dostawa*. Bez tego nie jest możliwe późniejsze tworzenie zapytań do bazy o subskrybentów oczekujących na wysłanie wiadomości. Przy użyciu biblioteki nodemailer system łączy się z usługą mailingową i wysyła wiadomości aż do skończenia się subskrybentów lub do końca dziennego limitu wiadomości.
+Pewnie zastanawiasz się, jak wysyłane są wiadomości przez nasz system. Otóż działa to dosyć prosto. Co godzinę uruchamiany jest kod backendu (cron jobs), który przeszukuje kolekcje newsletterów z nie zużytym dziennym limitem wiadomości i z flagą informującą czy oczekuje na jakaś wiadomość do wysłania w kolekcji *dostawa*. Każdy subskrybent przechowuje w swoim dokumencie aktualny status otrzymanych wiadomości z kolekcji *dostawa*. Bez tego nie jest możliwe późniejsze tworzenie zapytań do bazy o subskrybentów oczekujących na wysłanie wiadomości. Przy użyciu biblioteki nodemailer system łączy się z usługą mailingową i wysyła wiadomości aż do skończenia się subskrybentów lub do końca dziennego limitu wiadomości.
 
 Podobnie limity wiadomości są resetowane codziennie o godzinie 10.
 
@@ -81,7 +82,7 @@ Część backendową mamy już opisaną teraz czas przejść do frontendu. :)
 
 ## Czym jest Angular?
 
-![Angular logo](../Create-newsletter-with-firebase-and-angular/angular-logo.png)
+![Angular logo](Create-newsletter-with-firebase-and-angular/angular-logo.png)
 
 Angular jest frameworkiem usprawniającym tworzenie szybkich i wydajnych aplikacji webowych. Systematycznie rozwijany przez Google, z roku na rok coraz bardziej staje się kompleksową platformą do tworzenia SPA zaraz obok Reacta czy Vue.
 
@@ -90,6 +91,12 @@ Angular jest frameworkiem usprawniającym tworzenie szybkich i wydajnych aplikac
 Projekt w swoim rdzeniu korzysta z biblioteki Firebase do komunikacji z Firestore oraz z NGRX do zachowywania stanu ostatnio pobranych danych z naszej bazy co łagodzi etap ładowania treści podczas aktywnego korzystania z aplikacji. Ułatwiając sobie pracę nad wyglądem aplikacji, została użyta biblioteka material design oraz flex-layout. Dla zmniejszenia kosztów związanych z pobieraniem strony dodano do projektu bibliotekę @angular/pwa, która wprowadza nasz system w świat service-workerów i inteligentnego cachowania aplikacji po stronie klienta. Do edycji wiadomości użyto bibliotekę prosemirror. Posiada ona zestaw narzędzi gotowych do stworzenia bogatego w opcje edytora tekstu. Jego główną zaletą jest gotowy system transakcyjny pozwalający nam na edycję jednego dokumentu przez wiele osób jednocześnie tak jak w Google Docs. Jednym z problemów do rozwiązania była widoczność strony przez wyszukiwarki. Frontendowa cześć systemu jest typową aplikacją SPA, czyli cała treść strony generowana jest wyłącznie przez funkcje javascriptowe. Dla wielu wyszukiwarek jest to problem, ponieważ ich roboty potrafią tylko analizować zwracanej treści HTML z odpowiedzi serwer. Rozwiązaniem tego problemu jest biblioteka do prerenderowania treci HTML z wnętrza aplikacji, czyli Angular Universal. Za jej pomocą generujemy wcześniej zdefiniowane podstrony aplikacji i wysyłamy je jako statyczny html na hosting Firebase.
 
 ### Strony aplikacji webowej
+
+||||
+| - | - | - |
+| ![Sign in view](Create-newsletter-with-firebase-and-angular/sign-in.jpg) | ![Newsletters view](Create-newsletter-with-firebase-and-angular/newsletters.jpg) | ![New newsletters view](Create-newsletter-with-firebase-and-angular/new-newsletter.jpg) |
+| ![Settings view](Create-newsletter-with-firebase-and-angular/settings.jpg) | ![Newsletter view](Create-newsletter-with-firebase-and-angular/newsletter.jpg) | ![New message view](Create-newsletter-with-firebase-and-angular/new-message.jpg) |
+
 
 System newsletterów potrzebuje kilka podstawowych widoków, aby użytkownik mógł swobodnie budować swoją bazę e-mail marketingową:
 
@@ -105,9 +112,9 @@ System newsletterów potrzebuje kilka podstawowych widoków, aby użytkownik mó
 
 ### Formularz subskrypcji
 
-![subscribe form](../Create-newsletter-with-firebase-and-angular/subscribe-form.png)
+![subscribe form](Create-newsletter-with-firebase-and-angular/subscribe-form.png)
 
-![custom element code](../Create-newsletter-with-firebase-and-angular/custom-element-code.png)
+![custom element code](Create-newsletter-with-firebase-and-angular/custom-element-code.png)
 
 Do stworzenia formularza subskrypcji użyta została biblioteka @angular/elements. Angular Elements jest biblioteką zawierającą wszystkie potrzebne narzędzia, by przekształcić Component Angulara w niezależny od frameworka niestandardowy element HTML (również nazywany Web Component). Dzięki takiemu rozwiązaniu możemy zapewnić klientowi łatwy start w integracji newslettera z jego witryną.
 
