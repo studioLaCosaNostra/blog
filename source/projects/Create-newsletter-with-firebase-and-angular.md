@@ -120,5 +120,5 @@ Do stworzenia formularza subskrypcji użyta została biblioteka @angular/element
 
 ## Podsumowanie
 
-Mało być więcej kodu w artykule, ale raczej to wymagałoby zrobienie z niego kilkuczęściowego kursu. Jeśli po przeczytaniu tekstu jesteś zaintersowany obejrzeniem całego kodu projektu, to zapraszam na [githuba](link do projektu) gdzie znajduje się cały projekt lub jeśli chcesz skorzystać z e-mail marketingu w swoim biznesie to wystarczy, że wejdziesz na [https://email-newsletter.web.app/](http://email-newsletter.web.app/).
+Mało być więcej kodu w artykule, ale raczej to wymagałoby zrobienie z niego kilkuczęściowego kursu. Jeśli po przeczytaniu tekstu jesteś zaintersowany obejrzeniem całego kodu projektu, to zapraszam na [githuba](https://github.com/studioLaCosaNostra/email-newsletter) gdzie znajduje się cały projekt lub jeśli chcesz skorzystać z e-mail marketingu w swoim biznesie to wystarczy, że wejdziesz na [https://email-newsletter.web.app/](http://email-newsletter.web.app/).
 Projekt jest dalej rozwijany hobbystycznie po pracy, wymaga dodania jeszcze wielu funkcji, aby mógł konkurować z ofertą dostępną na rynku. Jeśli chciałbyś wnieść wkład w dalszy rozwój, czy to programistyczny, czy podpowiedzieć jakąś funkcjonalność to zapraszam do [kontaktu](mailto:pawel.laski@gmail.com).
