@@ -57,9 +57,9 @@ Wyczerpaliśmy już w pełni temat struktury naszej bazy czas przejść do tworz
 
 Do obsługi subskrybentów musimy stworzyć REST API. Każdy newsletter musi mieć możliwość zapisania się na niego, wysłania potwierdzenia e-maila oraz wypisania się z niego każdym e-mailu jednym kliknięciem. Cloud functions pozwalają tworzyć taki interfejs przy użyciu popularnej biblioteki express.js, ostatecznie powstaną nam takie endpointy:
 
-* /api/v1/subscribe — odpowiada za zapisywanie nowych subskrybentów.
-* /api/v1/confirm — W pierwszej wiadomości zaraz po zapisie do newslettera, URL z tego endpointu wysyłany jest do subskrybenta, aby mógł potwierdzić swój adres e-mail.
-* /api/v1/unsubscribe — URL jest podawany w każdej wiadomości do subskrybenta, zazwyczaj na dole, ale można to zmienić w ustawieniach newslettera.
+* **/api/v1/subscribe** — Odpowiada za zapisywanie nowych subskrybentów.
+* **/api/v1/confirm** — W pierwszej wiadomości zaraz po zapisie do newslettera, URL z tego endpointu wysyłany jest do subskrybenta, aby mógł potwierdzić swój adres e-mail.
+* **/api/v1/unsubscribe** — URL jest podawany w każdej wiadomości do subskrybenta, zazwyczaj na dole, ale można to zmienić w ustawieniach newslettera.
 
 ![firebase cloud functions web api](Create-newsletter-with-firebase-and-angular/firebase-cloud-functions-web-api.png)
 
