@@ -4,6 +4,10 @@ ampSettings:
   titleImage:
     path: title-image.png
 tags:
+  - firebase
+  - angular
+  - newsletter
+  - email marketing
 thumbnail: title-image.png
 twitterAutoPublish: false
 ---
