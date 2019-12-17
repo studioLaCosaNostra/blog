@@ -276,6 +276,18 @@
       "hexoPublished": true,
       "tags": [],
       "tweetId": "1204923335894802432"
+    },
+    {
+      "title": "Create from scratch a newsletter service with Firebase and Angular",
+      "permalink": "https://studiolacosanostra.github.io/2019/12/17/Create-newsletter-with-firebase-and-angular/",
+      "hexoPublished": true,
+      "tags": [
+        "angular",
+        "firebase",
+        "newsletter",
+        "email marketing"
+      ],
+      "tweetId": "1206852203677409280"
     }
   ],
   "to-destroy": [],
