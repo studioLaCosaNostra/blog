@@ -2,12 +2,12 @@
 title: How to integrate Paypal payments with Angular and Firebase
 ampSettings:
   titleImage:
-    path: null
+    path: title-image.png
 tags:
   - paypal
   - angular
   - firebase
-thumbnail:
+thumbnail: title-image.png
 ---
 
 
