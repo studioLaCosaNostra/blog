@@ -9,7 +9,7 @@ tags:
   - newsletter
   - email marketing
 thumbnail: title-image.png
-twitterAutoPublish: false
+date: 2019-12-17
 ---
 
 Email marketing is one of the cheapest and easiest ways to get your website and online store to returning recipients. This is a form of advertising that goes to the most private place on the web, which is your mailbox. The results of reports from many campaigns around the world show that investment in this form of advertising works and is successful. That is why it is worth starting work on your newsletter!
