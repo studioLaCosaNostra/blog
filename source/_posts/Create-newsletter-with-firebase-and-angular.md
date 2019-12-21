@@ -16,7 +16,7 @@ Email marketing is one of the cheapest and easiest ways to get your website and 
 
 There are many ready tools for creating email marketing campaigns like Mailchimp, Freshmail or Getresponse. These are real harvesters with an endless array of possibilities, but in this article we will not describe their capabilities. We will only discuss the topic of building your own mini system from scratch to send emails to our subscribers. We will use the **Firebase** development platform and the **Angular** web application framework for this purpose.
 
-## Czym jest Firebase?
+## What is Firebase?
 
 ![Firebase logo](Create-newsletter-with-firebase-and-angular/firebase-logo.png)
 

@@ -17,7 +17,16 @@ https://developer.paypal.com/docs/checkout/
 
 ## Sandboxowe konta
 
-# Utwórz paypal service
+
+# Przycisk płatności
+
+![Paypal checkout](paypal-checkout.png)
+
+## Stwórz paypal button service
+
+## Stwórz paypal button component
+
+
 
 # Zweryfikuj zakończoną tranzakcję
 
