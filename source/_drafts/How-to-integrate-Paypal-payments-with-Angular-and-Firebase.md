@@ -201,10 +201,146 @@ Service odpowiada za:
 
 `paypal-button.component.html`
 
+```html
+<div class="button" #paymentButton></div>
+```
 
+`paypal-button.component.ts`
+
+```typescript
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { CurrencyCode, PaypalService } from './paypal.service';
+
+import { PaypalEnvironment } from 'functions/src/enums/paypal-environment';
+import { environment } from 'src/environments/environment';
+
+@Component({
+  selector: 'app-payments-button',
+  templateUrl: './payments-button.component.html',
+  styleUrls: ['./payments-button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [PaypalService],
+})
+export class PaymentsButtonComponent implements OnInit, OnChanges, OnDestroy {
+  private button: any;
+  
+  @Input() customId: string;
+  @Input() name: string;
+  @Input() description: string;
+  @Input() value: string;
+  @Input() currencyCode: CurrencyCode;
+
+  @ViewChild('paymentButton', { static: true }) paymentButton: ElementRef;
+
+  constructor(private paypalService: PaypalService) {}
+
+  validInputs() {
+    return [
+      this.customId,
+      this.name,
+      this.description,
+      this.value,
+      this.currencyCode,
+    ].every((value: string) => value !== undefined);
+  }
+
+  setDetails() {
+    if (!this.validInputs()) {
+      throw new Error('app-payments-button: missing inputs');
+    }
+    const details = {
+      custom_id: this.customId,
+      description: this.description,
+      value: this.value,
+      environment: environment.production
+        ? PaypalEnvironment.Live
+        : PaypalEnvironment.Sandbox,
+      name: this.name,
+      currencyCode: this.currencyCode,
+    };
+    this.paypalService.setDetails(details);
+  }
+
+  ngOnChanges() {
+    this.setDetails();
+  }
+
+  async ngOnInit() {
+    this.button = await this.paypalService.renderButton(
+      this.paymentButton.nativeElement
+    );
+  }
+
+  ngOnDestroy() {
+    this.button.close();
+  }
+}
+```
 # Zweryfikuj zakończoną tranzakcję
 
+`paypal-v1.ts`
+
+```typescript
+import * as checkoutSDK from '@paypal/checkout-server-sdk'
+import * as express from 'express';
+import * as functions from 'firebase-functions';
+import * as paypalSDK from 'paypal-rest-sdk';
+
+import { PaypalEnvironment } from "../enums/paypal-environment";
+import { PaypalOrderConfirmationSource } from './paypal-v1/paypal-order-confirmation-source.enum';
+import { client } from './paypal-v1/client';
+import { corsWhitelist } from './paypal-v1/cors-whitelist';
+import { processOrder } from './paypal-v1/process-order';
+
+export const paypalV1 = express();
+
+const transactionComplete = '/transaction-complete';
+paypalV1.options(transactionComplete, corsWhitelist);
+paypalV1.get(transactionComplete, corsWhitelist, (_, response) => {
+  response.send('OPTIONS: POST');
+})
+paypalV1.post(transactionComplete, corsWhitelist, async (request, response) => {
+  const orderID: string = request.body.orderID;
+  const environment: PaypalEnvironment = request.body.environment;
+
+  if (!orderID) {
+    return response.status(400).send(`The order id is missing.`);
+  }
+
+  if (!environment) {
+    return response.status(400).send(`The environment is missing.`);
+  }
+
+  const orderRequest = new checkoutSDK.orders.OrdersGetRequest(orderID);
+  try {
+    const order = await client(environment, checkoutSDK.core).execute(orderRequest);
+    await processOrder({
+      source: PaypalOrderConfirmationSource.OrderCheck,
+      environment,
+      event: order.result
+    });
+    return response.status(200).send({
+      status: 'OK'
+    });
+  } catch (error) {
+    console.error(error);
+    return response.status(500);
+  }
+});
+```
+
 ## Zapis do bazy
+
+
 
 # Zapłacił ale internet padł i co teraz
 
