@@ -26,6 +26,10 @@ Web: [Puzzle 512][Web version]
 **Download from google play qrcode!**
 ![Google play 512 qrcode](index/qrcode.png)
 
+Stickers:
+
+![PLAY 512 NOW Sticker](index/sticker.png)
+
 - [Privacy Policy for Android & IOS][Privacy Policy]
 
 [Web version]: /games/512/
