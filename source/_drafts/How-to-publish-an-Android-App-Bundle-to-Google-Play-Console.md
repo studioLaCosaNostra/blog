@@ -14,12 +14,10 @@ thumbnail: title-image.png
 date: 2020-01-06 16:00:00
 ---
 
-TODO add readme to publish-aab-google-play
-TODO create title-image.png
+For those who do not want to get into the program, but only want to use it in their project.
+Then I invite you to the finished package on NPM: [publish-aab-google-play](https://www.npmjs.com/package/publish-aab-google-play)
 
-Dla tych którzy nie chcą wgłębiać się w działanie programu a tylko chcą go użyć w swoim projekcie do zapraszam do gotowej paczki na npm: [publish-aab-google-play](https://www.npmjs.com/package/publish-aab-google-play)
-
-Całkiem niedawno Google Play wprowadziło nowy format aplikacji `.aab`. Daje o wiele mniejszy rozmiar aplikacji niż poprzedni `.apk`. Po jakimś czasie cordova też zaczęła wspierać ten nowy format podczas budowania release. Ale niestety `playup` z którego korzystałem przez długi czas do aktualizowania aplikacji w Google Play nie działa z nowym formatem Android App Bundle :(. Rozpocząłem szukanie innego programu, który będzie potrafił wysyłać `.aab`. Z rezygnacją zakończyłem poszukiwania na paru nieskończonych skryptach z użyciem googleapis. Uznałem że raczej nikt jeszcze nie napisał w node.js takiego programiku, więc uznałem że to dobra okazja samemu stworzyć takie dzieło. Do tego celu wykorzystałem powyżej podane `googleapis` oraz `commander` do obsługi terminalowych argumentów.
+Quite recently Google Play has introduced a new application format `.aab`. It gives a much smaller application size than the previous `.apk`. After some time, cordova also began to support this new format when building the release, but unfortunately `playup`, a program to send apk, which I used for a long time to update applications in Google Play. It doesn't work with the new Android App Bundle format :(. I started looking for another program that will be able to send `.aab`. With the resignation I finished searching on a few endless scripts using googleapis. I decided that no one has written such a programmer in node.js yet, so I decided that it's a good opportunity to create such a work myself. For this purpose, I used the above mentioned `googleapis` and `commander` to handle terminal arguments.
 
 `index.ts`
 
@@ -180,7 +178,23 @@ publish({
 })
 ```
 
-Program działa podobnie jak `playup`. Podajemy ścieżkę do api key od google, nazwę pakietu (tutaj jest dodatkowo, ale może w przyszłości jakoś wyciągnę nazwę z .aab), ścieżkę do `.aab` i oczywiście track na który ma wpaść nasza aplikacja (alpha, beta, internal). Dodatkowo po dodaniu argumentu `--exit` po wystąpieniu błędu program zwraca 1 jako kod błędu, przydatne jak mamy stworzyć continous integration i chcemy być ostrzeżeni czy zakończyło się działanie programu poprawnie.
+The program works like a `playup`. We provide the path to the api key from google, the name of the package (here it's extra, but maybe in the future I'll somehow pull the name out of the .aab), the path to `.aab` and of course the track our application is supposed to run on (alpha, beta, internal). Additionally, after adding the argument `--exit` after an error, the program returns 1 as an error code, useful for how to create continous integration and we want to be warned if the program ended up working correctly.
 
+If you're interested in integrating the library in your program, below is an example of use.
 
+```typescript
+import { publish } from "publish-aab-google-play";
 
+publish({
+  keyFile: "./api-publish.json",
+  packageName: "com.laCosaNostra.FiveHundredAndTwelve2",
+  aabFile: "./platforms/android/app/build/outputs/bundle/release/app.aab",
+  track: "beta"
+})
+  .then(() => {
+    console.log("Success");
+  })
+  .catch(error => {
+    console.error(error);
+  });
+```
