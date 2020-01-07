@@ -288,22 +288,22 @@
         "email marketing"
       ],
       "tweetId": "1206852203677409280"
-    }
-  ],
-  "to-destroy": [],
-  "to-publish": [
+    },
     {
       "title": "How to publish an Android App Bundle to Google Play Console",
       "permalink": "https://studiolacosanostra.github.io/2020/01/06/How-to-publish-an-Android-App-Bundle-to-Google-Play-Console/",
       "hexoPublished": true,
       "tags": [
         "nodejs",
-        "android",
         "cordova",
+        "android",
         "npm",
         "google play",
         "aab"
-      ]
+      ],
+      "tweetId": "1214668888073482240"
     }
-  ]
+  ],
+  "to-destroy": [],
+  "to-publish": []
 }
