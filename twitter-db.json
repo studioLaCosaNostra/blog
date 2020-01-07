@@ -291,5 +291,19 @@
     }
   ],
   "to-destroy": [],
-  "to-publish": []
+  "to-publish": [
+    {
+      "title": "How to publish an Android App Bundle to Google Play Console",
+      "permalink": "https://studiolacosanostra.github.io/2020/01/06/How-to-publish-an-Android-App-Bundle-to-Google-Play-Console/",
+      "hexoPublished": true,
+      "tags": [
+        "nodejs",
+        "android",
+        "cordova",
+        "npm",
+        "google play",
+        "aab"
+      ]
+    }
+  ]
 }
