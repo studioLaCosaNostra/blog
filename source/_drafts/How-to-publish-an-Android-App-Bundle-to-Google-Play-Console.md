@@ -14,6 +14,9 @@ thumbnail: title-image.png
 date: 2020-01-06 16:00:00
 ---
 
+TODO add readme to publish-aab-google-play
+TODO create title-image.png
+
 Dla tych którzy nie chcą wgłębiać się w działanie programu a tylko chcą go użyć w swoim projekcie do zapraszam do gotowej paczki na npm: [publish-aab-google-play](https://www.npmjs.com/package/publish-aab-google-play)
 
 Całkiem niedawno Google Play wprowadziło nowy format aplikacji `.aab`. Daje o wiele mniejszy rozmiar aplikacji niż poprzedni `.apk`. Po jakimś czasie cordova też zaczęła wspierać ten nowy format podczas budowania release. Ale niestety `playup` z którego korzystałem przez długi czas do aktualizowania aplikacji w Google Play nie działa z nowym formatem Android App Bundle :(. Rozpocząłem szukanie innego programu, który będzie potrafił wysyłać `.aab`. Z rezygnacją zakończyłem poszukiwania na paru nieskończonych skryptach z użyciem googleapis. Uznałem że raczej nikt jeszcze nie napisał w node.js takiego programiku, więc uznałem że to dobra okazja samemu stworzyć takie dzieło. Do tego celu wykorzystałem powyżej podane `googleapis` oraz `commander` do obsługi terminalowych argumentów.
