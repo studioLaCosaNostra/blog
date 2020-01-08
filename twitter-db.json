@@ -302,20 +302,20 @@
         "aab"
       ],
       "tweetId": "1214668888073482240"
-    }
-  ],
-  "to-destroy": [],
-  "to-publish": [
+    },
     {
       "title": "How to speed up npm install in continuous integration",
       "permalink": "https://studiolacosanostra.github.io/2020/01/07/How-to-speed-up-npm-install-in-continuous-integration/",
       "hexoPublished": true,
       "tags": [
         "automation",
-        "concourse ci",
+        "nodejs",
         "npm",
-        "nodejs"
-      ]
+        "concourse ci"
+      ],
+      "tweetId": "1214721222895980544"
     }
-  ]
+  ],
+  "to-destroy": [],
+  "to-publish": []
 }
