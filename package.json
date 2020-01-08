@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.8.0"
+    "version": "3.9.0"
   },
   "scripts": {
     "start": "hexo server --draft -p 5000",
@@ -19,7 +19,7 @@
     "@types/gh-pages": "^2.0.0",
     "@types/node": "^10.14.8",
     "gh-pages": "^2.0.1",
-    "hexo": "^3.7.0",
+    "hexo": "^3.9.0",
     "hexo-admin": "^2.3.0",
     "hexo-all-minifier": "^0.5.3",
     "hexo-asset-image": "0.0.3",
