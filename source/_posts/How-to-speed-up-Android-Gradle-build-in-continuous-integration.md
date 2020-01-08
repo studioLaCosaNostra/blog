@@ -9,6 +9,7 @@ tags:
   - android
   - gradle
 thumbnail: title-image.png
+date: 2020-01-08 16:00:00
 ---
 
 Below is a sample task for Concourse CI, which caches `gradle` packages for future builds.
