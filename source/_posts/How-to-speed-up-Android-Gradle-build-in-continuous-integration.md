@@ -11,7 +11,7 @@ tags:
 thumbnail: title-image.png
 ---
 
-Below is a sample task from the Concourse CI, which caches `grade` packages for future builds.
+Below is a sample task for Concourse CI, which caches `gradle` packages for future builds.
 
 `build_android.sh`
 
@@ -50,4 +50,4 @@ cd app-repo
 ./gradlew assembleDebug
 ```
 
-At the beginning of the script I set the path `GRADE_USER_HOME` to be relative to the currently used workspace, so that Concourse can save the files for later.
+At the beginning of shell script I set the path `GRADE_USER_HOME` to be relative to the currently used workspace, so that Concourse can save the files for later.
