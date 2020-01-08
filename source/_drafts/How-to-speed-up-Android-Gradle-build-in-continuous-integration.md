@@ -2,14 +2,13 @@
 title: How to speed up Android Gradle build in continuous integration
 ampSettings:
   titleImage:
-    path: null
+    path: title-image.png
 tags:
   - automation
   - concourse ci
   - android
   - gradle
-  - cordova
-thumbnail:
+thumbnail: title-image.png
 ---
 
 ```yml
