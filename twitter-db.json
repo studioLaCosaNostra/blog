@@ -305,5 +305,17 @@
     }
   ],
   "to-destroy": [],
-  "to-publish": []
+  "to-publish": [
+    {
+      "title": "How to speed up npm install in continuous integration",
+      "permalink": "https://studiolacosanostra.github.io/2020/01/07/How-to-speed-up-npm-install-in-continuous-integration/",
+      "hexoPublished": true,
+      "tags": [
+        "automation",
+        "concourse ci",
+        "npm",
+        "nodejs"
+      ]
+    }
+  ]
 }
