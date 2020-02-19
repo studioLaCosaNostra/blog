@@ -314,20 +314,20 @@
         "concourse ci"
       ],
       "tweetId": "1214721222895980544"
-    }
-  ],
-  "to-destroy": [],
-  "to-publish": [
+    },
     {
       "title": "How to speed up Android Gradle build in continuous integration",
       "permalink": "https://studiolacosanostra.github.io/2020/01/08/How-to-speed-up-Android-Gradle-build-in-continuous-integration/",
       "hexoPublished": true,
       "tags": [
         "automation",
-        "concourse ci",
         "android",
+        "concourse ci",
         "gradle"
-      ]
+      ],
+      "tweetId": "1215037589750763526"
     }
-  ]
+  ],
+  "to-destroy": [],
+  "to-publish": []
 }
