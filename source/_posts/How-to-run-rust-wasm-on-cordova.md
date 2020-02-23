@@ -8,6 +8,7 @@ tags:
   - cordova
   - wasm
 thumbnail: title-image.png
+date: 2020-02-23
 ---
 
 Creating a game in rust language I came across a problem with running it in Cordova. It turned out that the cargo web builder uses fetch api to download the wasm for the webassembly compiler, but cannot download from `file: //` in cordova.

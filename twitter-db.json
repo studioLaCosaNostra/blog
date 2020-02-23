@@ -336,5 +336,16 @@
     }
   ],
   "to-destroy": [],
-  "to-publish": []
+  "to-publish": [
+    {
+      "title": "How to run rust wasm on cordova",
+      "permalink": "https://studiolacosanostra.github.io/2020/02/23/How-to-run-rust-wasm-on-cordova/",
+      "hexoPublished": true,
+      "tags": [
+        "rust",
+        "cordova",
+        "wasm"
+      ]
+    }
+  ]
 }
