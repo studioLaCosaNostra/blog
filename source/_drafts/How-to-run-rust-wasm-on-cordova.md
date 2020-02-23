@@ -2,9 +2,12 @@
 title: How to run rust wasm on cordova
 ampSettings:
   titleImage:
-    path: null
+    path: title-image.png
 tags:
-thumbnail:
+  - rust
+  - cordova
+  - wasm
+thumbnail: title-image.png
 ---
 
 ```html
