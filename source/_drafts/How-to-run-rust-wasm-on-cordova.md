@@ -10,6 +10,12 @@ tags:
 thumbnail: title-image.png
 ---
 
+Creating a game in rust language I came across a problem with running it in Cordova. It turned out that the cargo web builder uses fetch api to download the wasm for the webassembly compiler, but cannot download from `file: //` in cordova.
+
+![Chrome devtools fetch api file download error](fetch-error.png)
+
+The search for a sensible solution ended with the creation of a script overwriting the action of fetch api, so that the application uses XHR, which can download `file: //`.
+
 ```html
  <body>
   <canvas id="canvas"></canvas>
@@ -49,3 +55,9 @@ thumbnail: title-image.png
   <script type="text/javascript" src="lines.js"></script>
 </body>
 ```
+
+The script should be added before importing the main application script.
+
+Thanks to this solution, the Lines application is available in the Google Play Store.
+
+https://play.google.com/store/apps/details?id=studiolacosanostra.game.lines
