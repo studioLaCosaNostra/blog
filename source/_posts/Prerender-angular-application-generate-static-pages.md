@@ -202,3 +202,10 @@ npm run build:ssr && npm run prerender
 ```
 
 In the `dist/browser` directory, you will find subfolders with `index.html` files containing SEO-friendly generated HTML content of the application.
+
+
+Prerender in Angular 9 has an error on the production build.
+
+https://github.com/angular/angular-cli/issues/17021
+
+When they solve the problem, I will probably update the post to keep it up to date with the latest Angular.
