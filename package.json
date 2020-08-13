@@ -10,7 +10,7 @@
     "clean": "hexo clean",
     "lint-staged": "lint-staged",
     "twitter-publish": "hexo twitter-publish",
-    "gh-pages-deploy": "npm run gh-pages-build && npm run gh-pages-publish && hexo twitter-publish",
+    "gh-pages-deploy": "npm run gh-pages-build && npm run gh-pages-publish",
     "gh-pages-build": "NODE_ENV=production hexo generate --config _config.yml,_config.production.yml",
     "gh-pages-publish": "ts-node bin/gh-pages-publish",
     "test": "NODE_ENV=production hexo generate --config _config.yml"
@@ -36,7 +36,6 @@
     "hexo-renderer-marked": "^0.3.2",
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.1",
-    "hexo-twitter-auto-publish": "^0.0.10",
     "hexo-wordcount": "^6.0.1",
     "jsdom": "^16.4.0",
     "ts-node": "^8.10.2",
