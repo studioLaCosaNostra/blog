@@ -10,7 +10,7 @@
     "clean": "hexo clean",
     "lint-staged": "lint-staged",
     "twitter-publish": "hexo twitter-publish",
-    "gh-pages-deploy": "npm run gh-pages-build && npm run gh-pages-publish",
+    "gh-pages-deploy": "rm -rf db.json && npm run gh-pages-build && npm run gh-pages-publish",
     "gh-pages-build": "NODE_ENV=production hexo generate --config _config.yml,_config.production.yml",
     "gh-pages-publish": "ts-node bin/gh-pages-publish",
     "test": "NODE_ENV=production hexo generate --config _config.yml"
