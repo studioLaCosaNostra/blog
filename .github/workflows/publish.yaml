@@ -19,4 +19,4 @@ jobs:
       with:
         node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
     - run: npm ci
-    - run: gh-pages-deploy
+    - run: npm run gh-pages-deploy
