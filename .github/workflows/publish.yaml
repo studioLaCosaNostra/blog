@@ -19,4 +19,6 @@ jobs:
       with:
         node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
     - run: npm ci
+    - run: git config --global user.email "github-actions[bot]@users.noreply.github.com"
+    - run: git config --global user.name "github-actions[bot]"
     - run: npm run gh-pages-deploy
