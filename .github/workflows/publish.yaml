@@ -1,0 +1,22 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Extract Node.js version from .nvmrc
+      id: nvm
+      run: echo "::set-output name=NODE_VERSION::$(cat .nvmrc)"
+    - name: Use Node.js ${{ steps.nvm.outputs.NODE_VERSION }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+    - run: npm ci
+    - run: gh-pages-deploy
