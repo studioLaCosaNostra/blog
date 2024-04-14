@@ -105,8 +105,8 @@ generator_amp:
 nofollow:
   enable: true
   exclude:
-    - https://nolife.cyou
-    - https://mamrzeczy.pl
+    - nolife.cyou
+    - mamrzeczy.pl
 all_minifier: false
 
 include:
